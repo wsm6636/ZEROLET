@@ -1,30 +1,153 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Mon May 05 10:25:52 2025
+Created on Mon Jan 05 10:25:52 2026
 
 It implements the methods described in the paper
-    "Jitter Propagation in Task Chains". 
+    "The zeroLET Task Model and its Application to
+    Offset Design Space Exploration". 
     Shumo Wang, Enrico Bini, Qingxu Deng, Martina Maggio, 
-    IEEE Real-Time Systems Symposium (RTSS), 2025
+    IEEE/ACM International Conference on Embedded Software (EMSOFT), 2026
 
 @author: Shumo Wang
 """
 
+
 import math
 from functools import reduce
 from collections import defaultdict
-
-from tqdm import tqdm 
-from analysis_passive import RandomEvent
+import random
 
 
+"""an event"""
+class Event:
+    """
+    Creates an event represented by ID, type, period, offset, maxjitter.
+    """
+    def __init__(self, event_type, period, offset, maxjitter, id=None):
+        self.id = id
+        self.event_type = event_type  # "read" or "write"
+        self.period = period
+        self.offset = offset
+        self.maxjitter = maxjitter  # J_i in our paper
+        self.random_jitter = 0   # jitter of instance
+
+    """print an event"""
+    def __repr__(self):
+        return (
+            f"Event(type={self.event_type},id={self.id}, period={self.period}, "
+            f"offset={self.offset}, maxjitter={self.maxjitter}"
+        )
+
+    """Generate an instance jitter"""
+    def get_trigger_time(self, j):
+        self.random_jitter = random.uniform(0, self.maxjitter)
+        tj = j * self.period + self.offset + self.random_jitter
+        return tj
+
+
+"""a task"""
+class Task:
+    """
+    Creates a task represented by ID, events, period, offset.
+    """
+    def __init__(self, read_event, write_event, id=None):
+        self.id = id
+        self.read_event = read_event
+        self.write_event = write_event
+        self.period = read_event.period
+        self.offset = read_event.offset
+
+    def read_time(self, k):
+        return self.read_event.offset + k * self.period
+    
+    def write_time(self, k):
+        return self.write_event.offset + k * self.period
+
+    """print a task"""
+    def __repr__(self):
+        return (
+            f"Task(period={self.period}, offset={self.offset}, "
+            f"read_event={self.read_event}, write_event={self.write_event})"
+        )
+
+
+"""
+Generate random events
+"""
+class RandomEvent:
+    """
+    Generates maximum jitter as percentage per_jitter 
+    maxjitter = per_jitter * period
+    """
+    def __init__(
+        self,
+        num_tasks,
+        periods,
+        read_offsets,
+        write_offsets,
+        per_jitter
+    ):
+        self.num_tasks = num_tasks
+        self.periods = periods
+        self.read_offsets = read_offsets
+        self.write_offsets = write_offsets
+        self.per_jitter = per_jitter
+        self.tasks = self.generate_events_tasks()
+        
+    """
+    Generating tasks with events
+    """
+    def generate_events_tasks(self):
+        read_events = []
+        write_events = []
+        events = []
+        tasks = []
+        for i in range(self.num_tasks):
+            # randomly select a period from the list
+            period = self.periods[i]
+            read_offset = self.read_offsets[i]
+            write_offset = self.write_offsets[i]
+            # x% * period
+            maxjitter = self.per_jitter*period
+
+            # create read and write events
+            read_event = Event(
+                event_type="read",
+                period=period,
+                offset=read_offset,
+                maxjitter=maxjitter,
+                id=i,
+            )
+            write_event = Event(
+                event_type="write",
+                period=period,
+                offset=write_offset,
+                maxjitter=maxjitter,
+                id=i,
+            )
+            read_events.append(read_event)
+            write_events.append(write_event)
+            events.append((read_event, write_event))
+
+            # Create a task with the read and write events
+            task = Task(read_event=read_event, write_event=write_event, id=i)
+            tasks.append(task)
+
+        return tasks
+
+    def get_tasks(self):
+        return self.tasks
+    
+
+"""Calculate the least common multiple (LCM) of two numbers"""
 def lcm(a, b):
     return abs(a * b) // math.gcd(a, b)
 
-
+"""Calculate the least common multiple of a list of numbers (used to calculate Hyperperiod)"""
 def lcm_list(numbers):
     return reduce(lcm, numbers, 1)
+
 
 def compute_latency_stats(histogram, total_count):
     """
@@ -61,7 +184,10 @@ def compute_latency_stats(histogram, total_count):
 
 
 def compute_chain_latency_from_z(z, tasks):
-
+    """
+    Core calculation logic: Calculate the delay of the task chain triggered from time point z.
+    Follow zeroLET semantics: the output of the current task's write operation is used as the input of the next task's read operation.
+    """
     current_time = z
 
     for task in tasks:
@@ -86,8 +212,11 @@ def compute_chain_latency_from_z(z, tasks):
 
     return latency
 
-def compute_latency_histogram(tasks):
 
+def compute_latency_histogram(tasks):
+    """
+    All possible time points z are traversed within a super period H and a delay distribution histogram is generated.
+    """
     periods = [task.period for task in tasks]
     H = lcm_list(periods)
 
@@ -120,7 +249,6 @@ def run_analysis_zero_let(num_tasks, periods,read_offsets,write_offsets, per_jit
     histogram, latency_list, H = compute_latency_histogram(tasks)
     stats = compute_latency_stats(histogram, H)
 
-
     return  histogram, latency_list, H, stats
 
 
@@ -130,7 +258,6 @@ if __name__ == "__main__":
     periods = [15,10,12]
     read_offsets = [11,18,26]
     write_offsets = read_offsets
-    # write_offsets = [4,3,8]
 
     tasks = []
     tasks = RandomEvent(len(periods), periods, read_offsets, write_offsets, 0).tasks

@@ -1,3 +1,0 @@
-seeds,num_tasks,per_jitter,final_e2e_max,max_reaction_time,R,exceed,false_percentage,best_merge_pair,added,finalpercent
-1755016037,5,0.2,2699.4,2511.322681000748,0.9303262506485692,safe,0.0,"(0, 1)",False,0.0
-1755016038,5,0.2,2866.6,2237.195626768396,0.7804352287617372,safe,0.0,"(0, 1)",False,0.0
