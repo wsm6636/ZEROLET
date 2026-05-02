@@ -24,3 +24,4 @@ utilities/__pycache__/
 .idea/
 
 ./output/analysis_zero_let
+analysis_zero_let
