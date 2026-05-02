@@ -272,7 +272,7 @@ int main() {
 
     int perioddown = 2;
     int periodup = 12;
-    int num_chains = 5;  
+    int num_chains = 3;  
 
     int periods[MAX_TASKS];
 

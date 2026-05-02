@@ -18,9 +18,12 @@ import itertools
 import random
 import time
 import os
+from matplotlib import pyplot as plt
 import numpy as np
 
 import math
+
+import pandas as pd
 
 from analysis_zero_let import run_analysis_zero_let
 
@@ -72,6 +75,182 @@ def isMaxHarmonic(periods):
 
     return 1
 
+# ===============================
+# Eq.(27)
+# ===============================
+def generate_offsets_eq27(periods):
+    """
+    φ1 = 0
+    φi ∈ [0, Gi - 1]
+    """
+    n = len(periods)
+
+    H = [0] * n
+    G = [0] * n
+
+    H[0] = periods[0]
+
+    for i in range(1, n):
+        H[i] = math.lcm(H[i-1], periods[i])
+        G[i] = math.gcd(H[i-1], periods[i])
+
+    ranges = []
+    ranges.append([0])  # φ1 = 0
+
+    for i in range(1, n):
+        ranges.append(range(G[i]))
+
+    offset_space = list(itertools.product(*ranges))
+
+    return offset_space, G
+
+
+# =====================================
+# Eq.(28)
+# C = n * ∏_{i=2}^n T_i
+# =====================================
+def compute_complexity_eq28(periods):
+
+    n = len(periods)
+
+    prod = 1
+    for i in range(1, n):
+        prod *= periods[i]
+
+    return n * prod
+
+
+# =====================================
+# 单次实验
+# =====================================
+def run_single_experiment(num_chains, period_choices):
+
+    periods = random.choices(period_choices, num_chains)
+    # periods = [15,10,12]
+    # num_chains = 3
+    # Eq.(27)
+    offset_space, G = generate_offsets_eq27(periods)
+
+    # Eq.(28)
+    C = compute_complexity_eq28(periods)
+
+    space_size = len(offset_space)
+
+    start_time = time.perf_counter()
+
+    min_latency = float("inf")
+    max_latency = -float("inf")
+
+    min_offsets = None
+    max_offsets = None
+
+    for offsets in offset_space:
+
+        read_offsets = list(offsets)
+        write_offsets = read_offsets
+
+        print(f"processing offsets: {read_offsets}, periods: {periods}, C: {C}...")
+        _, _, _, stats = run_analysis_zero_let(
+            num_chains,
+            periods,
+            read_offsets,
+            write_offsets,
+            0
+        )
+
+        current_latency = stats["max"]
+
+        if current_latency < min_latency:
+            min_latency = current_latency
+            min_offsets = read_offsets.copy()
+
+        if current_latency > max_latency:
+            max_latency = current_latency
+            max_offsets = read_offsets.copy()
+
+    R = time.perf_counter() - start_time
+
+    return {
+        "n": num_chains,
+        "periods": periods,
+        "C": C,
+        "R": R,
+        "R_over_C": R / C if C > 0 else None,
+        "min_latency": min_latency,   # LZ-
+        "min_offsets": min_offsets,
+        "max_latency": max_latency,   # LZ+
+        "max_offsets": max_offsets
+    }
+
+
+def run_evaluation_zero_let(num_chains, num_repeats, period_choices, random_seed):
+    TOLERANCE = 1e-9
+    all_results = []
+
+    for i in range(num_repeats):
+        random.seed(random_seed)
+        for n in range(3, num_chains + 1):
+            print(f"Running experiment for n={n}, repeat {i+1}/{num_repeats}...")
+            result = run_single_experiment(n, period_choices)
+            all_results.append(result)
+        random_seed = random_seed + 1
+    return all_results
+
+def output_zero_let(timestamp, num_chains, num_repeats, random_seed, results):
+    folder_path = "data"
+    os.makedirs(folder_path, exist_ok=True)
+
+    filename = f"data_zero_let_RC_n{num_chains}_{num_repeats}_{random_seed}_{timestamp}.csv"
+    results_csv = os.path.join(folder_path, filename)
+
+    with open(results_csv, mode="w", newline="") as f:
+        writer = csv.writer(f)
+
+        writer.writerow([
+            "n",
+            "periods",
+            "C",
+            "R",
+            "R/C",
+            "min_latency (LZ-)",
+            "min_offsets",
+            "max_latency (LZ+)",
+            "max_offsets"
+        ])
+
+        for r in results:
+            writer.writerow([
+                r["n"],
+                r["periods"],
+                r["C"],
+                f"{r['R']:.6f}",
+                f"{r['R_over_C']:.6e}" if r["R_over_C"] else "",
+                r["min_latency"],
+                r["min_offsets"],
+                r["max_latency"],
+                r["max_offsets"]
+            ])
+    return results_csv
+
+def plot_R_over_C_from_csv(csvfile, num_chains, num_repeats, random_seed, timestamp):
+    folder_path = "data"
+    os.makedirs(folder_path, exist_ok=True)
+    plot_name = os.path.join(folder_path,               f"zero_let_RC_n{num_chains}_{num_repeats}_{random_seed}_{timestamp}.png")
+
+    df = pd.read_csv(csvfile)
+
+    R_over_C = df["R/C"]
+    n = df["n"]
+
+    plt.figure()
+    plt.scatter(n, R_over_C)
+
+    plt.xlabel("Number of tasks (n)")
+    plt.ylabel("R / C")
+    plt.title("Normalized Runtime (R/C)")
+    plt.grid()
+    plt.savefig(plot_name)
+    plt.show()
 
 
 def run_evaluation_and_track_extremes(num_chains, random_seed, perioddown, periodup):
@@ -109,13 +288,13 @@ def run_evaluation_and_track_extremes(num_chains, random_seed, perioddown, perio
             selected_read_offsets = list(read_offsets_tuple)
             selected_write_offsets = selected_read_offsets  
 
-            try:
-                histogram, latency_list, H, stats = run_analysis_zero_let(
+            start_time = time.perf_counter()
+
+            histogram, latency_list, H, stats = run_analysis_zero_let(
                     num_chains, selected_periods, selected_read_offsets, selected_write_offsets, 0
                 )
-            except Exception as e:
-                print(f"Error processing {selected_periods} with offsets {selected_read_offsets}: {e}")
-                continue
+            end_time = time.perf_counter()
+            R = end_time - start_time
 
             current_max_latency = stats["max"]
             
@@ -208,12 +387,19 @@ if __name__ == "__main__":
     perioddown = 2
     periodup =12
 
-    num_chains = 3 
+    num_chains = 10
+    num_repeats = 1
+
+    period_choices = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
     
     random_seed = 1755016037  # fixed seed
     timestamp = datetime.datetime.fromtimestamp(int(time.time())).strftime("%Y%m%d_%H%M%S")
 
-    results = run_evaluation_and_track_extremes(num_chains, random_seed, perioddown, periodup)
-    output_zero_let_min_max_extremes(timestamp, results, num_chains, perioddown, periodup)    
+    # results = run_evaluation_and_track_extremes(num_chains, random_seed, perioddown, periodup)
+    # output_zero_let_min_max_extremes(timestamp, results, num_chains, perioddown, periodup)    
+
+    results =  run_evaluation_zero_let(num_chains, num_repeats, period_choices, random_seed)
+    csvfile =  output_zero_let(timestamp, num_chains, num_repeats, random_seed, results)
+    plot_R_over_C_from_csv(csvfile, num_chains, num_repeats, random_seed, timestamp)
 
 
