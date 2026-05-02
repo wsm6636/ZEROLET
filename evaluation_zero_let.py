@@ -15,6 +15,7 @@ import csv
 import datetime
 
 import itertools
+from multiprocessing import Pool
 import random
 import time
 import os
@@ -119,13 +120,27 @@ def compute_complexity_eq28(periods):
 
     return n * prod
 
+def evaluate_offset(args):
+    periods, offsets, num_tasks = args
+
+    read_offsets = list(offsets)
+    print(f"processing offsets: {read_offsets}, periods: {periods},...")
+    _, _, _, stats = run_analysis_zero_let(
+        num_tasks,
+        periods,
+        read_offsets,
+        read_offsets,
+        0
+    )
+
+    return stats["max"], read_offsets
 
 # =====================================
 # 单次实验
 # =====================================
 def run_single_experiment(num_chains, period_choices):
 
-    periods = random.choices(period_choices, num_chains)
+    periods = random.choices(period_choices, k=num_chains)
     # periods = [15,10,12]
     # num_chains = 3
     # Eq.(27)
@@ -138,35 +153,49 @@ def run_single_experiment(num_chains, period_choices):
 
     start_time = time.perf_counter()
 
+    tasks = ((periods, offsets, num_chains) for offsets in offset_space)
+
     min_latency = float("inf")
     max_latency = -float("inf")
 
     min_offsets = None
     max_offsets = None
 
-    for offsets in offset_space:
+    # for offsets in offset_space:
 
-        read_offsets = list(offsets)
-        write_offsets = read_offsets
+    #     read_offsets = list(offsets)
+    #     write_offsets = read_offsets
 
-        print(f"processing offsets: {read_offsets}, periods: {periods}, C: {C}...")
-        _, _, _, stats = run_analysis_zero_let(
-            num_chains,
-            periods,
-            read_offsets,
-            write_offsets,
-            0
-        )
+    #     print(f"processing offsets: {read_offsets}, periods: {periods}, C: {C}...")
+    #     _, _, _, stats = run_analysis_zero_let(
+    #         num_chains,
+    #         periods,
+    #         read_offsets,
+    #         write_offsets,
+    #         0
+    #     )
 
-        current_latency = stats["max"]
+    #     current_latency = stats["max"]
 
-        if current_latency < min_latency:
-            min_latency = current_latency
-            min_offsets = read_offsets.copy()
+    #     if current_latency < min_latency:
+    #         min_latency = current_latency
+    #         min_offsets = read_offsets.copy()
 
-        if current_latency > max_latency:
-            max_latency = current_latency
-            max_offsets = read_offsets.copy()
+    #     if current_latency > max_latency:
+    #         max_latency = current_latency
+    #         max_offsets = read_offsets.copy()
+
+    with Pool(os.cpu_count()) as p:
+        for latency, offsets in p.imap_unordered(evaluate_offset, tasks):
+
+            if latency < min_latency:
+                min_latency = latency
+                min_offsets = offsets
+
+            if latency > max_latency:
+                max_latency = latency
+                max_offsets = offsets
+
 
     R = time.perf_counter() - start_time
 
@@ -335,13 +364,22 @@ def output_zero_let_min_max_extremes(timestamp, period_stats_map, num_chains, pe
     with open(results_csv, mode='w', newline='') as file:
         writer = csv.writer(file)
 
+        # header = [
+        #     "$T_i$ period", 
+        #     "$L_\mathcal{Z}^-$ minimum offset-free reaction time", 
+        #     "$\phase{\zeta_i} of L_\mathcal{Z}^-$ offset of minimum (One of offsets can be obtained the minimum values)", 
+        #     "$L_\mathcal{Z}^+$ maximum offset-free reaction time", 
+        #     "$\phase{\zeta_i} of L_\mathcal{Z}^+$ offset of maximum (One of offsets can be obtained the maximum values)", 
+        #     "$L_\mathcal{Z}^+ - L_\mathcal{Z}^-$ different between maximum and minimum",
+        #     "is max-harmonic"
+        # ]
         header = [
-            "$T_i$ period", 
-            "$L_\mathcal{Z}^-$ minimum offset-free reaction time", 
-            "$\phase{\zeta_i} of L_\mathcal{Z}^-$ offset of minimum (One of offsets can be obtained the minimum values)", 
-            "$L_\mathcal{Z}^+$ maximum offset-free reaction time", 
-            "$\phase{\zeta_i} of L_\mathcal{Z}^+$ offset of maximum (One of offsets can be obtained the maximum values)", 
-            "$L_\mathcal{Z}^+ - L_\mathcal{Z}^-$ different between maximum and minimum",
+            "period", 
+            "minimum offset-free reaction time", 
+            "offset of minimum (One of offsets can be obtained the minimum values)", 
+            "maximum offset-free reaction time", 
+            "offset of maximum (One of offsets can be obtained the maximum values)", 
+            "between maximum and minimum",
             "is max-harmonic"
         ]
 
@@ -384,11 +422,11 @@ def output_zero_let_min_max_extremes(timestamp, period_stats_map, num_chains, pe
 
 if __name__ == "__main__":
 
-    perioddown = 2
-    periodup =12
+    # perioddown = 2
+    # periodup =12
 
     num_chains = 10
-    num_repeats = 1
+    num_repeats = 1 
 
     period_choices = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
     
