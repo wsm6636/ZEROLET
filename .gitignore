@@ -22,3 +22,5 @@ utilities/__pycache__/
 .DS_Store
 .vscode/
 .idea/
+
+./output/analysis_zero_let
