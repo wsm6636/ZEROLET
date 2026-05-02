@@ -3,6 +3,7 @@
 #include <math.h>
 #include <string.h>
 #include <time.h>
+#include <omp.h>
 
 #define MAX_TASKS 10
 #define MAX_RESULTS 20000
@@ -81,7 +82,7 @@ void compute_stats(int periods[], int offsets[], int n, Stats *stats) {
     for (int z = max_offset; z < H + max_offset; z++) {
         double lat = compute_chain_latency(z, periods, offsets, n);
 
-        // 对齐 Python round(lat, 9)
+        // 对齐 Python 精度
         lat = round(lat * 1e9) / 1e9;
 
         if (lat < min_lat) min_lat = lat;
@@ -120,7 +121,7 @@ int isMaxHarmonic(int periods[], int n) {
 PeriodEntry results[MAX_RESULTS];
 int result_count = 0;
 
-/* ---------- 打印数组（CSV用） ---------- */
+/* ---------- 打印数组 ---------- */
 
 void print_array(FILE *fp, int arr[], int n) {
     fprintf(fp, "\"[");
@@ -166,32 +167,14 @@ void generate_offsets(int periods[], int n, int idx, int current[], PeriodEntry 
     }
 }
 
-/* ---------- period 枚举 ---------- */
+/* ---------- index → periods ---------- */
 
-void generate_periods(int perioddown, int periodup, int n, int idx, int current[]) {
-    if (idx == n) {
+void index_to_periods(int idx, int perioddown, int periodup, int n, int periods[]) {
+    int base = periodup - perioddown + 1;
 
-        // 进度打印（通用）
-        printf("Processing [");
-        for (int i = 0; i < n; i++) {
-            printf("%d", current[i]);
-            if (i != n-1) printf(",");
-        }
-        printf("]\n");
-
-        PeriodEntry entry = {0};
-        memcpy(entry.periods, current, sizeof(int)*n);
-
-        int offsets[MAX_TASKS];
-        generate_offsets(current, n, 0, offsets, &entry);
-
-        results[result_count++] = entry;
-        return;
-    }
-
-    for (int p = perioddown; p <= periodup; p++) {
-        current[idx] = p;
-        generate_periods(perioddown, periodup, n, idx + 1, current);
+    for (int i = n - 1; i >= 0; i--) {
+        periods[i] = perioddown + (idx % base);
+        idx /= base;
     }
 }
 
@@ -217,7 +200,7 @@ void write_csv(int n, int perioddown, int periodup) {
 
     char filename[256];
     sprintf(filename,
-        "data/data_zero_let_n%d_%d_%d_EXTREMES_%04d%02d%02d_%02d%02d%02d.csv",
+        "data_zero_let_n%d_%d_%d_EXTREMES_%04d%02d%02d_%02d%02d%02d.csv",
         n, perioddown, periodup,
         tm->tm_year+1900, tm->tm_mon+1, tm->tm_mday,
         tm->tm_hour, tm->tm_min, tm->tm_sec);
@@ -266,17 +249,31 @@ void write_csv(int n, int perioddown, int periodup) {
     printf("Saved to %s\n", filename);
 }
 
-/* ---------- main ---------- */
+/* ---------- main（并行核心） ---------- */
 
 int main() {
 
     int perioddown = 2;
     int periodup = 12;
-    int num_chains = 5;  
+    int num_chains = 4;
 
-    int periods[MAX_TASKS];
+    int total = pow(periodup - perioddown + 1, num_chains);
+    result_count = total;
 
-    generate_periods(perioddown, periodup, num_chains, 0, periods);
+    #pragma omp parallel for schedule(dynamic)
+    for (int idx = 0; idx < total; idx++) {
+
+        int periods[MAX_TASKS];
+        index_to_periods(idx, perioddown, periodup, num_chains, periods);
+
+        PeriodEntry entry = {0};
+        memcpy(entry.periods, periods, sizeof(int)*num_chains);
+
+        int offsets[MAX_TASKS];
+        generate_offsets(periods, num_chains, 0, offsets, &entry);
+
+        results[idx] = entry;
+    }
 
     write_csv(num_chains, perioddown, periodup);
 
