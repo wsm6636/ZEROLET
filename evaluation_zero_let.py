@@ -101,7 +101,7 @@ def generate_offsets_eq27(periods):
     for i in range(1, n):
         ranges.append(range(G[i]))
 
-    offset_space = list(itertools.product(*ranges))
+    offset_space = itertools.product(*ranges)
 
     return offset_space, G
 
@@ -149,7 +149,7 @@ def run_single_experiment(num_chains, period_choices):
     # Eq.(28)
     C = compute_complexity_eq28(periods)
 
-    space_size = len(offset_space)
+    # space_size = len(offset_space)
 
     start_time = time.perf_counter()
 
@@ -429,7 +429,7 @@ if __name__ == "__main__":
     num_repeats = 1 
 
     period_choices = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
-    
+    # period_choices = [1, 2, 5, 10, 20, 50, 100, 200] 
     random_seed = 1755016037  # fixed seed
     timestamp = datetime.datetime.fromtimestamp(int(time.time())).strftime("%Y%m%d_%H%M%S")
 
