@@ -180,10 +180,10 @@ def evaluate_range(args):
     periods, G, start, end, num_chains = args
 
     min_latency = float("inf")
-    # max_latency = -float("inf")
+    max_latency = -float("inf")
 
     min_offsets = None
-    # max_offsets = None
+    max_offsets = None
 
     for idx in range(start, end):
 
@@ -203,11 +203,11 @@ def evaluate_range(args):
             min_latency = latency
             min_offsets = offsets
 
-        # if latency > max_latency:
-        #     max_latency = latency
-        #     max_offsets = offsets
+        if latency > max_latency:
+            max_latency = latency
+            max_offsets = offsets
 
-    return min_latency, min_offsets, None, None
+    return min_latency, min_offsets, max_latency, max_offsets
 
 
 # ===============================
@@ -219,18 +219,18 @@ def run_single_experiment(num_chains, period_choices):
     # periods = random.choices(period_choices, k=num_chains, weights=weights)
     periods = random.choices(period_choices, k=num_chains)
     
-    # periods = [15,10,12]
-    # num_chains = 3
+    periods = [15,10,12]
+    num_chains = 3
     print_offset_ranges(periods)
 
     G = compute_G(periods)
     C = compute_complexity_eq28(periods)
 
     min_latency = float("inf")
-    # max_latency = -float("inf")
+    max_latency = -float("inf")
 
     min_offsets = None
-    # max_offsets = None
+    max_offsets = None
 
     space_size = 1
     for g in G[1:]:
@@ -258,9 +258,9 @@ def run_single_experiment(num_chains, period_choices):
                 min_latency = min_l
                 min_offsets = min_o
 
-            # if max_l > max_latency:
-            #     max_latency = max_l
-            #     max_offsets = max_o
+            if max_l > max_latency:
+                max_latency = max_l
+                max_offsets = max_o
 
     R = time.perf_counter() - start_time
 
@@ -272,8 +272,8 @@ def run_single_experiment(num_chains, period_choices):
         "R_over_C": R / C if C > 0 else None,
         "min_latency": min_latency,
         "min_offsets": min_offsets,
-        # "max_latency": max_latency,
-        # "max_offsets": max_offsets
+        "max_latency": max_latency,
+        "max_offsets": max_offsets
     }
 
 
@@ -283,7 +283,7 @@ def run_evaluation_zero_let(num_chains, num_repeats, period_choices, random_seed
 
     for i in range(num_repeats):
         random.seed(random_seed)
-        for n in range(10, num_chains + 1):
+        for n in range(3, num_chains + 1):
             print(f"Running experiment for n={n}, repeat {i+1}/{num_repeats}...")
             result = run_single_experiment(n, period_choices)
             all_results.append(result)
@@ -310,8 +310,8 @@ def output_zero_let(timestamp, num_chains, num_repeats, random_seed, results):
             "R/C",
             "min_latency (LZ-)",
             "min_offsets",
-            # "max_latency (LZ+)",
-            # "max_offsets"
+            "max_latency (LZ+)",
+            "max_offsets"
         ])
 
         for r in results:
@@ -323,8 +323,8 @@ def output_zero_let(timestamp, num_chains, num_repeats, random_seed, results):
                 f"{r['R_over_C']:.6e}" if r["R_over_C"] else "",
                 r["min_latency"],
                 r["min_offsets"],
-                # r["max_latency"],
-                # r["max_offsets"]
+                r["max_latency"],
+                r["max_offsets"]
             ])
     return results_csv
 
@@ -492,11 +492,11 @@ if __name__ == "__main__":
     # perioddown = 2
     # periodup =12
 
-    num_chains = 10
+    num_chains = 3
     num_repeats = 1 
 
     # period_choices = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
-    period_choices = [1, 2, 5, 10, 20, 50, 100] 
+    period_choices = [1, 2, 5, 10, 20, 50, 100, 200] 
 
     random_seed = 1755016037  # fixed seed
     timestamp = datetime.datetime.fromtimestamp(int(time.time())).strftime("%Y%m%d_%H%M%S")
