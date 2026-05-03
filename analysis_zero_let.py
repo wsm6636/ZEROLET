@@ -219,6 +219,7 @@ def compute_latency_histogram(tasks):
     """
     periods = [task.period for task in tasks]
     H = lcm_list(periods)
+    # print(f"Hyperperiod: {H}")
 
     histogram_dict = defaultdict(int)
     latency_list = []

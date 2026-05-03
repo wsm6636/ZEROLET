@@ -15,7 +15,7 @@ import csv
 import datetime
 
 import itertools
-from multiprocessing import Pool
+from multiprocessing import Pool, cpu_count
 import random
 import time
 import os
@@ -25,7 +25,7 @@ import numpy as np
 import math
 
 import pandas as pd
-
+from tqdm import tqdm
 from analysis_zero_let import run_analysis_zero_let
 
 
@@ -79,32 +79,28 @@ def isMaxHarmonic(periods):
 # ===============================
 # Eq.(27)
 # ===============================
-def generate_offsets_eq27(periods):
-    """
-    φ1 = 0
-    φi ∈ [0, Gi - 1]
-    """
-    n = len(periods)
+def compute_G(periods):
+    H = periods[0]
+    G = []
 
-    H = [0] * n
-    G = [0] * n
+    for i in range(1, len(periods)):
+        g = math.gcd(H, periods[i])
+        G.append(g)
+        H = math.lcm(H, periods[i])
 
-    H[0] = periods[0]
+    return G
 
-    for i in range(1, n):
-        H[i] = math.lcm(H[i-1], periods[i])
-        G[i] = math.gcd(H[i-1], periods[i])
+# ===============================
+# index → offset
+# ===============================
+def index_to_offset(idx, G):
+    offsets = [0]
 
-    ranges = []
-    ranges.append([0])  # φ1 = 0
+    for g in reversed(G):
+        offsets.append(idx % g)
+        idx //= g
 
-    for i in range(1, n):
-        ranges.append(range(G[i]))
-
-    offset_space = itertools.product(*ranges)
-
-    return offset_space, G
-
+    return offsets[::-1]
 
 # =====================================
 # Eq.(28)
@@ -120,82 +116,151 @@ def compute_complexity_eq28(periods):
 
     return n * prod
 
-def evaluate_offset(args):
-    periods, offsets, num_tasks = args
 
-    read_offsets = list(offsets)
-    print(f"processing offsets: {read_offsets}, periods: {periods},...")
-    _, _, _, stats = run_analysis_zero_let(
-        num_tasks,
-        periods,
-        read_offsets,
-        read_offsets,
-        0
-    )
 
-    return stats["max"], read_offsets
+def print_offset_ranges(periods):
 
-# =====================================
-# 单次实验
-# =====================================
-def run_single_experiment(num_chains, period_choices):
+    import math
 
-    periods = random.choices(period_choices, k=num_chains)
-    # periods = [15,10,12]
-    # num_chains = 3
-    # Eq.(27)
-    offset_space, G = generate_offsets_eq27(periods)
+    n = len(periods)
 
-    # Eq.(28)
-    C = compute_complexity_eq28(periods)
+    H = periods[0]
+    G = []
 
-    # space_size = len(offset_space)
+    for i in range(1, n):
+        G_i = math.gcd(H, periods[i])
+        G.append(G_i)
+        H = math.lcm(H, periods[i])
 
-    start_time = time.perf_counter()
+    print("\n=== Offset Design Space (Eq.27) ===")
+    print(f"Periods: {periods}\n")
 
-    tasks = ((periods, offsets, num_chains) for offsets in offset_space)
+    print("Offset ranges:")
+
+    # φ1
+    print("φ1 ∈ {0}")
+
+    # φ2 ... φn
+    for i, g in enumerate(G, start=2):
+        print(f"φ{i} ∈ [0, {g-1}]  (G{i}={g})")
+
+    # 空间大小
+    space_size = 1
+    for g in G:
+        space_size *= g
+
+    print(f"\nTotal offset space size: {space_size}")
+
+
+# ===============================
+# chunk工具（关键优化）
+# ===============================
+def chunked_iterable(iterable, chunk_size):
+
+    chunk = []
+
+    for item in iterable:
+        chunk.append(item)
+        if len(chunk) == chunk_size:
+            yield chunk
+            chunk = []
+
+    if chunk:
+        yield chunk
+
+def get_chunk_size(space_size):
+    num_workers = os.cpu_count()
+    base = space_size // (num_workers * 100)
+    return int(min(50000, max(10000, base)))
+
+# ===============================
+# 并行 worker（批处理版本）
+# ===============================
+def evaluate_range(args):
+    periods, G, start, end, num_chains = args
 
     min_latency = float("inf")
-    max_latency = -float("inf")
+    # max_latency = -float("inf")
 
     min_offsets = None
-    max_offsets = None
+    # max_offsets = None
 
-    # for offsets in offset_space:
+    for idx in range(start, end):
 
-    #     read_offsets = list(offsets)
-    #     write_offsets = read_offsets
+        offsets = index_to_offset(idx, G)
 
-    #     print(f"processing offsets: {read_offsets}, periods: {periods}, C: {C}...")
-    #     _, _, _, stats = run_analysis_zero_let(
-    #         num_chains,
-    #         periods,
-    #         read_offsets,
-    #         write_offsets,
-    #         0
-    #     )
+        _, _, _, stats = run_analysis_zero_let(
+            num_chains,
+            periods,
+            offsets,
+            offsets,
+            0
+        )
 
-    #     current_latency = stats["max"]
+        latency = stats["max"]
 
-    #     if current_latency < min_latency:
-    #         min_latency = current_latency
-    #         min_offsets = read_offsets.copy()
+        if latency < min_latency:
+            min_latency = latency
+            min_offsets = offsets
 
-    #     if current_latency > max_latency:
-    #         max_latency = current_latency
-    #         max_offsets = read_offsets.copy()
+        # if latency > max_latency:
+        #     max_latency = latency
+        #     max_offsets = offsets
 
-    with Pool(os.cpu_count()) as p:
-        for latency, offsets in p.imap_unordered(evaluate_offset, tasks):
+    return min_latency, min_offsets, None, None
 
-            if latency < min_latency:
-                min_latency = latency
-                min_offsets = offsets
 
-            if latency > max_latency:
-                max_latency = latency
-                max_offsets = offsets
+# ===============================
+# 单次实验（高性能版）
+# ===============================
+def run_single_experiment(num_chains, period_choices):
+    # weights = [3,2,2,25,25,3,20,1,1,4]
+    # weights = [3,2,2,25,25,3,20]  # Example weights for the period choices
+    # periods = random.choices(period_choices, k=num_chains, weights=weights)
+    periods = random.choices(period_choices, k=num_chains)
+    
+    # periods = [15,10,12]
+    # num_chains = 3
+    print_offset_ranges(periods)
 
+    G = compute_G(periods)
+    C = compute_complexity_eq28(periods)
+
+    min_latency = float("inf")
+    # max_latency = -float("inf")
+
+    min_offsets = None
+    # max_offsets = None
+
+    space_size = 1
+    for g in G[1:]:
+        space_size *= g
+
+    chunk_size = get_chunk_size(space_size)
+    num_chunks = (space_size + chunk_size - 1) // chunk_size
+
+    tasks = (
+        (periods, G, i, min(i + chunk_size, space_size), num_chains)
+        for i in range(0, space_size, chunk_size)
+    )
+    start_time = time.perf_counter()
+
+    with Pool(cpu_count()) as p:
+
+        for min_l, min_o, max_l, max_o in tqdm(
+            p.imap_unordered(evaluate_range, tasks),
+            total=num_chunks,
+            desc=f"n={num_chains}",
+            unit="chunk"
+        ):
+
+            if min_l < min_latency:
+                min_latency = min_l
+                min_offsets = min_o
+
+            # if max_l > max_latency:
+            #     max_latency = max_l
+            #     max_offsets = max_o
 
     R = time.perf_counter() - start_time
 
@@ -205,10 +270,10 @@ def run_single_experiment(num_chains, period_choices):
         "C": C,
         "R": R,
         "R_over_C": R / C if C > 0 else None,
-        "min_latency": min_latency,   # LZ-
+        "min_latency": min_latency,
         "min_offsets": min_offsets,
-        "max_latency": max_latency,   # LZ+
-        "max_offsets": max_offsets
+        # "max_latency": max_latency,
+        # "max_offsets": max_offsets
     }
 
 
@@ -218,12 +283,14 @@ def run_evaluation_zero_let(num_chains, num_repeats, period_choices, random_seed
 
     for i in range(num_repeats):
         random.seed(random_seed)
-        for n in range(3, num_chains + 1):
+        for n in range(10, num_chains + 1):
             print(f"Running experiment for n={n}, repeat {i+1}/{num_repeats}...")
             result = run_single_experiment(n, period_choices)
             all_results.append(result)
         random_seed = random_seed + 1
     return all_results
+
+
 
 def output_zero_let(timestamp, num_chains, num_repeats, random_seed, results):
     folder_path = "data"
@@ -243,8 +310,8 @@ def output_zero_let(timestamp, num_chains, num_repeats, random_seed, results):
             "R/C",
             "min_latency (LZ-)",
             "min_offsets",
-            "max_latency (LZ+)",
-            "max_offsets"
+            # "max_latency (LZ+)",
+            # "max_offsets"
         ])
 
         for r in results:
@@ -256,15 +323,15 @@ def output_zero_let(timestamp, num_chains, num_repeats, random_seed, results):
                 f"{r['R_over_C']:.6e}" if r["R_over_C"] else "",
                 r["min_latency"],
                 r["min_offsets"],
-                r["max_latency"],
-                r["max_offsets"]
+                # r["max_latency"],
+                # r["max_offsets"]
             ])
     return results_csv
 
 def plot_R_over_C_from_csv(csvfile, num_chains, num_repeats, random_seed, timestamp):
     folder_path = "data"
     os.makedirs(folder_path, exist_ok=True)
-    plot_name = os.path.join(folder_path,               f"zero_let_RC_n{num_chains}_{num_repeats}_{random_seed}_{timestamp}.png")
+    plot_name = os.path.join(folder_path, f"zero_let_RC_n{num_chains}_{num_repeats}_{random_seed}_{timestamp}.png")
 
     df = pd.read_csv(csvfile)
 
@@ -428,10 +495,14 @@ if __name__ == "__main__":
     num_chains = 10
     num_repeats = 1 
 
-    period_choices = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
-    # period_choices = [1, 2, 5, 10, 20, 50, 100, 200] 
+    # period_choices = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
+    period_choices = [1, 2, 5, 10, 20, 50, 100] 
+
     random_seed = 1755016037  # fixed seed
     timestamp = datetime.datetime.fromtimestamp(int(time.time())).strftime("%Y%m%d_%H%M%S")
+
+    # random_seed = int(time.time())
+    # timestamp = datetime.datetime.fromtimestamp(random_seed).strftime("%Y%m%d_%H%M%S")
 
     # results = run_evaluation_and_track_extremes(num_chains, random_seed, perioddown, periodup)
     # output_zero_let_min_max_extremes(timestamp, results, num_chains, perioddown, periodup)    
