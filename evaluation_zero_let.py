@@ -257,7 +257,7 @@ def run_single_experiment(num_chains, period_choices):
                 max_latency = max_l
                 max_offsets = max_o
 
-    R = time.perf_counter() - start_time
+    R = (time.perf_counter() - start_time) * 1000
 
     print(f"Experiment completed for n={num_chains}: C={C}, R={R:.6f} seconds, R/C={R/C:.6e}, "f"Min Latency={min_latency} (Offsets: {min_offsets}), Max Latency={max_latency} (Offsets: {max_offsets})")
     return {
@@ -488,7 +488,7 @@ if __name__ == "__main__":
     # perioddown = 2
     # periodup =12
     num_limit = 3
-    num_chains = 7
+    num_chains = 5
     num_repeats = 1 
 
     period_choices = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
