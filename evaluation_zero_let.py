@@ -106,7 +106,7 @@ def compute_complexity_eq28(periods):
     prod = 1
     for i in range(1, n):
         prod *= periods[i]
-
+        # print(f"Period T{i+1}={periods[i]}, C partial product={prod}")
     return n * prod
 
 
@@ -213,6 +213,8 @@ def run_single_experiment(num_chains, period_choices):
     periods = random.choices(period_choices, k=num_chains)
     
     # periods = [15,10,12]
+    # periods = [1000, 2, 1, 2]
+
     # num_chains = 3
     print_offset_ranges(periods)
 
