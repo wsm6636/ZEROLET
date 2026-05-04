@@ -515,7 +515,7 @@ if __name__ == "__main__":
     
     num_limit = 3
     num_chains = 6
-    num_repeats = 10 
+    num_repeats = 100 
 
     period_choices = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
 
