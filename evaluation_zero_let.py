@@ -206,30 +206,33 @@ def evaluate_offsets_batch(args):
 # ===============================
 # 单次实验（高性能版）
 # ===============================
-def run_single_experiment(num_chains, period_choices):
-    # weights = [3,2,2,25,25,3,20,1,1,4]
-    # weights = [3,2,2,25,25,3,20]  # Example weights for the period choices
-    # periods = random.choices(period_choices, k=num_chains, weights=weights)
-    periods = random.choices(period_choices, k=num_chains)
-    
+def run_single_experiment(num_chains, period_choices,seed):
+    trial = 0
+    while True:
+        periods = random.choices(period_choices, k=num_chains)
+        offset_space, G = generate_offsets_eq27(periods)
+        C = compute_complexity_eq28(periods)
+
+        space_size = 1
+        for g in G[1:]:
+            space_size *= g
+
+        if C <= 1e9 and space_size <= 1e5:
+            break
+
+        trial += 1
+        if trial > 1000:
+            p_choices = [1, 2, 5, 10, 20, 50]
+            periods = random.choices(p_choices, k=num_chains)
+
     # periods = [15,10,12]
-    # periods = [1000, 2, 1, 2]
-
-    # num_chains = 3
     print_offset_ranges(periods)
-
-    offset_space, G = generate_offsets_eq27(periods)
-    C = compute_complexity_eq28(periods)
 
     min_latency = float("inf")
     max_latency = -float("inf")
 
     min_offsets = None
     max_offsets = None
-
-    space_size = 1
-    for g in G[1:]:
-        space_size *= g
 
     chunk_size = get_chunk_size(space_size)
     num_chunks = (space_size + chunk_size - 1) // chunk_size
@@ -257,12 +260,13 @@ def run_single_experiment(num_chains, period_choices):
                 max_latency = max_l
                 max_offsets = max_o
 
-    R = (time.perf_counter() - start_time) * 1000
+    R = time.perf_counter() - start_time
 
     print(f"Experiment completed for n={num_chains}: C={C}, R={R:.6f} seconds, R/C={R/C:.6e}, "f"Min Latency={min_latency} (Offsets: {min_offsets}), Max Latency={max_latency} (Offsets: {max_offsets})")
     return {
         "n": num_chains,
         "periods": periods,
+        "seed": seed,
         "C": C,
         "R": R,
         "R_over_C": R / C if C > 0 else None,
@@ -281,7 +285,7 @@ def run_evaluation_zero_let(num_limit, num_chains, num_repeats, period_choices, 
         random.seed(random_seed)
         for n in range(num_limit, num_chains + 1):
             print(f"Running experiment for n={n}, repeat {i+1}/{num_repeats}...")
-            result = run_single_experiment(n, period_choices)
+            result = run_single_experiment(n, period_choices, random_seed)
             all_results.append(result)
         random_seed = random_seed + 1
     return all_results
@@ -301,6 +305,7 @@ def output_zero_let(timestamp, num_chains, num_repeats, random_seed, results):
         writer.writerow([
             "n",
             "periods",
+            "seed",
             "C",
             "R",
             "R/C",
@@ -314,6 +319,7 @@ def output_zero_let(timestamp, num_chains, num_repeats, random_seed, results):
             writer.writerow([
                 r["n"],
                 r["periods"],
+                r["seed"],
                 r["C"],
                 f"{r['R']:.6f}",
                 f"{r['R_over_C']:.6e}" if r["R_over_C"] else "",
@@ -331,15 +337,34 @@ def plot_R_over_C_from_csv(csvfile, num_chains, num_repeats, random_seed, timest
 
     df = pd.read_csv(csvfile)
 
-    R_over_C = df["R/C"]
-    n = df["n"]
-
     plt.figure()
-    plt.scatter(n, R_over_C)
 
-    plt.xlabel("Number of tasks (n)")
+    markers = ['o', 's', '^', 'D', 'v', 'P', '*', 'X']
+    colors = plt.cm.tab10.colors
+
+    for i, n in enumerate(sorted(df["n"].unique())):
+        sub_df = df[df["n"] == n]
+        plt.scatter(
+            sub_df["C"],
+            sub_df["R/C"],
+            label=f"n={n}",
+            marker=markers[i % len(markers)],
+            color=colors[i % len(colors)]
+        )
+
+    plt.xscale("log")
+    plt.yscale("log")
+
+
+    plt.xlabel("Complexity (C)")
     plt.ylabel("R / C")
     plt.title("Normalized Runtime (R/C)")
+
+    plt.legend(
+        title="Task chain length",
+        loc="best",
+        fontsize=10
+    )
     plt.grid()
     plt.savefig(plot_name)
     plt.show()
@@ -487,12 +512,12 @@ if __name__ == "__main__":
 
     # perioddown = 2
     # periodup =12
+    
     num_limit = 3
-    num_chains = 5
-    num_repeats = 1 
+    num_chains = 6
+    num_repeats = 10 
 
     period_choices = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
-    # period_choices = [1, 2, 5, 10, 20, 50, 100, 200] 
 
     # random_seed = 1755016037  # fixed seed
     # timestamp = datetime.datetime.fromtimestamp(int(time.time())).strftime("%Y%m%d_%H%M%S")
@@ -505,6 +530,8 @@ if __name__ == "__main__":
 
     results =  run_evaluation_zero_let(num_limit, num_chains, num_repeats, period_choices, random_seed)
     csvfile =  output_zero_let(timestamp, num_chains, num_repeats, random_seed, results)
-    # plot_R_over_C_from_csv(csvfile, num_chains, num_repeats, random_seed, timestamp)
+
+    # csvfile = "data/data_zero_let_RC_n7_1_1777823022_20260503_234342.csv"  # Example CSV file path
+    plot_R_over_C_from_csv(csvfile, num_chains, num_repeats, random_seed, timestamp)
 
 
