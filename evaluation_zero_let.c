@@ -347,7 +347,7 @@ static int choose_periods_for_experiment(int n,
 
         *C_out = compute_complexity_eq28(periods, n);
         *space_size_out = offset_space_size_from_g(G, n);
-
+        //LIMIT
         if (*C_out <= 1000000000LL && *space_size_out <= 100000LL) {
             *G_out = G;
             return 0;
