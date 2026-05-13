@@ -18,6 +18,9 @@
 #endif
 
 #define C_RESULTS_DIR "data_c"
+#define ZEROLET_C_LIMIT 1000000000LL
+#define ZEROLET_OFFSET_SPACE_LIMIT 100000LL
+#define ZEROLET_SATURATED_SIZE 9223372036854775807LL
 
 typedef struct {
     int n;
@@ -233,7 +236,13 @@ long long compute_complexity_eq28(const long long *periods, int n)
     }
 
     for (int i = 1; i < n; i++) {
+        if (periods[i] != 0 && prod > ZEROLET_SATURATED_SIZE / periods[i]) {
+            return ZEROLET_SATURATED_SIZE;
+        }
         prod *= periods[i];
+    }
+    if (prod > ZEROLET_SATURATED_SIZE / (long long)n) {
+        return ZEROLET_SATURATED_SIZE;
     }
     return (long long)n * prod;
 }
@@ -257,10 +266,18 @@ void print_offset_ranges(const long long *periods, int n)
 
     for (int i = 1; i < n; i++) {
         printf("phi%d in [0, %lld]  (G%d=%lld)\n", i + 1, G[i] - 1, i + 1, G[i]);
+        if (G[i] != 0 && space_size > ZEROLET_SATURATED_SIZE / G[i]) {
+            space_size = ZEROLET_SATURATED_SIZE;
+            continue;
+        }
         space_size *= G[i];
     }
 
-    printf("\nTotal offset space size: %lld\n", space_size);
+    if (space_size == ZEROLET_SATURATED_SIZE) {
+        printf("\nTotal offset space size: >= %lld (overflow capped)\n", ZEROLET_SATURATED_SIZE);
+    } else {
+        printf("\nTotal offset space size: %lld\n", space_size);
+    }
     free(G);
 }
 
@@ -318,6 +335,9 @@ static long long offset_space_size_from_g(const long long *G, int n)
     long long size = 1;
 
     for (int i = 1; i < n; i++) {
+        if (G[i] != 0 && size > ZEROLET_SATURATED_SIZE / G[i]) {
+            return ZEROLET_SATURATED_SIZE;
+        }
         size *= G[i];
     }
     return size;
@@ -348,7 +368,7 @@ static int choose_periods_for_experiment(int n,
         *C_out = compute_complexity_eq28(periods, n);
         *space_size_out = offset_space_size_from_g(G, n);
         //LIMIT
-        if (*C_out <= 1000000000LL && *space_size_out <= 100000LL) {
+        if (*C_out <= ZEROLET_C_LIMIT && *space_size_out <= ZEROLET_OFFSET_SPACE_LIMIT) {
             *G_out = G;
             return 0;
         }
