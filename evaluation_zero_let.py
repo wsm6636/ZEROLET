@@ -210,6 +210,7 @@ def run_single_experiment(num_chains, period_choices,seed):
     trial = 0
     while True:
         periods = random.choices(period_choices, k=num_chains)
+        # periods = [2,20,5,1,50,20]
         offset_space, G = generate_offsets_eq27(periods)
         C = compute_complexity_eq28(periods)
 
@@ -225,8 +226,6 @@ def run_single_experiment(num_chains, period_choices,seed):
             p_choices = [1, 2, 5, 10, 20, 50]
             periods = random.choices(p_choices, k=num_chains)
 
-    # periods = [15,10,12]
-    print_offset_ranges(periods)
 
     min_latency = float("inf")
     max_latency = -float("inf")
@@ -373,6 +372,46 @@ def plot_R_over_C_from_csv(csvfile, num_chains, num_repeats, random_seed, timest
 def plot_R_over_C_from_csv(csvfile, num_chains, num_repeats, random_seed, timestamp):
     folder_path = "data"
     os.makedirs(folder_path, exist_ok=True)
+    plot_name = os.path.join(folder_path, f"zero_let_RC_n{num_chains}_{num_repeats}_{random_seed}_{timestamp}.png")
+
+    df = pd.read_csv(csvfile)
+
+    plt.figure()
+
+    markers = ['o', 's', '^', 'D', 'v', 'P', '*', 'X']
+    colors = plt.cm.tab10.colors
+
+    for i, n in enumerate(sorted(df["n"].unique())):
+        sub_df = df[df["n"] == n]
+        plt.scatter(
+            sub_df["C"],
+            sub_df["R/C"],
+            label=f"n={n}",
+            marker=markers[i % len(markers)],
+            color=colors[i % len(colors)]
+        )
+
+    plt.xscale("log")
+    plt.yscale("log")
+
+
+    plt.xlabel("Complexity (C)")
+    plt.ylabel("R / C")
+    plt.title("Normalized Runtime (R/C)")
+
+    plt.legend(
+        title="Task chain length",
+        loc="best",
+        fontsize=10
+    )
+    plt.grid()
+    plt.savefig(plot_name)
+    plt.show()
+
+
+def plot_Runtime_from_csv(csvfile, num_chains, num_repeats, random_seed, timestamp):
+    folder_path = "data"
+    os.makedirs(folder_path, exist_ok=True)
     plot_name = os.path.join(folder_path, f"zero_let_Runtime_n{num_chains}_{num_repeats}_{random_seed}_{timestamp}.png")
 
     df = pd.read_csv(csvfile)
@@ -408,6 +447,7 @@ def plot_R_over_C_from_csv(csvfile, num_chains, num_repeats, random_seed, timest
     plt.grid()
     plt.savefig(plot_name)
     plt.show()
+
 
 def run_evaluation_and_track_extremes(num_chains, random_seed, perioddown, periodup):
     """
@@ -552,9 +592,9 @@ if __name__ == "__main__":
     # perioddown = 2
     # periodup =12
     
-    num_limit = 3
+    num_limit = 6
     num_chains = 6
-    num_repeats = 100 
+    num_repeats = 1 
 
     period_choices = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
 
@@ -567,10 +607,10 @@ if __name__ == "__main__":
     # results = run_evaluation_and_track_extremes(num_chains, random_seed, perioddown, periodup)
     # output_zero_let_min_max_extremes(timestamp, results, num_chains, perioddown, periodup)    
 
-    # results =  run_evaluation_zero_let(num_limit, num_chains, num_repeats, period_choices, random_seed)
+    results =  run_evaluation_zero_let(num_limit, num_chains, num_repeats, period_choices, random_seed)
     # csvfile =  output_zero_let(timestamp, num_chains, num_repeats, random_seed, results)
 
-    csvfile = "data/data_zero_let_RC_n6_100_1777903098_20260504_215818.csv"  # Example CSV file path
-    plot_R_over_C_from_csv(csvfile, num_chains, num_repeats, random_seed, timestamp)
+    # csvfile = "data/data_zero_let_RC_n6_100_1777903098_20260504_215818.csv"  # Example CSV file path
+    # plot_R_over_C_from_csv(csvfile, num_chains, num_repeats, random_seed, timestamp)
 
 

@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="700" viewBox="0 0 1000 700">
+<rect width="100%" height="100%" fill="white"/>
+<text x="500" y="35" text-anchor="middle" font-family="Arial" font-size="22">Runtime (R) over Complexity (C)</text>
+<line x1="90" y1="620" x2="805" y2="620" stroke="#222"/>
+<line x1="90" y1="70" x2="90" y2="620" stroke="#222"/>
+<line x1="149.33" y1="70" x2="149.33" y2="620" stroke="#d6d6d6"/>
+<line x1="149.33" y1="620" x2="149.33" y2="626" stroke="#222"/>
+<text x="149.33" y="642.00" text-anchor="middle" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">2</tspan></text>
+<line x1="262.81" y1="70" x2="262.81" y2="620" stroke="#d6d6d6"/>
+<line x1="262.81" y1="620" x2="262.81" y2="626" stroke="#222"/>
+<text x="262.81" y="642.00" text-anchor="middle" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">3</tspan></text>
+<line x1="376.28" y1="70" x2="376.28" y2="620" stroke="#d6d6d6"/>
+<line x1="376.28" y1="620" x2="376.28" y2="626" stroke="#222"/>
+<text x="376.28" y="642.00" text-anchor="middle" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">4</tspan></text>
+<line x1="489.75" y1="70" x2="489.75" y2="620" stroke="#d6d6d6"/>
+<line x1="489.75" y1="620" x2="489.75" y2="626" stroke="#222"/>
+<text x="489.75" y="642.00" text-anchor="middle" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">5</tspan></text>
+<line x1="603.23" y1="70" x2="603.23" y2="620" stroke="#d6d6d6"/>
+<line x1="603.23" y1="620" x2="603.23" y2="626" stroke="#222"/>
+<text x="603.23" y="642.00" text-anchor="middle" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">6</tspan></text>
+<line x1="716.70" y1="70" x2="716.70" y2="620" stroke="#d6d6d6"/>
+<line x1="716.70" y1="620" x2="716.70" y2="626" stroke="#222"/>
+<text x="716.70" y="642.00" text-anchor="middle" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">7</tspan></text>
+<line x1="90" y1="620.00" x2="805" y2="620.00" stroke="#d6d6d6"/>
+<line x1="84" y1="620.00" x2="90" y2="620.00" stroke="#222"/>
+<text x="80.00" y="624.00" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">-9</tspan></text>
+<line x1="90" y1="566.85" x2="805" y2="566.85" stroke="#d6d6d6"/>
+<line x1="84" y1="566.85" x2="90" y2="566.85" stroke="#222"/>
+<text x="80.00" y="570.85" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">-8</tspan></text>
+<line x1="90" y1="513.71" x2="805" y2="513.71" stroke="#d6d6d6"/>
+<line x1="84" y1="513.71" x2="90" y2="513.71" stroke="#222"/>
+<text x="80.00" y="517.71" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">-7</tspan></text>
+<line x1="90" y1="460.56" x2="805" y2="460.56" stroke="#d6d6d6"/>
+<line x1="84" y1="460.56" x2="90" y2="460.56" stroke="#222"/>
+<text x="80.00" y="464.56" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">-6</tspan></text>
+<line x1="90" y1="407.41" x2="805" y2="407.41" stroke="#d6d6d6"/>
+<line x1="84" y1="407.41" x2="90" y2="407.41" stroke="#222"/>
+<text x="80.00" y="411.41" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">-5</tspan></text>
+<line x1="90" y1="354.27" x2="805" y2="354.27" stroke="#d6d6d6"/>
+<line x1="84" y1="354.27" x2="90" y2="354.27" stroke="#222"/>
+<text x="80.00" y="358.27" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">-4</tspan></text>
+<line x1="90" y1="301.12" x2="805" y2="301.12" stroke="#d6d6d6"/>
+<line x1="84" y1="301.12" x2="90" y2="301.12" stroke="#222"/>
+<text x="80.00" y="305.12" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">-3</tspan></text>
+<line x1="90" y1="247.97" x2="805" y2="247.97" stroke="#d6d6d6"/>
+<line x1="84" y1="247.97" x2="90" y2="247.97" stroke="#222"/>
+<text x="80.00" y="251.97" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">-2</tspan></text>
+<line x1="90" y1="194.83" x2="805" y2="194.83" stroke="#d6d6d6"/>
+<line x1="84" y1="194.83" x2="90" y2="194.83" stroke="#222"/>
+<text x="80.00" y="198.83" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">-1</tspan></text>
+<line x1="90" y1="141.68" x2="805" y2="141.68" stroke="#d6d6d6"/>
+<line x1="84" y1="141.68" x2="90" y2="141.68" stroke="#222"/>
+<text x="80.00" y="145.68" text-anchor="end" font-family="Arial" font-size="12">1</text>
+<line x1="90" y1="88.53" x2="805" y2="88.53" stroke="#d6d6d6"/>
+<line x1="84" y1="88.53" x2="90" y2="88.53" stroke="#222"/>
+<text x="80.00" y="92.53" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">1</tspan></text>
+<text x="448" y="675" text-anchor="middle" font-family="Arial" font-size="16">Complexity (C)</text>
+<text x="24" y="345" text-anchor="middle" font-family="Arial" font-size="16" transform="rotate(-90 24 345)">Runtime (R) [seconds]</text>
+<circle cx="362.10" cy="620.00" r="5" fill="#1f77b4"/>
+<title>n=3, C=7500, R=0.000000</title>
+<rect x="473.76" y="248.12" width="10" height="10" fill="#ff7f0e" transform="rotate(0 478.76 253.12)"/>
+<title>n=4, C=80000, R=0.008000</title>
+<polygon points="603.23,172.26 597.23,183.26 609.23,183.26" fill="#2ca02c"/>
+<title>n=5, C=1000000, R=0.205000</title>
+<rect x="800.00" y="65.34" width="10" height="10" fill="#d62728" transform="rotate(45 805.00 70.34)"/>
+<title>n=6, C=60000000, R=21.996000</title>
+<circle cx="282.79" cy="620.00" r="5" fill="#1f77b4"/>
+<title>n=3, C=1500, R=0.000000</title>
+<rect x="291.97" y="189.60" width="10" height="10" fill="#ff7f0e" transform="rotate(0 296.97 194.60)"/>
+<title>n=4, C=2000, R=0.101000</title>
+<polygon points="727.70,106.48 721.70,117.48 733.70,117.48" fill="#2ca02c"/>
+<title>n=5, C=12500000, R=3.543000</title>
+<rect x="720.69" y="139.66" width="10" height="10" fill="#d62728" transform="rotate(45 725.69 144.66)"/>
+<title>n=6, C=12000000, R=0.879000</title>
+<circle cx="237.63" cy="620.00" r="5" fill="#1f77b4"/>
+<title>n=3, C=600, R=0.000000</title>
+<rect x="484.75" y="176.91" width="10" height="10" fill="#ff7f0e" transform="rotate(0 489.75 181.91)"/>
+<title>n=4, C=100000, R=0.175000</title>
+<polygon points="569.07,119.97 563.07,130.97 575.07,130.97" fill="#2ca02c"/>
+<title>n=5, C=500000, R=1.975000</title>
+<rect x="618.21" y="113.32" width="10" height="10" fill="#d62728" transform="rotate(45 623.21 118.32)"/>
+<title>n=6, C=1500000, R=2.752000</title>
+<circle cx="203.47" cy="620.00" r="5" fill="#1f77b4"/>
+<title>n=3, C=300, R=0.000000</title>
+<rect x="700.70" y="113.50" width="10" height="10" fill="#ff7f0e" transform="rotate(0 705.70 118.50)"/>
+<title>n=4, C=8000000, R=2.730000</title>
+<polygon points="614.22,192.85 608.22,203.85 620.22,203.85" fill="#2ca02c"/>
+<title>n=5, C=1250000, R=0.084000</title>
+<rect x="573.05" y="155.89" width="10" height="10" fill="#d62728" transform="rotate(45 578.05 160.89)"/>
+<title>n=6, C=600000, R=0.435000</title>
+<circle cx="543.89" cy="241.92" r="5" fill="#1f77b4"/>
+<title>n=3, C=300000, R=0.013000</title>
+<rect x="518.91" y="236.92" width="10" height="10" fill="#ff7f0e" transform="rotate(0 523.91 241.92)"/>
+<title>n=4, C=200000, R=0.013000</title>
+<polygon points="727.70,143.46 721.70,154.46 733.70,154.46" fill="#2ca02c"/>
+<title>n=5, C=12500000, R=0.714000</title>
+<rect x="607.21" y="118.67" width="10" height="10" fill="#d62728" transform="rotate(45 612.21 123.67)"/>
+<title>n=6, C=1200000, R=2.182000</title>
+<circle cx="90.00" cy="620.00" r="5" fill="#1f77b4"/>
+<title>n=3, C=30, R=0.000000</title>
+<rect x="371.28" y="296.12" width="10" height="10" fill="#ff7f0e" transform="rotate(0 376.28 301.12)"/>
+<title>n=4, C=10000, R=0.001000</title>
+<polygon points="796.02,79.94 790.02,90.94 802.02,90.94" fill="#2ca02c"/>
+<title>n=5, C=50000000, R=11.192000</title>
+<rect x="686.53" y="109.56" width="10" height="10" fill="#d62728" transform="rotate(45 691.53 114.56)"/>
+<title>n=6, C=6000000, R=3.238000</title>
+<circle cx="385.26" cy="301.12" r="5" fill="#1f77b4"/>
+<title>n=3, C=12000, R=0.001000</title>
+<rect x="553.07" y="145.48" width="10" height="10" fill="#ff7f0e" transform="rotate(0 558.07 150.48)"/>
+<title>n=4, C=400000, R=0.683000</title>
+<polygon points="455.59,253.76 449.59,264.76 461.59,264.76" fill="#2ca02c"/>
+<title>n=5, C=50000, R=0.006000</title>
+<rect x="686.53" y="65.00" width="10" height="10" fill="#d62728" transform="rotate(45 691.53 70.00)"/>
+<title>n=6, C=6000000, R=22.323000</title>
+<circle cx="396.26" cy="301.12" r="5" fill="#1f77b4"/>
+<title>n=3, C=15000, R=0.001000</title>
+<rect x="360.28" y="280.12" width="10" height="10" fill="#ff7f0e" transform="rotate(0 365.28 285.12)"/>
+<title>n=4, C=8000, R=0.002000</title>
+<polygon points="796.02,102.30 790.02,113.30 802.02,113.30" fill="#2ca02c"/>
+<title>n=5, C=50000000, R=4.248000</title>
+<rect x="720.69" y="116.97" width="10" height="10" fill="#d62728" transform="rotate(45 725.69 121.97)"/>
+<title>n=6, C=12000000, R=2.349000</title>
+<circle cx="316.95" cy="620.00" r="5" fill="#1f77b4"/>
+<title>n=3, C=3000, R=0.000000</title>
+<rect x="587.23" y="209.31" width="10" height="10" fill="#ff7f0e" transform="rotate(0 592.23 214.31)"/>
+<title>n=4, C=800000, R=0.043000</title>
+<polygon points="648.38,73.60 642.38,84.60 654.38,84.60" fill="#2ca02c"/>
+<title>n=5, C=2500000, R=14.725000</title>
+<rect x="607.21" y="154.16" width="10" height="10" fill="#d62728" transform="rotate(45 612.21 159.16)"/>
+<title>n=6, C=1200000, R=0.469000</title>
+<circle cx="271.79" cy="620.00" r="5" fill="#1f77b4"/>
+<title>n=3, C=1200, R=0.000000</title>
+<rect x="394.44" y="197.09" width="10" height="10" fill="#ff7f0e" transform="rotate(0 399.44 202.09)"/>
+<title>n=4, C=16000, R=0.073000</title>
+<polygon points="545.91,137.86 539.91,148.86 551.91,148.86" fill="#2ca02c"/>
+<title>n=5, C=312500, R=0.910000</title>
+<rect x="425.42" y="230.73" width="10" height="10" fill="#d62728" transform="rotate(45 430.42 235.73)"/>
+<title>n=6, C=30000, R=0.017000</title>
+<text x="850" y="95" font-family="Arial" font-size="15" font-weight="bold">Task chain length</text>
+<circle cx="862.00" cy="120.00" r="5" fill="#1f77b4"/>
+<text x="882" y="125.00" font-family="Arial" font-size="14">n=3</text>
+<rect x="857.00" y="143.00" width="10" height="10" fill="#ff7f0e" transform="rotate(0 862.00 148.00)"/>
+<text x="882" y="153.00" font-family="Arial" font-size="14">n=4</text>
+<polygon points="862.00,170.00 856.00,181.00 868.00,181.00" fill="#2ca02c"/>
+<text x="882" y="181.00" font-family="Arial" font-size="14">n=5</text>
+<rect x="857.00" y="199.00" width="10" height="10" fill="#d62728" transform="rotate(45 862.00 204.00)"/>
+<text x="882" y="209.00" font-family="Arial" font-size="14">n=6</text>
+</svg>

@@ -1,284 +1,350 @@
+#include "analysis_zero_let.h"
+
+#include <float.h>
+#include <math.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 #include <string.h>
-#include <time.h>
 
-#define MAX_TASKS 10
-#define MAX_RESULTS 20000
+#ifndef ZEROLET_BUILD_MAIN
+#define ZEROLET_BUILD_MAIN 0
+#endif
 
-/* ---------- 工具 ---------- */
-
-int gcd(int a, int b) {
-    return b == 0 ? a : gcd(b, a % b);
+static double round_to_digits(double value, int digits)
+{
+    double scale = pow(10.0, (double)digits);
+    return round(value * scale) / scale;
 }
 
-int lcm(int a, int b) {
-    return a / gcd(a, b) * b;
+static double round9(double value)
+{
+    return round_to_digits(value, 9);
 }
 
-int lcm_list(int arr[], int n) {
-    int res = 1;
-    for (int i = 0; i < n; i++)
-        res = lcm(res, arr[i]);
-    return res;
+long long zerolet_gcd(long long a, long long b)
+{
+    if (a < 0) {
+        a = -a;
+    }
+    if (b < 0) {
+        b = -b;
+    }
+    while (b != 0) {
+        long long r = a % b;
+        a = b;
+        b = r;
+    }
+    return a;
 }
 
-/* ---------- 数据结构 ---------- */
+long long zerolet_lcm(long long a, long long b)
+{
+    long long g;
 
-typedef struct {
-    double min;
-    double max;
-    double mean;
-    double std;
-} Stats;
+    if (a == 0 || b == 0) {
+        return 0;
+    }
 
-typedef struct {
-    int periods[MAX_TASKS];
-    int offsets[MAX_TASKS];
-    Stats stats;
-} Record;
+    g = zerolet_gcd(a, b);
+    return llabs(a / g * b);
+}
 
-typedef struct {
-    int periods[MAX_TASKS];
-    Record min_rec;
-    Record max_rec;
-    int valid;
-} PeriodEntry;
-
-/* ---------- 核心计算 ---------- */
-
-double compute_chain_latency(int z, int periods[], int offsets[], int n) {
-    double current_time = z;
+long long zerolet_lcm_list(const long long *numbers, int n)
+{
+    long long result = 1;
 
     for (int i = 0; i < n; i++) {
-        int T = periods[i];
-        int r = offsets[i];
-        int w = offsets[i];
+        result = zerolet_lcm(result, numbers[i]);
+    }
+    return result;
+}
 
-        int k = ceil((current_time - r) / (double)T);
-        if (k < 0) k = 0;
+double event_get_trigger_time(Event *event, long long j)
+{
+    double unit = (double)rand() / ((double)RAND_MAX + 1.0);
+    event->random_jitter = unit * event->maxjitter;
+    return (double)j * (double)event->period + (double)event->offset + event->random_jitter;
+}
 
-        current_time = k * T + w;
+Task *generate_events_tasks(int num_tasks,
+                            const long long *periods,
+                            const long long *read_offsets,
+                            const long long *write_offsets,
+                            double per_jitter)
+{
+    Task *tasks = (Task *)calloc((size_t)num_tasks, sizeof(Task));
+
+    if (!tasks) {
+        return NULL;
+    }
+
+    for (int i = 0; i < num_tasks; i++) {
+        double maxjitter = per_jitter * (double)periods[i];
+
+        tasks[i].id = i;
+        tasks[i].period = periods[i];
+        tasks[i].offset = read_offsets[i];
+
+        tasks[i].read_event.id = i;
+        strcpy(tasks[i].read_event.event_type, "read");
+        tasks[i].read_event.period = periods[i];
+        tasks[i].read_event.offset = read_offsets[i];
+        tasks[i].read_event.maxjitter = maxjitter;
+        tasks[i].read_event.random_jitter = 0.0;
+
+        tasks[i].write_event.id = i;
+        strcpy(tasks[i].write_event.event_type, "write");
+        tasks[i].write_event.period = periods[i];
+        tasks[i].write_event.offset = write_offsets[i];
+        tasks[i].write_event.maxjitter = maxjitter;
+        tasks[i].write_event.random_jitter = 0.0;
+    }
+
+    return tasks;
+}
+
+long long task_read_time(const Task *task, long long k)
+{
+    return task->read_event.offset + k * task->period;
+}
+
+long long task_write_time(const Task *task, long long k)
+{
+    return task->write_event.offset + k * task->period;
+}
+
+double compute_chain_latency_from_z(double z, const Task *tasks, int num_tasks)
+{
+    double current_time = z;
+
+    for (int i = 0; i < num_tasks; i++) {
+        double T = (double)tasks[i].period;
+        double r = (double)tasks[i].read_event.offset;
+        double w = (double)tasks[i].write_event.offset;
+        long long k = (long long)ceil((current_time - r) / T);
+
+        if (k < 0) {
+            k = 0;
+        }
+
+        current_time = (double)k * T + w;
     }
 
     return current_time - z;
 }
 
-void compute_stats(int periods[], int offsets[], int n, Stats *stats) {
-    int H = lcm_list(periods, n);
+static int compare_histogram_item(const void *a, const void *b)
+{
+    const HistogramItem *x = (const HistogramItem *)a;
+    const HistogramItem *y = (const HistogramItem *)b;
 
-    double sum = 0, sum_sq = 0;
-    double min_lat = 1e9, max_lat = -1e9;
-
-    int max_offset = 0;
-    for (int i = 0; i < n; i++)
-        if (offsets[i] > max_offset)
-            max_offset = offsets[i];
-
-    int count = 0;
-
-    for (int z = max_offset; z < H + max_offset; z++) {
-        double lat = compute_chain_latency(z, periods, offsets, n);
-
-        // 对齐 Python round(lat, 9)
-        lat = round(lat * 1e9) / 1e9;
-
-        if (lat < min_lat) min_lat = lat;
-        if (lat > max_lat) max_lat = lat;
-
-        sum += lat;
-        sum_sq += lat * lat;
-        count++;
+    if (x->latency < y->latency) {
+        return -1;
     }
-
-    double mean = sum / count;
-    double variance = sum_sq / count - mean * mean;
-
-    stats->min = round(min_lat * 1000) / 1000.0;
-    stats->max = round(max_lat * 1000) / 1000.0;
-    stats->mean = round(mean * 1000) / 1000.0;
-    stats->std = round(sqrt(variance) * 1000) / 1000.0;
+    if (x->latency > y->latency) {
+        return 1;
+    }
+    return 0;
 }
 
-/* ---------- harmonic ---------- */
-
-int isMaxHarmonic(int periods[], int n) {
-    int maxP = 0;
-    for (int i = 0; i < n; i++)
-        if (periods[i] > maxP) maxP = periods[i];
-
-    for (int i = 0; i < n; i++)
-        if (periods[i] == 0 || maxP % periods[i] != 0)
+static int append_histogram_item(HistogramItem **items,
+                                 size_t *len,
+                                 size_t *cap,
+                                 double latency)
+{
+    for (size_t i = 0; i < *len; i++) {
+        if ((*items)[i].latency == latency) {
+            (*items)[i].count++;
             return 0;
-
-    return 1;
-}
-
-/* ---------- 全局 ---------- */
-
-PeriodEntry results[MAX_RESULTS];
-int result_count = 0;
-
-/* ---------- 打印数组（CSV用） ---------- */
-
-void print_array(FILE *fp, int arr[], int n) {
-    fprintf(fp, "\"[");
-    for (int i = 0; i < n; i++) {
-        fprintf(fp, "%d", arr[i]);
-        if (i != n - 1) fprintf(fp, ",");
-    }
-    fprintf(fp, "]\"");
-}
-
-/* ---------- offset 枚举 ---------- */
-
-void evaluate_offsets(int periods[], int offsets[], int n, PeriodEntry *entry) {
-    Stats stats;
-    compute_stats(periods, offsets, n, &stats);
-
-    if (!entry->valid || stats.max < entry->min_rec.stats.max) {
-        memcpy(entry->min_rec.periods, periods, sizeof(int)*n);
-        memcpy(entry->min_rec.offsets, offsets, sizeof(int)*n);
-        entry->min_rec.stats = stats;
-    }
-
-    if (!entry->valid || stats.max > entry->max_rec.stats.max) {
-        memcpy(entry->max_rec.periods, periods, sizeof(int)*n);
-        memcpy(entry->max_rec.offsets, offsets, sizeof(int)*n);
-        entry->max_rec.stats = stats;
-    }
-
-    entry->valid = 1;
-}
-
-void generate_offsets(int periods[], int n, int idx, int current[], PeriodEntry *entry) {
-    if (idx == n) {
-        evaluate_offsets(periods, current, n, entry);
-        return;
-    }
-
-    int max_val = (idx == 0) ? 0 : periods[idx];
-
-    for (int i = 0; i <= max_val; i++) {
-        current[idx] = i;
-        generate_offsets(periods, n, idx + 1, current, entry);
-    }
-}
-
-/* ---------- period 枚举 ---------- */
-
-void generate_periods(int perioddown, int periodup, int n, int idx, int current[]) {
-    if (idx == n) {
-
-        // 进度打印（通用）
-        printf("Processing [");
-        for (int i = 0; i < n; i++) {
-            printf("%d", current[i]);
-            if (i != n-1) printf(",");
         }
-        printf("]\n");
+    }
 
-        PeriodEntry entry = {0};
-        memcpy(entry.periods, current, sizeof(int)*n);
+    if (*len == *cap) {
+        size_t new_cap = (*cap == 0) ? 16 : (*cap * 2);
+        HistogramItem *new_items = (HistogramItem *)realloc(*items, new_cap * sizeof(HistogramItem));
 
-        int offsets[MAX_TASKS];
-        generate_offsets(current, n, 0, offsets, &entry);
+        if (!new_items) {
+            return -1;
+        }
+        *items = new_items;
+        *cap = new_cap;
+    }
 
-        results[result_count++] = entry;
+    (*items)[*len].latency = latency;
+    (*items)[*len].count = 1;
+    (*len)++;
+    return 0;
+}
+
+int compute_latency_histogram(const Task *tasks,
+                              int num_tasks,
+                              HistogramItem **histogram,
+                              size_t *histogram_len,
+                              double **latency_list,
+                              size_t *latency_len,
+                              long long *H)
+{
+    long long *periods = NULL;
+    long long max_offset;
+    HistogramItem *items = NULL;
+    size_t items_len = 0;
+    size_t items_cap = 0;
+    double *latencies = NULL;
+
+    if (!tasks || num_tasks <= 0 || !histogram || !histogram_len || !latency_list || !latency_len || !H) {
+        return -1;
+    }
+
+    periods = (long long *)malloc((size_t)num_tasks * sizeof(long long));
+    if (!periods) {
+        return -1;
+    }
+
+    max_offset = tasks[0].read_event.offset;
+    for (int i = 0; i < num_tasks; i++) {
+        periods[i] = tasks[i].period;
+        if (tasks[i].read_event.offset > max_offset) {
+            max_offset = tasks[i].read_event.offset;
+        }
+    }
+
+    *H = zerolet_lcm_list(periods, num_tasks);
+    free(periods);
+
+    if (*H < 0 || (unsigned long long)*H > (unsigned long long)(SIZE_MAX / sizeof(double))) {
+        return -1;
+    }
+
+    latencies = (double *)malloc((size_t)*H * sizeof(double));
+    if (!latencies) {
+        return -1;
+    }
+
+    for (long long z = max_offset; z < *H + max_offset; z++) {
+        double latency = round9(compute_chain_latency_from_z((double)z, tasks, num_tasks));
+        size_t idx = (size_t)(z - max_offset);
+
+        latencies[idx] = latency;
+        if (append_histogram_item(&items, &items_len, &items_cap, latency) != 0) {
+            free(items);
+            free(latencies);
+            return -1;
+        }
+    }
+
+    qsort(items, items_len, sizeof(HistogramItem), compare_histogram_item);
+
+    *histogram = items;
+    *histogram_len = items_len;
+    *latency_list = latencies;
+    *latency_len = (size_t)*H;
+    return 0;
+}
+
+int compute_latency_stats(const HistogramItem *histogram,
+                          size_t histogram_len,
+                          long long total_count,
+                          LatencyStats *stats)
+{
+    double mean = 0.0;
+    double variance = 0.0;
+
+    if (!histogram || histogram_len == 0 || total_count == 0 || !stats) {
+        return -1;
+    }
+
+    for (size_t i = 0; i < histogram_len; i++) {
+        mean += histogram[i].latency * (double)histogram[i].count;
+    }
+    mean /= (double)total_count;
+
+    for (size_t i = 0; i < histogram_len; i++) {
+        double diff = histogram[i].latency - mean;
+        variance += (double)histogram[i].count * diff * diff;
+    }
+    variance /= (double)total_count;
+
+    stats->min = round_to_digits(histogram[0].latency, 3);
+    stats->max = round_to_digits(histogram[histogram_len - 1].latency, 3);
+    stats->mean = round_to_digits(mean, 3);
+    stats->std = round_to_digits(sqrt(variance), 3);
+    return 0;
+}
+
+int run_analysis_zero_let(int num_tasks,
+                          const long long *periods,
+                          const long long *read_offsets,
+                          const long long *write_offsets,
+                          double per_jitter,
+                          AnalysisResult *result)
+{
+    Task *tasks = NULL;
+    int rc;
+
+    if (!periods || !read_offsets || !write_offsets || !result || num_tasks <= 0) {
+        return -1;
+    }
+
+    memset(result, 0, sizeof(*result));
+    tasks = generate_events_tasks(num_tasks, periods, read_offsets, write_offsets, per_jitter);
+    if (!tasks) {
+        return -1;
+    }
+
+    rc = compute_latency_histogram(tasks,
+                                   num_tasks,
+                                   &result->histogram,
+                                   &result->histogram_len,
+                                   &result->latency_list,
+                                   &result->latency_len,
+                                   &result->H);
+    free(tasks);
+
+    if (rc != 0) {
+        free_analysis_result(result);
+        return -1;
+    }
+
+    if (compute_latency_stats(result->histogram, result->histogram_len, result->H, &result->stats) != 0) {
+        free_analysis_result(result);
+        return -1;
+    }
+
+    return 0;
+}
+
+void free_analysis_result(AnalysisResult *result)
+{
+    if (!result) {
         return;
     }
-
-    for (int p = perioddown; p <= periodup; p++) {
-        current[idx] = p;
-        generate_periods(perioddown, periodup, n, idx + 1, current);
-    }
+    free(result->histogram);
+    free(result->latency_list);
+    memset(result, 0, sizeof(*result));
 }
 
-/* ---------- 排序 ---------- */
+#if ZEROLET_BUILD_MAIN
+int main(void)
+{
+    long long periods[] = {15, 10, 12};
+    long long read_offsets[] = {11, 18, 26};
+    long long write_offsets[] = {11, 18, 26};
+    AnalysisResult result;
 
-int compare_periods(const void *a, const void *b) {
-    PeriodEntry *pa = (PeriodEntry*)a;
-    PeriodEntry *pb = (PeriodEntry*)b;
-
-    for (int i = 0; i < MAX_TASKS; i++) {
-        if (pa->periods[i] != pb->periods[i])
-            return pa->periods[i] - pb->periods[i];
+    if (run_analysis_zero_let(3, periods, read_offsets, write_offsets, 0.0, &result) != 0) {
+        fprintf(stderr, "analysis failed\n");
+        return 1;
     }
+
+    printf("Hyperperiod: %lld\n", result.H);
+    printf("Latency stats: {'min': %.3f, 'max': %.3f, 'mean': %.3f, 'std': %.3f}\n",
+           result.stats.min,
+           result.stats.max,
+           result.stats.mean,
+           result.stats.std);
+
+    free_analysis_result(&result);
     return 0;
 }
-
-/* ---------- CSV 输出 ---------- */
-
-void write_csv(int n, int perioddown, int periodup) {
-
-    time_t t = time(NULL);
-    struct tm *tm = localtime(&t);
-
-    char filename[256];
-    sprintf(filename,
-        "data/data_zero_let_n%d_%d_%d_EXTREMES_%04d%02d%02d_%02d%02d%02d.csv",
-        n, perioddown, periodup,
-        tm->tm_year+1900, tm->tm_mon+1, tm->tm_mday,
-        tm->tm_hour, tm->tm_min, tm->tm_sec);
-
-    FILE *fp = fopen(filename, "w");
-
-    fprintf(fp,
-        "$T_i$ period,"
-        "$L_Z^-$ minimum offset-free reaction time,"
-        "$phase$ offsets min,"
-        "$L_Z^+$ maximum offset-free reaction time,"
-        "$phase$ offsets max,"
-        "diff,"
-        "is max-harmonic\n");
-
-    qsort(results, result_count, sizeof(PeriodEntry), compare_periods);
-
-    for (int i = 0; i < result_count; i++) {
-
-        PeriodEntry *e = &results[i];
-
-        double minv = e->min_rec.stats.max;
-        double maxv = e->max_rec.stats.max;
-        double diff = maxv - minv;
-
-        print_array(fp, e->periods, n);
-        fprintf(fp, ",");
-
-        fprintf(fp, "%.3f,", minv);
-
-        print_array(fp, e->min_rec.offsets, n);
-        fprintf(fp, ",");
-
-        fprintf(fp, "%.3f,", maxv);
-
-        print_array(fp, e->max_rec.offsets, n);
-        fprintf(fp, ",");
-
-        fprintf(fp, "%.3f,", diff);
-
-        fprintf(fp, "%d\n", isMaxHarmonic(e->periods, n));
-    }
-
-    fclose(fp);
-
-    printf("Saved to %s\n", filename);
-}
-
-/* ---------- main ---------- */
-
-int main() {
-
-    int perioddown = 2;
-    int periodup = 12;
-    int num_chains = 3;  
-
-    int periods[MAX_TASKS];
-
-    generate_periods(perioddown, periodup, num_chains, 0, periods);
-
-    write_csv(num_chains, perioddown, periodup);
-
-    return 0;
-}
+#endif
