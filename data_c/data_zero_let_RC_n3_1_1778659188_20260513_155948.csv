@@ -1,2 +1,0 @@
-n,periods,seed,C,R,R/C,min_latency (LZ-),min_offsets,max_latency (LZ+),max_offsets
-3,"[500, 100, 20]",1778659188,6000,0.130000,2.166667e-05,499.000,"[0, 0, 0]",617.000,"[0, 99, 18]"
