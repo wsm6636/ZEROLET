@@ -207,6 +207,23 @@ int isMaxHarmonic(const long long *periods, int n)
     return 1;
 }
 
+static long long saturated_lcm(long long a, long long b)
+{
+    long long g;
+    long long divided;
+
+    if (a <= 0 || b <= 0) {
+        return ZEROLET_SATURATED_SIZE;
+    }
+
+    g = zerolet_gcd(a, b);
+    divided = a / g;
+    if (divided > ZEROLET_SATURATED_SIZE / b) {
+        return ZEROLET_SATURATED_SIZE;
+    }
+    return divided * b;
+}
+
 long long *generate_offsets_eq27_g(const long long *periods, int n)
 {
     long long *G = (long long *)calloc((size_t)n, sizeof(long long));
@@ -221,7 +238,10 @@ long long *generate_offsets_eq27_g(const long long *periods, int n)
     G[0] = 1;
     for (int i = 1; i < n; i++) {
         G[i] = zerolet_gcd(H, periods[i]);
-        H = zerolet_lcm(H, periods[i]);
+        if (G[i] <= 0) {
+            G[i] = ZEROLET_SATURATED_SIZE;
+        }
+        H = saturated_lcm(H, periods[i]);
     }
 
     return G;
@@ -265,8 +285,13 @@ void print_offset_ranges(const long long *periods, int n)
     printf("phi1 in {0}\n");
 
     for (int i = 1; i < n; i++) {
+        if (G[i] <= 0) {
+            G[i] = ZEROLET_SATURATED_SIZE;
+        }
         printf("phi%d in [0, %lld]  (G%d=%lld)\n", i + 1, G[i] - 1, i + 1, G[i]);
-        if (G[i] != 0 && space_size > ZEROLET_SATURATED_SIZE / G[i]) {
+        if (space_size == ZEROLET_SATURATED_SIZE ||
+            G[i] == ZEROLET_SATURATED_SIZE ||
+            space_size > ZEROLET_SATURATED_SIZE / G[i]) {
             space_size = ZEROLET_SATURATED_SIZE;
             continue;
         }
@@ -335,7 +360,9 @@ static long long offset_space_size_from_g(const long long *G, int n)
     long long size = 1;
 
     for (int i = 1; i < n; i++) {
-        if (G[i] != 0 && size > ZEROLET_SATURATED_SIZE / G[i]) {
+        if (G[i] <= 0 ||
+            G[i] == ZEROLET_SATURATED_SIZE ||
+            size > ZEROLET_SATURATED_SIZE / G[i]) {
             return ZEROLET_SATURATED_SIZE;
         }
         size *= G[i];
