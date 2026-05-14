@@ -11,7 +11,7 @@ typedef struct {
     int is_max_harmonic;
 } ExtremeResult;
 
-ExtremeResult *run_evaluation_and_track_extremes(int num_chains,
+ExtremeResult *run_evaluation_and_track_extremes(int num_chains_extreme,
                                                  long long random_seed,
                                                  long long perioddown,
                                                  long long periodup,
@@ -20,7 +20,7 @@ ExtremeResult *run_evaluation_and_track_extremes(int num_chains,
 char *output_zero_let_min_max_extremes(const char *timestamp,
                                        const ExtremeResult *results,
                                        size_t count,
-                                       int num_chains,
+                                       int num_chains_extreme,
                                        long long perioddown,
                                        long long periodup);
 
@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 {
     long long perioddown = 2;
     long long periodup = 12;
-    int num_chains = 3;
+    int num_chains_extreme = 3;
     long long random_seed = (long long)time(NULL);
     char timestamp[64];
     size_t count = 0;
@@ -52,20 +52,20 @@ int main(int argc, char **argv)
     if (argc >= 4) {
         perioddown = atoll(argv[1]);
         periodup = atoll(argv[2]);
-        num_chains = atoi(argv[3]);
+        num_chains_extreme = atoi(argv[3]);
     }
     if (argc >= 5) {
         random_seed = atoll(argv[4]);
     }
 
-    if (perioddown > periodup || num_chains <= 0) {
-        fprintf(stderr, "Usage: %s [perioddown periodup num_chains [random_seed]]\n", argv[0]);
+    if (perioddown > periodup || num_chains_extreme <= 0) {
+        fprintf(stderr, "Usage: %s [perioddown periodup num_chains_extreme [random_seed]]\n", argv[0]);
         return 1;
     }
 
     timestamp_from_seed(random_seed, timestamp, sizeof(timestamp));
 
-    results = run_evaluation_and_track_extremes(num_chains,
+    results = run_evaluation_and_track_extremes(num_chains_extreme,
                                                 random_seed,
                                                 perioddown,
                                                 periodup,
@@ -78,7 +78,7 @@ int main(int argc, char **argv)
     csvfile = output_zero_let_min_max_extremes(timestamp,
                                               results,
                                               count,
-                                              num_chains,
+                                              num_chains_extreme,
                                               perioddown,
                                               periodup);
     if (csvfile) {

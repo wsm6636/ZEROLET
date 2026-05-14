@@ -11,6 +11,7 @@ It implements the methods described in the paper
 
 @author: Shumo Wang
 """
+import argparse
 import csv
 import datetime
 
@@ -588,13 +589,38 @@ def output_zero_let_min_max_extremes(timestamp, period_stats_map, num_chains, pe
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="zeroLET evaluation experiments"
+    )
 
-    # perioddown = 2
-    # periodup =12
-    
-    num_limit = 6
-    num_chains = 6
-    num_repeats = 1 
+    parser.add_argument(
+        "--mode",
+        type=str,
+        choices=["extremes", "runtime", "all"],
+        default="all",
+        help="""
+        extremes : run run_evaluation_and_track_extremes only
+        runtime  : run run_evaluation_zero_let only
+        all      : run both experiments
+        """
+    )
+
+    parser.add_argument("--perioddown", type=int, default=2)
+    parser.add_argument("--periodup", type=int, default=12)
+    parser.add_argument("--num_chains_extreme", type=int, default=3)
+
+    parser.add_argument("--num_limit", type=int, default=3)
+    parser.add_argument("--num_chains", type=int, default=6)
+    parser.add_argument("--num_repeats", type=int, default=100)
+
+    args = parser.parse_args()
+
+    perioddown = args.perioddown
+    periodup = args.periodup
+    num_chains_extreme = args.num_chains_extreme
+    num_limit = args.num_limit
+    num_chains = args.num_chains
+    num_repeats = args.num_repeats
 
     period_choices = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
 
@@ -604,13 +630,13 @@ if __name__ == "__main__":
     random_seed = int(time.time())
     timestamp = datetime.datetime.fromtimestamp(random_seed).strftime("%Y%m%d_%H%M%S")
 
-    # results = run_evaluation_and_track_extremes(num_chains, random_seed, perioddown, periodup)
-    # output_zero_let_min_max_extremes(timestamp, results, num_chains, perioddown, periodup)    
+    results = run_evaluation_and_track_extremes(num_chains_extreme, random_seed, perioddown, periodup)
+    output_zero_let_min_max_extremes(timestamp, results, num_chains_extreme, perioddown, periodup)    
 
     results =  run_evaluation_zero_let(num_limit, num_chains, num_repeats, period_choices, random_seed)
-    # csvfile =  output_zero_let(timestamp, num_chains, num_repeats, random_seed, results)
+    csvfile =  output_zero_let(timestamp, num_chains, num_repeats, random_seed, results)
 
     # csvfile = "data/data_zero_let_RC_n6_100_1777903098_20260504_215818.csv"  # Example CSV file path
-    # plot_R_over_C_from_csv(csvfile, num_chains, num_repeats, random_seed, timestamp)
+    plot_R_over_C_from_csv(csvfile, num_chains, num_repeats, random_seed, timestamp)
 
 
