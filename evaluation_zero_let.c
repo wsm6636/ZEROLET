@@ -1140,7 +1140,7 @@ int main(int argc, char **argv)
 {
     int num_limit = 3;
     int num_chains = 6;
-    int num_repeats = 1;
+    int num_repeats = 100;
     long long period_choices[] = {1, 2, 5, 10, 20, 50, 100, 200, 500, 1000};
     int n_choices = (int)(sizeof(period_choices) / sizeof(period_choices[0]));
     long long random_seed = (long long)time(NULL);
