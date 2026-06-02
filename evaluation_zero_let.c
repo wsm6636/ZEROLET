@@ -395,10 +395,12 @@ static int choose_periods_for_experiment(int n,
         *C_out = compute_complexity_eq28(periods, n);
         *space_size_out = offset_space_size_from_g(G, n);
         //LIMIT
-        if (*C_out <= ZEROLET_C_LIMIT && *space_size_out <= ZEROLET_OFFSET_SPACE_LIMIT) {
-            *G_out = G;
-            return 0;
-        }
+        /* Limit filtering disabled:
+         * original condition was:
+         * if (*C_out <= ZEROLET_C_LIMIT && *space_size_out <= ZEROLET_OFFSET_SPACE_LIMIT)
+         */
+        *G_out = G;
+        return 0;
 
         free(G);
         trial++;
