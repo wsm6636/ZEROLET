@@ -28,6 +28,9 @@ typedef struct {
     int status;
 } ExperimentJob;
 
+static long long g_c_limit = ZEROLET_C_LIMIT;
+static long long g_offset_space_limit = ZEROLET_OFFSET_SPACE_LIMIT;
+
 static unsigned int local_rand(LocalRng *rng)
 {
     rng->state = rng->state * 6364136223846793005ULL + 1442695040888963407ULL;
@@ -40,25 +43,87 @@ static long long local_choice(LocalRng *rng, const long long *choices, int n_cho
     return choices[value % (unsigned int)n_choices];
 }
 
-static void choose_periods_no_limit(int n,
-                                    const long long *period_choices,
-                                    int n_choices,
-                                    long long seed,
-                                    long long *periods,
-                                    long long **G_out,
-                                    long long *C_out,
-                                    long long *space_size_out)
+static int choose_periods_with_limit(int n,
+                                     const long long *period_choices,
+                                     int n_choices,
+                                     long long seed,
+                                     long long *periods,
+                                     long long **G_out,
+                                     long long *C_out,
+                                     long long *space_size_out)
 {
     LocalRng rng;
+    int trial = 0;
 
     rng.state = (unsigned long long)seed ^ ((unsigned long long)n << 32);
-    for (int i = 0; i < n; i++) {
-        periods[i] = local_choice(&rng, period_choices, n_choices);
-    }
 
-    *G_out = generate_offsets_eq27_g(periods, n);
-    *C_out = compute_complexity_eq28(periods, n);
-    *space_size_out = offset_space_size_from_g(*G_out, n);
+    while (1) {
+        long long *G;
+
+        for (int i = 0; i < n; i++) {
+            periods[i] = local_choice(&rng, period_choices, n_choices);
+        }
+
+        G = generate_offsets_eq27_g(periods, n);
+        if (!G) {
+            return -1;
+        }
+
+        *C_out = compute_complexity_eq28(periods, n);
+        *space_size_out = offset_space_size_from_g(G, n);
+
+        if (*C_out <= g_c_limit && *space_size_out <= g_offset_space_limit) {
+            *G_out = G;
+            if (trial > 0) {
+                printf("[n=%d] accepted periods after %d retries: C=%lld, offset_space=%lld\n",
+                       n,
+                       trial,
+                       *C_out,
+                       *space_size_out);
+                fflush(stdout);
+            }
+            return 0;
+        }
+
+        free(G);
+        trial++;
+        if (trial % 100 == 0) {
+            printf("[n=%d] retry %d, last rejected: C=%lld, offset_space=%lld, limits=(%lld,%lld)\n",
+                   n,
+                   trial,
+                   *C_out,
+                   *space_size_out,
+                   g_c_limit,
+                   g_offset_space_limit);
+            fflush(stdout);
+        }
+
+        if (trial > 1000) {
+            static const long long fallback_choices[] = {1, 2, 5, 10, 20, 50};
+            for (int i = 0; i < n; i++) {
+                periods[i] = local_choice(&rng, fallback_choices, 6);
+            }
+
+            G = generate_offsets_eq27_g(periods, n);
+            if (!G) {
+                return -1;
+            }
+
+            *C_out = compute_complexity_eq28(periods, n);
+            *space_size_out = offset_space_size_from_g(G, n);
+            if (*C_out <= g_c_limit && *space_size_out <= g_offset_space_limit) {
+                *G_out = G;
+                printf("[n=%d] accepted fallback periods after %d retries: C=%lld, offset_space=%lld\n",
+                       n,
+                       trial,
+                       *C_out,
+                       *space_size_out);
+                fflush(stdout);
+                return 0;
+            }
+            free(G);
+        }
+    }
 }
 
 static void evaluate_offset_with_progress(const long long *offsets, int n, void *ctx)
@@ -121,15 +186,14 @@ static int run_single_experiment_parallel(const ExperimentJob *job)
         return -1;
     }
 
-    choose_periods_no_limit(job->n,
-                            job->period_choices,
-                            job->n_choices,
-                            job->seed + (long long)job->repeat * 1000003LL + (long long)job->n * 9176LL,
-                            result->periods,
-                            &G,
-                            &result->C,
-                            &space_size);
-    if (!G) {
+    if (choose_periods_with_limit(job->n,
+                                  job->period_choices,
+                                  job->n_choices,
+                                  job->seed + (long long)job->repeat * 1000003LL + (long long)job->n * 9176LL,
+                                  result->periods,
+                                  &G,
+                                  &result->C,
+                                  &space_size) != 0 || !G) {
         return -1;
     }
 
@@ -208,12 +272,25 @@ int main(int argc, char **argv)
     if (argc >= 5) {
         random_seed = atoll(argv[4]);
     }
+    if (argc >= 6) {
+        g_c_limit = atoll(argv[5]);
+    }
+    if (argc >= 7) {
+        g_offset_space_limit = atoll(argv[6]);
+    }
 
-    if (argc > 5 || num_limit <= 0 || num_chains < num_limit || num_repeats <= 0) {
-        fprintf(stderr, "Usage: %s [num_limit num_chains num_repeats [random_seed]]\n", argv[0]);
-        fprintf(stderr, "Example: %s 3 6 1\n", argv[0]);
+    if (argc > 7 ||
+        num_limit <= 0 ||
+        num_chains < num_limit ||
+        num_repeats <= 0 ||
+        g_c_limit <= 0 ||
+        g_offset_space_limit <= 0) {
+        fprintf(stderr, "Usage: %s [num_limit num_chains num_repeats [random_seed [c_limit offset_space_limit]]]\n", argv[0]);
+        fprintf(stderr, "Example: %s 3 6 1 12345 10000000000 1000000\n", argv[0]);
         return 1;
     }
+
+    printf("Limits: C <= %lld, offset_space <= %lld\n", g_c_limit, g_offset_space_limit);
 
     job_count = (size_t)(num_chains - num_limit + 1) * (size_t)num_repeats;
     results = (ExperimentResult *)calloc(job_count, sizeof(ExperimentResult));
