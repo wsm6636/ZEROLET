@@ -1,0 +1,1792 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="700" viewBox="0 0 1000 700">
+<rect width="100%" height="100%" fill="white"/>
+<text x="500" y="35" text-anchor="middle" font-family="Arial" font-size="22">Runtime (R) over Complexity (C)</text>
+<line x1="90" y1="620" x2="805" y2="620" stroke="#222"/>
+<line x1="90" y1="70" x2="90" y2="620" stroke="#222"/>
+<line x1="123.32" y1="70" x2="123.32" y2="620" stroke="#d6d6d6"/>
+<line x1="123.32" y1="620" x2="123.32" y2="626" stroke="#222"/>
+<text x="123.32" y="642.00" text-anchor="middle" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">1</tspan></text>
+<line x1="187.03" y1="70" x2="187.03" y2="620" stroke="#d6d6d6"/>
+<line x1="187.03" y1="620" x2="187.03" y2="626" stroke="#222"/>
+<text x="187.03" y="642.00" text-anchor="middle" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">2</tspan></text>
+<line x1="250.75" y1="70" x2="250.75" y2="620" stroke="#d6d6d6"/>
+<line x1="250.75" y1="620" x2="250.75" y2="626" stroke="#222"/>
+<text x="250.75" y="642.00" text-anchor="middle" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">3</tspan></text>
+<line x1="314.46" y1="70" x2="314.46" y2="620" stroke="#d6d6d6"/>
+<line x1="314.46" y1="620" x2="314.46" y2="626" stroke="#222"/>
+<text x="314.46" y="642.00" text-anchor="middle" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">4</tspan></text>
+<line x1="378.18" y1="70" x2="378.18" y2="620" stroke="#d6d6d6"/>
+<line x1="378.18" y1="620" x2="378.18" y2="626" stroke="#222"/>
+<text x="378.18" y="642.00" text-anchor="middle" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">5</tspan></text>
+<line x1="441.89" y1="70" x2="441.89" y2="620" stroke="#d6d6d6"/>
+<line x1="441.89" y1="620" x2="441.89" y2="626" stroke="#222"/>
+<text x="441.89" y="642.00" text-anchor="middle" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">6</tspan></text>
+<line x1="505.61" y1="70" x2="505.61" y2="620" stroke="#d6d6d6"/>
+<line x1="505.61" y1="620" x2="505.61" y2="626" stroke="#222"/>
+<text x="505.61" y="642.00" text-anchor="middle" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">7</tspan></text>
+<line x1="569.32" y1="70" x2="569.32" y2="620" stroke="#d6d6d6"/>
+<line x1="569.32" y1="620" x2="569.32" y2="626" stroke="#222"/>
+<text x="569.32" y="642.00" text-anchor="middle" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">8</tspan></text>
+<line x1="633.04" y1="70" x2="633.04" y2="620" stroke="#d6d6d6"/>
+<line x1="633.04" y1="620" x2="633.04" y2="626" stroke="#222"/>
+<text x="633.04" y="642.00" text-anchor="middle" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">9</tspan></text>
+<line x1="696.75" y1="70" x2="696.75" y2="620" stroke="#d6d6d6"/>
+<line x1="696.75" y1="620" x2="696.75" y2="626" stroke="#222"/>
+<text x="696.75" y="642.00" text-anchor="middle" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">10</tspan></text>
+<line x1="760.47" y1="70" x2="760.47" y2="620" stroke="#d6d6d6"/>
+<line x1="760.47" y1="620" x2="760.47" y2="626" stroke="#222"/>
+<text x="760.47" y="642.00" text-anchor="middle" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">11</tspan></text>
+<line x1="90" y1="598.73" x2="805" y2="598.73" stroke="#d6d6d6"/>
+<line x1="84" y1="598.73" x2="90" y2="598.73" stroke="#222"/>
+<text x="80.00" y="602.73" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">-4</tspan></text>
+<line x1="90" y1="548.10" x2="805" y2="548.10" stroke="#d6d6d6"/>
+<line x1="84" y1="548.10" x2="90" y2="548.10" stroke="#222"/>
+<text x="80.00" y="552.10" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">-3</tspan></text>
+<line x1="90" y1="497.48" x2="805" y2="497.48" stroke="#d6d6d6"/>
+<line x1="84" y1="497.48" x2="90" y2="497.48" stroke="#222"/>
+<text x="80.00" y="501.48" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">-2</tspan></text>
+<line x1="90" y1="446.86" x2="805" y2="446.86" stroke="#d6d6d6"/>
+<line x1="84" y1="446.86" x2="90" y2="446.86" stroke="#222"/>
+<text x="80.00" y="450.86" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">-1</tspan></text>
+<line x1="90" y1="396.23" x2="805" y2="396.23" stroke="#d6d6d6"/>
+<line x1="84" y1="396.23" x2="90" y2="396.23" stroke="#222"/>
+<text x="80.00" y="400.23" text-anchor="end" font-family="Arial" font-size="12">1</text>
+<line x1="90" y1="345.61" x2="805" y2="345.61" stroke="#d6d6d6"/>
+<line x1="84" y1="345.61" x2="90" y2="345.61" stroke="#222"/>
+<text x="80.00" y="349.61" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">1</tspan></text>
+<line x1="90" y1="294.99" x2="805" y2="294.99" stroke="#d6d6d6"/>
+<line x1="84" y1="294.99" x2="90" y2="294.99" stroke="#222"/>
+<text x="80.00" y="298.99" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">2</tspan></text>
+<line x1="90" y1="244.36" x2="805" y2="244.36" stroke="#d6d6d6"/>
+<line x1="84" y1="244.36" x2="90" y2="244.36" stroke="#222"/>
+<text x="80.00" y="248.36" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">3</tspan></text>
+<line x1="90" y1="193.74" x2="805" y2="193.74" stroke="#d6d6d6"/>
+<line x1="84" y1="193.74" x2="90" y2="193.74" stroke="#222"/>
+<text x="80.00" y="197.74" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">4</tspan></text>
+<line x1="90" y1="143.12" x2="805" y2="143.12" stroke="#d6d6d6"/>
+<line x1="84" y1="143.12" x2="90" y2="143.12" stroke="#222"/>
+<text x="80.00" y="147.12" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">5</tspan></text>
+<line x1="90" y1="92.49" x2="805" y2="92.49" stroke="#d6d6d6"/>
+<line x1="84" y1="92.49" x2="90" y2="92.49" stroke="#222"/>
+<text x="80.00" y="96.49" text-anchor="end" font-family="Arial" font-size="12">10<tspan baseline-shift="super" font-size="9">6</tspan></text>
+<text x="448" y="675" text-anchor="middle" font-family="Arial" font-size="16">Complexity (C)</text>
+<text x="24" y="345" text-anchor="middle" font-family="Arial" font-size="16" transform="rotate(-90 24 345)">Runtime (R) [seconds]</text>
+<circle cx="236.61" cy="494.12" r="5" fill="#1f77b4"/>
+<title>n=3, C=600, R=0.011654</title>
+<rect x="475.25" y="158.59" width="10" height="10" fill="#ff7f0e" transform="rotate(0 480.25 163.59)"/>
+<title>n=4, C=4000000, R=39411.418246</title>
+<polygon points="486.43,263.71 480.43,274.71 492.43,274.71" fill="#2ca02c"/>
+<title>n=5, C=5000000, R=315.800178</title>
+<rect x="403.57" y="261.80" width="10" height="10" fill="#d62728" transform="rotate(45 408.57 266.80)"/>
+<title>n=6, C=300000, R=360.414019</title>
+<polygon points="712.24,115.91 706.24,104.91 718.24,104.91" fill="#9467bd"/>
+<title>n=7, C=17500000000, R=452861.351580</title>
+<line x1="512.61" y1="229.83" x2="524.61" y2="229.83" stroke="#8c564b" stroke-width="3"/>
+<line x1="518.61" y1="223.83" x2="518.61" y2="235.83" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=16000000, R=1936.991425</title>
+<polygon points="649.30,90.95 655.30,96.95 649.30,102.95 643.30,96.95" fill="#e377c2"/>
+<title>n=9, C=1800000000, R=816445.042443</title>
+<circle cx="766.64" cy="87.67" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=125000000000, R=1245576.401416</title>
+<circle cx="300.33" cy="400.84" r="5" fill="#1f77b4"/>
+<title>n=3, C=6000, R=0.811118</title>
+<rect x="430.72" y="199.96" width="10" height="10" fill="#ff7f0e" transform="rotate(0 435.72 204.96)"/>
+<title>n=4, C=800000, R=6004.139088</title>
+<polygon points="613.86,147.20 607.86,158.20 619.86,158.20" fill="#2ca02c"/>
+<title>n=5, C=500000000, R=63219.594191</title>
+<rect x="486.47" y="199.67" width="10" height="10" fill="#d62728" transform="rotate(45 491.47 204.67)"/>
+<title>n=6, C=6000000, R=6084.223605</title>
+<polygon points="553.28,241.21 547.28,230.21 559.28,230.21" fill="#9467bd"/>
+<title>n=7, C=56000000, R=1516.572451</title>
+<line x1="531.79" y1="210.54" x2="543.79" y2="210.54" stroke="#8c564b" stroke-width="3"/>
+<line x1="537.79" y1="204.54" x2="537.79" y2="216.54" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=32000000, R=4657.521467</title>
+<polygon points="662.31,153.41 668.31,159.41 662.31,165.41 656.31,159.41" fill="#e377c2"/>
+<title>n=9, C=2880000000, R=47654.918653</title>
+<circle cx="754.29" cy="70.60" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=80000000000, R=2706878.341144</title>
+<circle cx="364.04" cy="261.25" r="5" fill="#1f77b4"/>
+<title>n=3, C=60000, R=463.874371</title>
+<rect x="558.15" y="180.52" width="10" height="10" fill="#ff7f0e" transform="rotate(0 563.15 185.52)"/>
+<title>n=4, C=80000000, R=14531.751979</title>
+<polygon points="530.96,151.98 524.96,162.98 536.96,162.98" fill="#2ca02c"/>
+<title>n=5, C=25000000, R=50873.681026</title>
+<rect x="467.29" y="257.11" width="10" height="10" fill="#d62728" transform="rotate(45 472.29 262.11)"/>
+<title>n=6, C=3000000, R=446.150910</title>
+<polygon points="673.88,104.57 667.88,93.57 679.88,93.57" fill="#9467bd"/>
+<title>n=7, C=4375000000, R=758710.466280</title>
+<line x1="684.58" y1="103.14" x2="696.58" y2="103.14" stroke="#8c564b" stroke-width="3"/>
+<line x1="690.58" y1="97.14" x2="690.58" y2="109.14" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=8000000000, R=616310.943307</title>
+<polygon points="655.47,137.16 661.47,143.16 655.47,149.16 649.47,143.16" fill="#e377c2"/>
+<title>n=9, C=2250000000, R=99824.336860</title>
+<circle cx="633.04" cy="185.09" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=1000000000, R=14821.195607</title>
+<circle cx="427.76" cy="185.91" r="5" fill="#1f77b4"/>
+<title>n=3, C=600000, R=14276.821154</title>
+<rect x="284.11" y="417.72" width="10" height="10" fill="#ff7f0e" transform="rotate(0 289.11 422.72)"/>
+<title>n=4, C=4000, R=0.299768</title>
+<polygon points="588.50,140.00 582.50,151.00 594.50,151.00" fill="#2ca02c"/>
+<title>n=5, C=200000000, R=87704.815981</title>
+<rect x="531.00" y="189.78" width="10" height="10" fill="#d62728" transform="rotate(45 536.00 194.78)"/>
+<title>n=6, C=30000000, R=9540.347433</title>
+<polygon points="540.27,100.10 534.27,89.10 546.27,89.10" fill="#9467bd"/>
+<title>n=7, C=35000000, R=929479.793360</title>
+<line x1="576.33" y1="118.75" x2="588.33" y2="118.75" stroke="#8c564b" stroke-width="3"/>
+<line x1="582.33" y1="112.75" x2="582.33" y2="124.75" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=160000000, R=302965.433383</title>
+<polygon points="630.12,68.79 636.12,74.79 630.12,80.79 624.12,74.79" fill="#e377c2"/>
+<title>n=9, C=900000000, R=2237329.283322</title>
+<circle cx="748.12" cy="90.80" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=64000000000, R=1080128.175874</title>
+<circle cx="281.14" cy="394.53" r="5" fill="#1f77b4"/>
+<title>n=3, C=3000, R=1.080470</title>
+<rect x="481.43" y="182.31" width="10" height="10" fill="#ff7f0e" transform="rotate(0 486.43 187.31)"/>
+<title>n=4, C=5000000, R=13399.267267</title>
+<polygon points="467.24,128.30 461.24,139.30 473.24,139.30" fill="#2ca02c"/>
+<title>n=5, C=2500000, R=149317.418681</title>
+<rect x="677.62" y="80.43" width="10" height="10" fill="#d62728" transform="rotate(45 682.62 85.43)"/>
+<title>n=6, C=6000000000, R=1378819.226803</title>
+<polygon points="686.88,128.82 680.88,117.82 692.88,117.82" fill="#9467bd"/>
+<title>n=7, C=7000000000, R=251698.331013</title>
+<line x1="537.97" y1="204.72" x2="549.97" y2="204.72" stroke="#8c564b" stroke-width="3"/>
+<line x1="543.97" y1="198.72" x2="543.97" y2="210.72" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=40000000, R=6068.893545</title>
+<polygon points="655.47,72.69 661.47,78.69 655.47,84.69 649.47,78.69" fill="#e377c2"/>
+<title>n=9, C=2250000000, R=1873698.180462</title>
+<circle cx="773.47" cy="84.00" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=160000000000, R=1471425.685457</title>
+<circle cx="134.53" cy="578.41" r="5" fill="#1f77b4"/>
+<title>n=3, C=15, R=0.000252</title>
+<rect x="475.25" y="175.27" width="10" height="10" fill="#ff7f0e" transform="rotate(0 480.25 180.27)"/>
+<title>n=4, C=4000000, R=18453.558041</title>
+<polygon points="467.24,129.53 461.24,140.53 473.24,140.53" fill="#2ca02c"/>
+<title>n=5, C=2500000, R=141203.444529</title>
+<rect x="613.90" y="116.23" width="10" height="10" fill="#d62728" transform="rotate(45 618.90 121.23)"/>
+<title>n=6, C=600000000, R=270660.325672</title>
+<polygon points="744.42,84.96 738.42,73.96 750.42,73.96" fill="#9467bd"/>
+<title>n=7, C=56000000000, R=1850362.006416</title>
+<line x1="722.94" y1="70.67" x2="734.94" y2="70.67" stroke="#8c564b" stroke-width="3"/>
+<line x1="728.94" y1="64.67" x2="728.94" y2="76.67" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=32000000000, R=2698403.939281</title>
+<polygon points="668.48,139.10 674.48,145.10 668.48,151.10 662.48,145.10" fill="#e377c2"/>
+<title>n=9, C=3600000000, R=91374.705429</title>
+<circle cx="690.58" cy="112.24" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=8000000000, R=407298.041487</title>
+<circle cx="198.25" cy="550.44" r="5" fill="#1f77b4"/>
+<title>n=3, C=150, R=0.000899</title>
+<rect x="411.54" y="159.79" width="10" height="10" fill="#ff7f0e" transform="rotate(0 416.54 164.79)"/>
+<title>n=4, C=400000, R=37316.824780</title>
+<polygon points="403.53,334.11 397.53,345.11 409.53,345.11" fill="#2ca02c"/>
+<title>n=5, C=250000, R=12.841240</title>
+<rect x="486.47" y="261.83" width="10" height="10" fill="#d62728" transform="rotate(45 491.47 266.83)"/>
+<title>n=6, C=6000000, R=359.988667</title>
+<polygon points="610.16,166.00 604.16,155.00 616.16,155.00" fill="#9467bd"/>
+<title>n=7, C=437500000, R=46389.805399</title>
+<line x1="557.15" y1="134.65" x2="569.15" y2="134.65" stroke="#8c564b" stroke-width="3"/>
+<line x1="563.15" y1="128.65" x2="563.15" y2="140.65" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=80000000, R=147001.254453</title>
+<polygon points="655.47,65.11 661.47,71.11 655.47,77.11 649.47,71.11" fill="#e377c2"/>
+<title>n=9, C=2250000000, R=2645527.357960</title>
+<circle cx="600.85" cy="83.40" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=312500000, R=1512138.058084</title>
+<circle cx="261.96" cy="263.86" r="5" fill="#1f77b4"/>
+<title>n=3, C=1500, R=412.067485</title>
+<rect x="367.00" y="293.19" width="10" height="10" fill="#ff7f0e" transform="rotate(0 372.00 298.19)"/>
+<title>n=4, C=80000, R=86.450678</title>
+<polygon points="550.14,123.51 544.14,134.51 556.14,134.51" fill="#2ca02c"/>
+<title>n=5, C=50000000, R=185706.065403</title>
+<rect x="505.65" y="235.74" width="10" height="10" fill="#d62728" transform="rotate(45 510.65 240.74)"/>
+<title>n=6, C=12000000, R=1179.473342</title>
+<polygon points="559.45,139.54 553.45,128.54 565.45,128.54" fill="#9467bd"/>
+<title>n=7, C=70000000, R=154605.950480</title>
+<line x1="512.61" y1="255.32" x2="524.61" y2="255.32" stroke="#8c564b" stroke-width="3"/>
+<line x1="518.61" y1="249.32" x2="518.61" y2="261.32" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=16000000, R=607.478237</title>
+<polygon points="610.94,131.31 616.94,137.31 610.94,143.31 604.94,137.31" fill="#e377c2"/>
+<title>n=9, C=450000000, R=130208.819633</title>
+<circle cx="499.43" cy="147.14" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=8000000, R=83278.215111</title>
+<circle cx="325.68" cy="225.75" r="5" fill="#1f77b4"/>
+<title>n=3, C=15000, R=2331.785081</title>
+<rect x="284.11" y="379.82" width="10" height="10" fill="#ff7f0e" transform="rotate(0 289.11 384.82)"/>
+<title>n=4, C=4000, R=1.680955</title>
+<polygon points="397.36,235.01 391.36,246.01 403.36,246.01" fill="#2ca02c"/>
+<title>n=5, C=200000, R=1164.652152</title>
+<rect x="505.65" y="245.36" width="10" height="10" fill="#d62728" transform="rotate(45 510.65 250.36)"/>
+<title>n=6, C=12000000, R=761.448421</title>
+<polygon points="495.74,213.14 489.74,202.14 501.74,202.14" fill="#9467bd"/>
+<title>n=7, C=7000000, R=5437.112727</title>
+<line x1="640.04" y1="126.62" x2="652.04" y2="126.62" stroke="#8c564b" stroke-width="3"/>
+<line x1="646.04" y1="120.62" x2="646.04" y2="132.62" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=1600000000, R=211794.561233</title>
+<polygon points="674.65,85.39 680.65,91.39 674.65,97.39 668.65,91.39" fill="#e377c2"/>
+<title>n=9, C=4500000000, R=1051540.225855</title>
+<circle cx="728.94" cy="89.53" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=32000000000, R=1144455.246648</title>
+<circle cx="172.90" cy="438.08" r="5" fill="#1f77b4"/>
+<title>n=3, C=60, R=0.149083</title>
+<rect x="430.72" y="180.44" width="10" height="10" fill="#ff7f0e" transform="rotate(0 435.72 185.44)"/>
+<title>n=4, C=800000, R=14585.696681</title>
+<polygon points="588.50,186.37 582.50,197.37 594.50,197.37" fill="#2ca02c"/>
+<title>n=5, C=200000000, R=10643.517058</title>
+<rect x="378.22" y="278.39" width="10" height="10" fill="#d62728" transform="rotate(45 383.22 283.39)"/>
+<title>n=6, C=120000, R=169.500670</title>
+<polygon points="559.45,183.85 553.45,172.85 565.45,172.85" fill="#9467bd"/>
+<title>n=7, C=70000000, R=20599.793031</title>
+<line x1="709.93" y1="71.46" x2="721.93" y2="71.46" stroke="#8c564b" stroke-width="3"/>
+<line x1="715.93" y1="65.46" x2="715.93" y2="77.46" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=20000000000, R=2602693.445444</title>
+<polygon points="585.58,107.71 591.58,113.71 585.58,119.71 579.58,113.71" fill="#e377c2"/>
+<title>n=9, C=180000000, R=380903.391854</title>
+<circle cx="715.93" cy="97.72" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=20000000000, R=788369.672805</title>
+<circle cx="300.33" cy="357.67" r="5" fill="#1f77b4"/>
+<title>n=3, C=6000, R=5.779080</title>
+<rect x="456.07" y="170.25" width="10" height="10" fill="#ff7f0e" transform="rotate(0 461.07 175.25)"/>
+<title>n=4, C=2000000, R=23192.983196</title>
+<polygon points="741.29,69.47 735.29,80.47 747.29,80.47" fill="#2ca02c"/>
+<title>n=5, C=50000000000, R=2169156.413081</title>
+<rect x="556.36" y="112.72" width="10" height="10" fill="#d62728" transform="rotate(45 561.36 117.72)"/>
+<title>n=6, C=75000000, R=317407.779704</title>
+<polygon points="368.31,282.69 362.31,271.69 374.31,271.69" fill="#9467bd"/>
+<title>n=7, C=70000, R=229.891771</title>
+<line x1="614.69" y1="106.90" x2="626.69" y2="106.90" stroke="#8c564b" stroke-width="3"/>
+<line x1="620.69" y1="100.90" x2="620.69" y2="112.90" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=640000000, R=519220.789152</title>
+<polygon points="541.05,202.98 547.05,208.98 541.05,214.98 535.05,208.98" fill="#e377c2"/>
+<title>n=9, C=36000000, R=5000.823978</title>
+<circle cx="690.58" cy="70.48" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=8000000000, R=2721452.932755</title>
+<circle cx="389.39" cy="226.62" r="5" fill="#1f77b4"/>
+<title>n=3, C=150000, R=2241.179672</title>
+<rect x="602.68" y="146.65" width="10" height="10" fill="#ff7f0e" transform="rotate(0 607.68 151.65)"/>
+<title>n=4, C=400000000, R=67831.735292</title>
+<polygon points="575.49,113.42 569.49,124.42 581.49,124.42" fill="#2ca02c"/>
+<title>n=5, C=125000000, R=293787.405054</title>
+<rect x="403.57" y="337.33" width="10" height="10" fill="#d62728" transform="rotate(45 408.57 342.33)"/>
+<title>n=6, C=300000, R=11.609375</title>
+<polygon points="578.63,82.36 572.63,71.36 584.63,71.36" fill="#9467bd"/>
+<title>n=7, C=140000000, R=2083059.119145</title>
+<line x1="640.04" y1="99.03" x2="652.04" y2="99.03" stroke="#8c564b" stroke-width="3"/>
+<line x1="646.04" y1="93.03" x2="646.04" y2="105.03" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=1600000000, R=742783.063099</title>
+<polygon points="757.55,65.43 763.55,71.43 757.55,77.43 751.55,71.43" fill="#e377c2"/>
+<title>n=9, C=90000000000, R=2607092.212741</title>
+<circle cx="607.68" cy="129.11" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=400000000, R=189072.991220</title>
+<circle cx="453.11" cy="165.62" r="5" fill="#1f77b4"/>
+<title>n=3, C=1500000, R=35928.575211</title>
+<rect x="328.64" y="363.55" width="10" height="10" fill="#ff7f0e" transform="rotate(0 333.64 368.55)"/>
+<title>n=4, C=20000, R=3.522687</title>
+<polygon points="613.86,79.58 607.86,90.58 619.86,90.58" fill="#2ca02c"/>
+<title>n=5, C=500000000, R=1369335.200476</title>
+<rect x="741.33" y="80.44" width="10" height="10" fill="#d62728" transform="rotate(45 746.33 85.44)"/>
+<title>n=6, C=60000000000, R=1378275.743076</title>
+<polygon points="495.74,227.63 489.74,216.63 501.74,216.63" fill="#9467bd"/>
+<title>n=7, C=7000000, R=2812.841981</title>
+<line x1="595.51" y1="151.51" x2="607.51" y2="151.51" stroke="#8c564b" stroke-width="3"/>
+<line x1="601.51" y1="145.51" x2="601.51" y2="157.51" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=320000000, R=68259.593537</title>
+<polygon points="610.94,64.04 616.94,70.04 610.94,76.04 604.94,70.04" fill="#e377c2"/>
+<title>n=9, C=450000000, R=2776632.709197</title>
+<circle cx="563.15" cy="236.98" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=80000000, R=1398.899013</title>
+<circle cx="281.14" cy="526.97" r="5" fill="#1f77b4"/>
+<title>n=3, C=3000, R=0.002615</title>
+<rect x="475.25" y="162.35" width="10" height="10" fill="#ff7f0e" transform="rotate(0 480.25 167.35)"/>
+<title>n=4, C=4000000, R=33219.574488</title>
+<polygon points="633.04,147.01 627.04,158.01 639.04,158.01" fill="#2ca02c"/>
+<title>n=5, C=1000000000, R=63770.984262</title>
+<rect x="314.51" y="353.51" width="10" height="10" fill="#d62728" transform="rotate(45 319.51 358.51)"/>
+<title>n=6, C=12000, R=5.561669</title>
+<polygon points="457.38,176.90 451.38,165.90 463.38,165.90" fill="#9467bd"/>
+<title>n=7, C=1750000, R=28267.368353</title>
+<line x1="404.36" y1="310.88" x2="416.36" y2="310.88" stroke="#8c564b" stroke-width="3"/>
+<line x1="410.36" y1="304.88" x2="410.36" y2="316.88" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=320000, R=48.528990</title>
+<polygon points="661.65,85.38 667.65,91.38 661.65,97.38 655.65,91.38" fill="#e377c2"/>
+<title>n=9, C=2812500000, R=1051891.748974</title>
+<circle cx="499.43" cy="272.45" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=8000000, R=278.687479</title>
+<circle cx="364.04" cy="277.18" r="5" fill="#1f77b4"/>
+<title>n=3, C=60000, R=224.759125</title>
+<rect x="494.43" y="148.36" width="10" height="10" fill="#ff7f0e" transform="rotate(0 499.43 153.36)"/>
+<title>n=4, C=8000000, R=62768.948230</title>
+<polygon points="403.53,333.93 397.53,344.93 409.53,344.93" fill="#2ca02c"/>
+<title>n=5, C=250000, R=12.948834</title>
+<rect x="384.39" y="267.34" width="10" height="10" fill="#d62728" transform="rotate(45 389.39 272.34)"/>
+<title>n=6, C=150000, R=280.109847</title>
+<polygon points="393.66,225.80 387.66,214.80 399.66,214.80" fill="#9467bd"/>
+<title>n=7, C=175000, R=3056.322644</title>
+<line x1="576.33" y1="198.28" x2="588.33" y2="198.28" stroke="#8c564b" stroke-width="3"/>
+<line x1="582.33" y1="192.28" x2="582.33" y2="204.28" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=160000000, R=8134.712514</title>
+<polygon points="738.37,64.07 744.37,70.07 738.37,76.07 732.37,70.07" fill="#e377c2"/>
+<title>n=9, C=45000000000, R=2772787.383109</title>
+<circle cx="633.04" cy="163.95" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=1000000000, R=38772.494559</title>
+<circle cx="217.43" cy="286.42" r="5" fill="#1f77b4"/>
+<title>n=3, C=300, R=147.640381</title>
+<rect x="322.47" y="346.20" width="10" height="10" fill="#ff7f0e" transform="rotate(0 327.47 351.20)"/>
+<title>n=4, C=16000, R=7.753600</title>
+<polygon points="339.81,302.23 333.81,313.23 345.81,313.23" fill="#2ca02c"/>
+<title>n=5, C=25000, R=54.752370</title>
+<rect x="359.04" y="230.14" width="10" height="10" fill="#d62728" transform="rotate(45 364.04 235.14)"/>
+<title>n=6, C=60000, R=1521.345394</title>
+<polygon points="501.91,145.82 495.91,134.82 507.91,134.82" fill="#9467bd"/>
+<title>n=7, C=8750000, R=116166.699671</title>
+<line x1="557.15" y1="139.14" x2="569.15" y2="139.14" stroke="#8c564b" stroke-width="3"/>
+<line x1="563.15" y1="133.14" x2="563.15" y2="145.14" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=80000000, R=119834.258718</title>
+<polygon points="668.48,149.47 674.48,155.47 668.48,161.47 662.48,155.47" fill="#e377c2"/>
+<title>n=9, C=3600000000, R=57024.023487</title>
+<circle cx="652.22" cy="119.60" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=2000000000, R=291397.913281</title>
+<circle cx="261.96" cy="378.46" r="5" fill="#1f77b4"/>
+<title>n=3, C=1500, R=2.244548</title>
+<rect x="239.57" y="283.49" width="10" height="10" fill="#ff7f0e" transform="rotate(0 244.57 288.49)"/>
+<title>n=4, C=800, R=134.362736</title>
+<polygon points="569.32,87.30 563.32,98.30 575.32,98.30" fill="#2ca02c"/>
+<title>n=5, C=100000000, R=964041.030853</title>
+<rect x="741.33" y="65.14" width="10" height="10" fill="#d62728" transform="rotate(45 746.33 70.14)"/>
+<title>n=6, C=60000000000, R=2764706.758731</title>
+<polygon points="495.74,180.87 489.74,169.87 501.74,169.87" fill="#9467bd"/>
+<title>n=7, C=7000000, R=23588.784035</title>
+<line x1="729.11" y1="103.05" x2="741.11" y2="103.05" stroke="#8c564b" stroke-width="3"/>
+<line x1="735.11" y1="97.05" x2="735.11" y2="109.05" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=40000000000, R=618719.147384</title>
+<polygon points="693.83,68.79 699.83,74.79 693.83,80.79 687.83,74.79" fill="#e377c2"/>
+<title>n=9, C=9000000000, R=2237284.350273</title>
+<circle cx="588.50" cy="221.81" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=200000000, R=2789.269135</title>
+<circle cx="344.86" cy="294.54" r="5" fill="#1f77b4"/>
+<title>n=3, C=30000, R=102.051251</title>
+<rect x="303.29" y="353.78" width="10" height="10" fill="#ff7f0e" transform="rotate(0 308.29 358.78)"/>
+<title>n=4, C=8000, R=5.493386</title>
+<polygon points="422.71,184.06 416.71,195.06 428.71,195.06" fill="#2ca02c"/>
+<title>n=5, C=500000, R=11821.827037</title>
+<rect x="594.72" y="143.29" width="10" height="10" fill="#d62728" transform="rotate(45 599.72 148.29)"/>
+<title>n=6, C=300000000, R=79037.843641</title>
+<polygon points="540.27,101.82 534.27,90.82 546.27,90.82" fill="#9467bd"/>
+<title>n=7, C=35000000, R=859624.366830</title>
+<line x1="767.47" y1="76.16" x2="779.47" y2="76.16" stroke="#8c564b" stroke-width="3"/>
+<line x1="773.47" y1="70.16" x2="773.47" y2="82.16" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=160000000000, R=2102554.616713</title>
+<polygon points="541.05,180.18 547.05,186.18 541.05,192.18 535.05,186.18" fill="#e377c2"/>
+<title>n=9, C=36000000, R=14103.223483</title>
+<circle cx="652.22" cy="146.75" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=2000000000, R=84751.870741</title>
+<circle cx="192.08" cy="372.85" r="5" fill="#1f77b4"/>
+<title>n=3, C=120, R=2.896456</title>
+<rect x="475.25" y="131.20" width="10" height="10" fill="#ff7f0e" transform="rotate(0 480.25 136.20)"/>
+<title>n=4, C=4000000, R=136980.538163</title>
+<polygon points="486.43,247.29 480.43,258.29 492.43,258.29" fill="#2ca02c"/>
+<title>n=5, C=5000000, R=666.448695</title>
+<rect x="448.11" y="212.11" width="10" height="10" fill="#d62728" transform="rotate(45 453.11 217.11)"/>
+<title>n=6, C=1500000, R=3454.476461</title>
+<polygon points="540.27,185.04 534.27,174.04 546.27,174.04" fill="#9467bd"/>
+<title>n=7, C=35000000, R=19515.288775</title>
+<line x1="518.79" y1="202.04" x2="530.79" y2="202.04" stroke="#8c564b" stroke-width="3"/>
+<line x1="524.79" y1="196.04" x2="524.79" y2="208.04" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=20000000, R=6856.114383</title>
+<polygon points="604.76,104.17 610.76,110.17 604.76,116.17 598.76,110.17" fill="#e377c2"/>
+<title>n=9, C=360000000, R=447508.783584</title>
+<circle cx="741.29" cy="93.35" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=50000000000, R=961712.879294</title>
+<circle cx="261.96" cy="457.06" r="5" fill="#1f77b4"/>
+<title>n=3, C=1500, R=0.062870</title>
+<rect x="392.36" y="200.51" width="10" height="10" fill="#ff7f0e" transform="rotate(0 397.36 205.51)"/>
+<title>n=4, C=200000, R=5853.951153</title>
+<polygon points="639.21,111.84 633.21,122.84 645.21,122.84" fill="#2ca02c"/>
+<title>n=5, C=1250000000, R=315676.122660</title>
+<rect x="505.65" y="165.44" width="10" height="10" fill="#d62728" transform="rotate(45 510.65 170.44)"/>
+<title>n=6, C=12000000, R=28862.403631</title>
+<polygon points="489.56,174.65 483.56,163.65 495.56,163.65" fill="#9467bd"/>
+<title>n=7, C=5600000, R=31313.507020</title>
+<line x1="557.15" y1="169.68" x2="569.15" y2="169.68" stroke="#8c564b" stroke-width="3"/>
+<line x1="563.15" y1="163.68" x2="563.15" y2="175.68" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=80000000, R=29867.638632</title>
+<polygon points="630.12,110.33 636.12,116.33 630.12,122.33 624.12,116.33" fill="#e377c2"/>
+<title>n=9, C=900000000, R=338187.082830</title>
+<circle cx="543.97" cy="115.91" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=40000000, R=344692.678391</title>
+<circle cx="408.57" cy="180.55" r="5" fill="#1f77b4"/>
+<title>n=3, C=300000, R=18216.763998</title>
+<rect x="621.86" y="118.94" width="10" height="10" fill="#ff7f0e" transform="rotate(0 626.86 123.94)"/>
+<title>n=4, C=800000000, R=239251.485456</title>
+<polygon points="511.78,150.72 505.78,161.72 517.78,161.72" fill="#2ca02c"/>
+<title>n=5, C=12500000, R=53858.293279</title>
+<rect x="486.47" y="263.46" width="10" height="10" fill="#d62728" transform="rotate(45 491.47 268.46)"/>
+<title>n=6, C=6000000, R=334.178707</title>
+<polygon points="584.81,140.07 578.81,129.07 590.81,129.07" fill="#9467bd"/>
+<title>n=7, C=175000000, R=150906.754941</title>
+<line x1="646.22" y1="159.40" x2="658.22" y2="159.40" stroke="#8c564b" stroke-width="3"/>
+<line x1="652.22" y1="153.40" x2="652.22" y2="165.40" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=2000000000, R=47690.348140</title>
+<polygon points="668.48,112.24 674.48,118.24 668.48,124.24 662.48,118.24" fill="#e377c2"/>
+<title>n=9, C=3600000000, R=310032.298562</title>
+<circle cx="741.29" cy="100.22" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=50000000000, R=703696.408882</title>
+<circle cx="472.29" cy="137.11" r="5" fill="#1f77b4"/>
+<title>n=3, C=3000000, R=131441.082068</title>
+<rect x="156.68" y="594.62" width="10" height="10" fill="#ff7f0e" transform="rotate(0 161.68 599.62)"/>
+<title>n=4, C=40, R=0.000096</title>
+<polygon points="295.28,360.86 289.28,371.86 301.28,371.86" fill="#2ca02c"/>
+<title>n=5, C=5000, R=3.804681</title>
+<rect x="741.33" y="87.70" width="10" height="10" fill="#d62728" transform="rotate(45 746.33 92.70)"/>
+<title>n=6, C=60000000000, R=990627.637245</title>
+<polygon points="616.99,136.50 610.99,125.50 622.99,125.50" fill="#9467bd"/>
+<title>n=7, C=560000000, R=177488.240789</title>
+<line x1="474.25" y1="177.23" x2="486.25" y2="177.23" stroke="#8c564b" stroke-width="3"/>
+<line x1="480.25" y1="171.23" x2="480.25" y2="183.23" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=4000000, R=21190.359693</title>
+<polygon points="776.73,67.60 782.73,73.60 776.73,79.60 770.73,73.60" fill="#e377c2"/>
+<title>n=9, C=180000000000, R=2361696.825013</title>
+<circle cx="607.68" cy="112.87" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=400000000, R=395870.903628</title>
+<circle cx="109.18" cy="609.24" r="5" fill="#1f77b4"/>
+<title>n=3, C=6, R=0.000062</title>
+<rect x="367.00" y="240.03" width="10" height="10" fill="#ff7f0e" transform="rotate(0 372.00 245.03)"/>
+<title>n=4, C=80000, R=970.269841</title>
+<polygon points="550.14,220.03 544.14,231.03 556.14,231.03" fill="#2ca02c"/>
+<title>n=5, C=50000000, R=2302.594891</title>
+<rect x="486.47" y="193.04" width="10" height="10" fill="#d62728" transform="rotate(45 491.47 198.04)"/>
+<title>n=6, C=6000000, R=8222.771876</title>
+<polygon points="323.77,274.66 317.77,263.66 329.77,263.66" fill="#9467bd"/>
+<title>n=7, C=14000, R=331.191277</title>
+<line x1="518.79" y1="202.84" x2="530.79" y2="202.84" stroke="#8c564b" stroke-width="3"/>
+<line x1="524.79" y1="196.84" x2="524.79" y2="208.84" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=20000000, R=6609.826539</title>
+<polygon points="649.30,66.85 655.30,72.85 649.30,78.85 643.30,72.85" fill="#e377c2"/>
+<title>n=9, C=1800000000, R=2443382.077735</title>
+<circle cx="652.22" cy="91.06" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=2000000000, R=1067497.280582</title>
+<circle cx="172.90" cy="593.47" r="5" fill="#1f77b4"/>
+<title>n=3, C=60, R=0.000127</title>
+<rect x="303.29" y="278.83" width="10" height="10" fill="#ff7f0e" transform="rotate(0 308.29 283.83)"/>
+<title>n=4, C=8000, R=166.116381</title>
+<polygon points="314.46,316.11 308.46,327.11 320.46,327.11" fill="#2ca02c"/>
+<title>n=5, C=10000, R=29.128616</title>
+<rect x="461.12" y="233.89" width="10" height="10" fill="#d62728" transform="rotate(45 466.12 238.89)"/>
+<title>n=6, C=2400000, R=1282.516806</title>
+<polygon points="565.63,104.75 559.63,93.75 571.63,93.75" fill="#9467bd"/>
+<title>n=7, C=87500000, R=752401.407237</title>
+<line x1="627.04" y1="125.21" x2="639.04" y2="125.21" stroke="#8c564b" stroke-width="3"/>
+<line x1="633.04" y1="119.21" x2="633.04" y2="131.21" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=1000000000, R=225839.140376</title>
+<polygon points="630.12,145.95 636.12,151.95 630.12,157.95 624.12,151.95" fill="#e377c2"/>
+<title>n=9, C=900000000, R=66923.008106</title>
+<circle cx="646.04" cy="133.40" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=1600000000, R=155613.446866</title>
+<circle cx="300.33" cy="292.12" r="5" fill="#1f77b4"/>
+<title>n=3, C=6000, R=113.918341</title>
+<rect x="449.90" y="263.87" width="10" height="10" fill="#ff7f0e" transform="rotate(0 454.90 268.87)"/>
+<title>n=4, C=1600000, R=328.043355</title>
+<polygon points="441.89,223.96 435.89,234.96 447.89,234.96" fill="#2ca02c"/>
+<title>n=5, C=1000000, R=1925.823295</title>
+<rect x="422.76" y="183.56" width="10" height="10" fill="#d62728" transform="rotate(45 427.76 188.56)"/>
+<title>n=6, C=600000, R=12657.879463</title>
+<polygon points="636.17,150.22 630.17,139.22 642.17,139.22" fill="#9467bd"/>
+<title>n=7, C=1120000000, R=95087.621507</title>
+<line x1="690.75" y1="88.43" x2="702.75" y2="88.43" stroke="#8c564b" stroke-width="3"/>
+<line x1="696.75" y1="82.43" x2="696.75" y2="94.43" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=10000000000, R=1202991.458766</title>
+<polygon points="713.01,78.66 719.01,84.66 713.01,90.66 707.01,84.66" fill="#e377c2"/>
+<title>n=9, C=18000000000, R=1427944.181521</title>
+<circle cx="785.82" cy="70.03" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=250000000000, R=2777665.490699</title>
+<circle cx="389.39" cy="228.78" r="5" fill="#1f77b4"/>
+<title>n=3, C=150000, R=2031.300458</title>
+<rect x="264.93" y="562.33" width="10" height="10" fill="#ff7f0e" transform="rotate(0 269.93 567.33)"/>
+<title>n=4, C=2000, R=0.000417</title>
+<polygon points="403.53,262.29 397.53,273.29 409.53,273.29" fill="#2ca02c"/>
+<title>n=5, C=250000, R=336.865693</title>
+<rect x="722.15" y="74.39" width="10" height="10" fill="#d62728" transform="rotate(45 727.15 79.39)"/>
+<title>n=6, C=30000000000, R=1815134.762678</title>
+<polygon points="470.38,208.12 464.38,197.12 476.38,197.12" fill="#9467bd"/>
+<title>n=7, C=2800000, R=6832.391155</title>
+<line x1="742.12" y1="88.01" x2="754.12" y2="88.01" stroke="#8c564b" stroke-width="3"/>
+<line x1="748.12" y1="82.01" x2="748.12" y2="94.01" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=64000000000, R=1226042.314890</title>
+<polygon points="515.70,200.75 521.70,206.75 515.70,212.75 509.70,206.75" fill="#e377c2"/>
+<title>n=9, C=14400000, R=5533.398945</title>
+<circle cx="607.68" cy="166.17" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=400000000, R=35046.198986</title>
+<circle cx="370.21" cy="370.43" r="5" fill="#1f77b4"/>
+<title>n=3, C=75000, R=3.234306</title>
+<rect x="436.89" y="249.65" width="10" height="10" fill="#ff7f0e" transform="rotate(0 441.89 254.65)"/>
+<title>n=4, C=1000000, R=626.296826</title>
+<polygon points="467.24,152.83 461.24,163.83 473.24,163.83" fill="#2ca02c"/>
+<title>n=5, C=2500000, R=48938.470865</title>
+<rect x="575.54" y="166.43" width="10" height="10" fill="#d62728" transform="rotate(45 580.54 171.43)"/>
+<title>n=6, C=150000000, R=27585.780045</title>
+<polygon points="521.09,161.71 515.09,150.71 527.09,150.71" fill="#9467bd"/>
+<title>n=7, C=17500000, R=56388.831841</title>
+<line x1="518.79" y1="205.26" x2="530.79" y2="205.26" stroke="#8c564b" stroke-width="3"/>
+<line x1="524.79" y1="199.26" x2="524.79" y2="211.26" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=20000000, R=5922.506124</title>
+<polygon points="623.95,114.23 629.95,120.23 623.95,126.23 617.95,120.23" fill="#e377c2"/>
+<title>n=9, C=720000000, R=283256.527108</title>
+<circle cx="671.40" cy="81.05" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=4000000000, R=1682643.213642</title>
+<circle cx="198.25" cy="571.25" r="5" fill="#1f77b4"/>
+<title>n=3, C=150, R=0.000349</title>
+<rect x="284.11" y="262.28" width="10" height="10" fill="#ff7f0e" transform="rotate(0 289.11 267.28)"/>
+<title>n=4, C=4000, R=352.571716</title>
+<polygon points="467.24,259.47 461.24,270.47 473.24,270.47" fill="#2ca02c"/>
+<title>n=5, C=2500000, R=382.977639</title>
+<rect x="607.73" y="99.73" width="10" height="10" fill="#d62728" transform="rotate(45 612.73 104.73)"/>
+<title>n=6, C=480000000, R=573313.557389</title>
+<polygon points="501.91,276.08 495.91,265.08 507.91,265.08" fill="#9467bd"/>
+<title>n=7, C=8750000, R=310.509511</title>
+<line x1="448.90" y1="174.86" x2="460.90" y2="174.86" stroke="#8c564b" stroke-width="3"/>
+<line x1="454.90" y1="168.86" x2="454.90" y2="180.86" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=1600000, R=23605.521921</title>
+<polygon points="789.74,65.44 795.74,71.44 789.74,77.44 783.74,71.44" fill="#e377c2"/>
+<title>n=9, C=288000000000, R=2605357.847859</title>
+<circle cx="760.47" cy="75.70" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=100000000000, R=2146151.949196</title>
+<circle cx="281.14" cy="421.57" r="5" fill="#1f77b4"/>
+<title>n=3, C=3000, R=0.315882</title>
+<rect x="430.72" y="172.25" width="10" height="10" fill="#ff7f0e" transform="rotate(0 435.72 177.25)"/>
+<title>n=4, C=800000, R=21176.286793</title>
+<polygon points="524.79,212.55 518.79,223.55 530.79,223.55" fill="#2ca02c"/>
+<title>n=5, C=20000000, R=3236.008170</title>
+<rect x="569.37" y="121.55" width="10" height="10" fill="#d62728" transform="rotate(45 574.37 126.55)"/>
+<title>n=6, C=120000000, R=212478.201362</title>
+<polygon points="629.34,196.90 623.34,185.90 635.34,185.90" fill="#9467bd"/>
+<title>n=7, C=875000000, R=11378.861867</title>
+<line x1="321.47" y1="259.09" x2="333.47" y2="259.09" stroke="#8c564b" stroke-width="3"/>
+<line x1="327.47" y1="253.09" x2="327.47" y2="265.09" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=16000, R=511.846325</title>
+<polygon points="591.76,67.54 597.76,73.54 591.76,79.54 585.76,73.54" fill="#e377c2"/>
+<title>n=9, C=225000000, R=2367998.224372</title>
+<circle cx="613.86" cy="168.62" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=500000000, R=31354.628639</title>
+<circle cx="217.43" cy="364.16" r="5" fill="#1f77b4"/>
+<title>n=3, C=300, R=4.301455</title>
+<rect x="456.07" y="237.77" width="10" height="10" fill="#ff7f0e" transform="rotate(0 461.07 242.77)"/>
+<title>n=4, C=2000000, R=1075.337167</title>
+<polygon points="613.86,85.40 607.86,96.40 619.86,96.40" fill="#2ca02c"/>
+<title>n=5, C=500000000, R=1051145.729459</title>
+<rect x="633.08" y="146.79" width="10" height="10" fill="#d62728" transform="rotate(45 638.08 151.79)"/>
+<title>n=6, C=1200000000, R=67406.700085</title>
+<polygon points="438.20,266.04 432.20,255.04 444.20,255.04" fill="#9467bd"/>
+<title>n=7, C=875000, R=490.152367</title>
+<line x1="563.32" y1="152.62" x2="575.32" y2="152.62" stroke="#8c564b" stroke-width="3"/>
+<line x1="569.32" y1="146.62" x2="569.32" y2="158.62" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=100000000, R=64895.315850</title>
+<polygon points="502.69,116.32 508.69,122.32 502.69,128.32 496.69,122.32" fill="#e377c2"/>
+<title>n=9, C=9000000, R=257477.768791</title>
+<circle cx="709.76" cy="116.70" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=16000000000, R=332484.806101</title>
+<circle cx="261.96" cy="310.17" r="5" fill="#1f77b4"/>
+<title>n=3, C=1500, R=50.119071</title>
+<rect x="258.75" y="533.17" width="10" height="10" fill="#ff7f0e" transform="rotate(0 263.75 538.17)"/>
+<title>n=4, C=1600, R=0.001571</title>
+<polygon points="524.79,151.53 518.79,162.53 530.79,162.53" fill="#2ca02c"/>
+<title>n=5, C=20000000, R=51923.513003</title>
+<rect x="766.68" y="72.83" width="10" height="10" fill="#d62728" transform="rotate(45 771.68 77.83)"/>
+<title>n=6, C=150000000000, R=1948234.819318</title>
+<polygon points="623.17,115.07 617.17,104.07 629.17,104.07" fill="#9467bd"/>
+<title>n=7, C=700000000, R=470468.068326</title>
+<line x1="620.86" y1="103.08" x2="632.86" y2="103.08" stroke="#8c564b" stroke-width="3"/>
+<line x1="626.86" y1="97.08" x2="626.86" y2="109.08" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=800000000, R=617822.481486</title>
+<polygon points="713.01,78.56 719.01,84.56 713.01,90.56 707.01,84.56" fill="#e377c2"/>
+<title>n=9, C=18000000000, R=1434746.546358</title>
+<circle cx="652.22" cy="82.92" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=2000000000, R=1545604.791973</title>
+<circle cx="128.36" cy="612.27" r="5" fill="#1f77b4"/>
+<title>n=3, C=12, R=0.000054</title>
+<rect x="195.04" y="530.58" width="10" height="10" fill="#ff7f0e" transform="rotate(0 200.04 535.58)"/>
+<title>n=4, C=160, R=0.001768</title>
+<polygon points="594.67,182.92 588.67,193.92 600.67,193.92" fill="#2ca02c"/>
+<title>n=5, C=250000000, R=12454.357740</title>
+<rect x="594.72" y="126.99" width="10" height="10" fill="#d62728" transform="rotate(45 599.72 131.99)"/>
+<title>n=6, C=300000000, R=165912.581558</title>
+<polygon points="629.34,145.91 623.34,134.91 635.34,134.91" fill="#9467bd"/>
+<title>n=7, C=875000000, R=115704.956356</title>
+<line x1="589.33" y1="147.07" x2="601.33" y2="147.07" stroke="#8c564b" stroke-width="3"/>
+<line x1="595.33" y1="141.07" x2="595.33" y2="153.07" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=256000000, R=83529.339640</title>
+<polygon points="528.04,257.63 534.04,263.63 528.04,269.63 522.04,263.63" fill="#e377c2"/>
+<title>n=9, C=22500000, R=416.249824</title>
+<circle cx="569.32" cy="208.90" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=100000000, R=5017.769404</title>
+<circle cx="192.08" cy="563.08" r="5" fill="#1f77b4"/>
+<title>n=3, C=120, R=0.000506</title>
+<rect x="367.00" y="264.85" width="10" height="10" fill="#ff7f0e" transform="rotate(0 372.00 269.85)"/>
+<title>n=4, C=80000, R=313.784164</title>
+<polygon points="339.81,383.03 333.81,394.03 345.81,394.03" fill="#2ca02c"/>
+<title>n=5, C=25000, R=1.388001</title>
+<rect x="511.82" y="184.18" width="10" height="10" fill="#d62728" transform="rotate(45 516.82 189.18)"/>
+<title>n=6, C=15000000, R=12307.871578</title>
+<polygon points="603.99,76.08 597.99,65.08 609.99,65.08" fill="#9467bd"/>
+<title>n=7, C=350000000, R=2772443.040923</title>
+<line x1="627.04" y1="129.36" x2="639.04" y2="129.36" stroke="#8c564b" stroke-width="3"/>
+<line x1="633.04" y1="123.36" x2="633.04" y2="135.36" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=1000000000, R=186943.946529</title>
+<polygon points="719.19,114.50 725.19,120.50 719.19,126.50 713.19,120.50" fill="#e377c2"/>
+<title>n=9, C=22500000000, R=279745.828840</title>
+<circle cx="461.07" cy="288.30" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=2000000, R=135.543238</title>
+<circle cx="261.96" cy="272.63" r="5" fill="#1f77b4"/>
+<title>n=3, C=1500, R=276.440278</title>
+<rect x="500.61" y="236.70" width="10" height="10" fill="#ff7f0e" transform="rotate(0 505.61 241.70)"/>
+<title>n=4, C=10000000, R=1128.591009</title>
+<polygon points="339.81,367.68 333.81,378.68 345.81,378.68" fill="#2ca02c"/>
+<title>n=5, C=25000, R=2.789785</title>
+<rect x="403.57" y="197.26" width="10" height="10" fill="#d62728" transform="rotate(45 408.57 202.26)"/>
+<title>n=6, C=300000, R=6786.479620</title>
+<polygon points="476.56,260.32 470.56,249.32 482.56,249.32" fill="#9467bd"/>
+<title>n=7, C=3500000, R=635.900672</title>
+<line x1="620.86" y1="150.42" x2="632.86" y2="150.42" stroke="#8c564b" stroke-width="3"/>
+<line x1="626.86" y1="144.42" x2="626.86" y2="156.42" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=800000000, R=71745.723461</title>
+<polygon points="560.23,233.59 566.23,239.59 560.23,245.59 554.23,239.59" fill="#e377c2"/>
+<title>n=9, C=72000000, R=1242.462577</title>
+<circle cx="696.75" cy="74.76" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=10000000000, R=2240085.431085</title>
+<circle cx="408.57" cy="211.83" r="5" fill="#1f77b4"/>
+<title>n=3, C=300000, R=4392.552137</title>
+<rect x="226.57" y="575.42" width="10" height="10" fill="#ff7f0e" transform="rotate(0 231.57 580.42)"/>
+<title>n=4, C=500, R=0.000230</title>
+<polygon points="530.96,168.93 524.96,179.93 536.96,179.93" fill="#2ca02c"/>
+<title>n=5, C=25000000, R=23524.797812</title>
+<rect x="633.08" y="93.03" width="10" height="10" fill="#d62728" transform="rotate(45 638.08 98.03)"/>
+<title>n=6, C=1200000000, R=777576.812994</title>
+<polygon points="540.27,224.49 534.27,213.49 546.27,213.49" fill="#9467bd"/>
+<title>n=7, C=35000000, R=3244.200405</title>
+<line x1="742.12" y1="77.48" x2="754.12" y2="77.48" stroke="#8c564b" stroke-width="3"/>
+<line x1="748.12" y1="71.48" x2="748.12" y2="83.48" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=64000000000, R=1979412.019153</title>
+<polygon points="591.76,110.45 597.76,116.45 591.76,122.45 585.76,116.45" fill="#e377c2"/>
+<title>n=9, C=225000000, R=336344.991122</title>
+<circle cx="722.10" cy="120.97" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=25000000000, R=273837.749717</title>
+<circle cx="261.96" cy="553.37" r="5" fill="#1f77b4"/>
+<title>n=3, C=1500, R=0.000787</title>
+<rect x="449.90" y="235.91" width="10" height="10" fill="#ff7f0e" transform="rotate(0 454.90 240.91)"/>
+<title>n=4, C=1600000, R=1170.292306</title>
+<polygon points="550.14,98.47 544.14,109.47 556.14,109.47" fill="#2ca02c"/>
+<title>n=5, C=50000000, R=579883.355517</title>
+<rect x="276.14" y="527.93" width="10" height="10" fill="#d62728" transform="rotate(45 281.14 532.93)"/>
+<title>n=6, C=3000, R=0.001994</title>
+<polygon points="514.92,156.51 508.92,145.51 520.92,145.51" fill="#9467bd"/>
+<title>n=7, C=14000000, R=71435.422122</title>
+<line x1="595.51" y1="193.18" x2="607.51" y2="193.18" stroke="#8c564b" stroke-width="3"/>
+<line x1="601.51" y1="187.18" x2="601.51" y2="199.18" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=320000000, R=10256.871578</title>
+<polygon points="610.94,149.79 616.94,155.79 610.94,161.79 604.94,155.79" fill="#e377c2"/>
+<title>n=9, C=450000000, R=56185.310292</title>
+<circle cx="709.76" cy="117.01" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=16000000000, R=327905.965191</title>
+<circle cx="319.51" cy="368.42" r="5" fill="#1f77b4"/>
+<title>n=3, C=12000, R=3.543461</title>
+<rect x="386.18" y="204.81" width="10" height="10" fill="#ff7f0e" transform="rotate(0 391.18 209.81)"/>
+<title>n=4, C=160000, R=4815.327851</title>
+<polygon points="359.00,357.13 353.00,368.13 365.00,368.13" fill="#2ca02c"/>
+<title>n=5, C=50000, R=4.507746</title>
+<rect x="524.83" y="151.58" width="10" height="10" fill="#d62728" transform="rotate(45 529.83 156.58)"/>
+<title>n=6, C=24000000, R=54203.950895</title>
+<polygon points="642.35,167.58 636.35,156.58 648.35,156.58" fill="#9467bd"/>
+<title>n=7, C=1400000000, R=43185.410552</title>
+<line x1="748.29" y1="91.83" x2="760.29" y2="91.83" stroke="#8c564b" stroke-width="3"/>
+<line x1="754.29" y1="85.83" x2="754.29" y2="97.83" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=80000000000, R=1030743.044982</title>
+<polygon points="566.40,118.40 572.40,124.40 566.40,130.40 560.40,124.40" fill="#e377c2"/>
+<title>n=9, C=90000000, R=234262.186118</title>
+<circle cx="569.32" cy="119.93" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=100000000, R=287137.680230</title>
+<circle cx="300.33" cy="287.19" r="5" fill="#1f77b4"/>
+<title>n=3, C=6000, R=142.548331</title>
+<rect x="411.54" y="182.65" width="10" height="10" fill="#ff7f0e" transform="rotate(0 416.54 187.65)"/>
+<title>n=4, C=400000, R=13192.734224</title>
+<polygon points="550.14,185.52 544.14,196.52 556.14,196.52" fill="#2ca02c"/>
+<title>n=5, C=50000000, R=11061.649589</title>
+<rect x="486.47" y="156.73" width="10" height="10" fill="#d62728" transform="rotate(45 491.47 161.73)"/>
+<title>n=6, C=6000000, R=42888.852688</title>
+<polygon points="731.42,76.04 725.42,65.04 737.42,65.04" fill="#9467bd"/>
+<title>n=7, C=35000000000, R=2776362.201405</title>
+<line x1="690.75" y1="114.57" x2="702.75" y2="114.57" stroke="#8c564b" stroke-width="3"/>
+<line x1="696.75" y1="108.57" x2="696.75" y2="120.57" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=10000000000, R=366322.379829</title>
+<polygon points="795.91,64.90 801.91,70.90 795.91,76.90 789.91,70.90" fill="#e377c2"/>
+<title>n=9, C=360000000000, R=2670756.297702</title>
+<circle cx="633.04" cy="127.70" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=1000000000, R=201605.994160</title>
+<circle cx="344.86" cy="236.83" r="5" fill="#1f77b4"/>
+<title>n=3, C=30000, R=1408.767783</title>
+<rect x="481.43" y="230.10" width="10" height="10" fill="#ff7f0e" transform="rotate(0 486.43 235.10)"/>
+<title>n=4, C=5000000, R=1524.199301</title>
+<polygon points="575.49,108.93 569.49,119.93 581.49,119.93" fill="#2ca02c"/>
+<title>n=5, C=125000000, R=360461.567366</title>
+<rect x="511.82" y="183.81" width="10" height="10" fill="#d62728" transform="rotate(45 516.82 188.81)"/>
+<title>n=6, C=15000000, R=12514.913533</title>
+<polygon points="572.46,148.55 566.46,137.55 578.46,137.55" fill="#9467bd"/>
+<title>n=7, C=112000000, R=102608.933782</title>
+<line x1="410.54" y1="260.34" x2="422.54" y2="260.34" stroke="#8c564b" stroke-width="3"/>
+<line x1="416.54" y1="254.34" x2="416.54" y2="266.34" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=400000, R=483.434266</title>
+<polygon points="508.86,209.87 514.86,215.87 508.86,221.87 502.86,215.87" fill="#e377c2"/>
+<title>n=9, C=11250000, R=3655.127825</title>
+<circle cx="696.75" cy="95.95" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=10000000000, R=854445.484539</title>
+<circle cx="306.50" cy="262.39" r="5" fill="#1f77b4"/>
+<title>n=3, C=7500, R=440.508159</title>
+<rect x="411.54" y="264.45" width="10" height="10" fill="#ff7f0e" transform="rotate(0 416.54 269.45)"/>
+<title>n=4, C=400000, R=319.528813</title>
+<polygon points="511.78,139.31 505.78,150.31 517.78,150.31" fill="#2ca02c"/>
+<title>n=5, C=12500000, R=90520.860765</title>
+<rect x="505.65" y="226.54" width="10" height="10" fill="#d62728" transform="rotate(45 510.65 231.54)"/>
+<title>n=6, C=12000000, R=1792.217644</title>
+<polygon points="495.74,228.05 489.74,217.05 501.74,217.05" fill="#9467bd"/>
+<title>n=7, C=7000000, R=2758.680230</title>
+<line x1="703.76" y1="106.80" x2="715.76" y2="106.80" stroke="#8c564b" stroke-width="3"/>
+<line x1="709.76" y1="100.80" x2="709.76" y2="112.80" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=16000000000, R=521790.257036</title>
+<polygon points="668.48,94.60 674.48,100.60 668.48,106.60 662.48,100.60" fill="#e377c2"/>
+<title>n=9, C=3600000000, R=691569.677378</title>
+<circle cx="671.40" cy="161.94" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=4000000000, R=42488.144678</title>
+<circle cx="153.71" cy="596.63" r="5" fill="#1f77b4"/>
+<title>n=3, C=30, R=0.000110</title>
+<rect x="220.39" y="370.10" width="10" height="10" fill="#ff7f0e" transform="rotate(0 225.39 375.10)"/>
+<title>n=4, C=400, R=2.614716</title>
+<polygon points="613.86,145.17 607.86,156.17 619.86,156.17" fill="#2ca02c"/>
+<title>n=5, C=500000000, R=69324.392172</title>
+<rect x="550.19" y="128.82" width="10" height="10" fill="#d62728" transform="rotate(45 555.19 133.82)"/>
+<title>n=6, C=60000000, R=152660.800944</title>
+<polygon points="616.99,174.46 610.99,163.46 622.99,163.46" fill="#9467bd"/>
+<title>n=7, C=560000000, R=31581.398137</title>
+<line x1="640.04" y1="110.30" x2="652.04" y2="110.30" stroke="#8c564b" stroke-width="3"/>
+<line x1="646.04" y1="104.30" x2="646.04" y2="116.30" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=1600000000, R=444989.422680</title>
+<polygon points="438.97,181.05 444.97,187.05 438.97,193.05 432.97,187.05" fill="#e377c2"/>
+<title>n=9, C=900000, R=13554.904144</title>
+<circle cx="690.58" cy="86.22" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=8000000000, R=1330068.388090</title>
+<circle cx="198.25" cy="574.28" r="5" fill="#1f77b4"/>
+<title>n=3, C=150, R=0.000304</title>
+<rect x="367.00" y="246.35" width="10" height="10" fill="#ff7f0e" transform="rotate(0 372.00 251.35)"/>
+<title>n=4, C=80000, R=727.631882</title>
+<polygon points="441.89,262.32 435.89,273.32 447.89,273.32" fill="#2ca02c"/>
+<title>n=5, C=1000000, R=336.352286</title>
+<rect x="441.94" y="225.25" width="10" height="10" fill="#d62728" transform="rotate(45 446.94 230.25)"/>
+<title>n=6, C=1200000, R=1900.428833</title>
+<polygon points="673.88,115.76 667.88,104.76 679.88,104.76" fill="#9467bd"/>
+<title>n=7, C=4375000000, R=455930.014454</title>
+<line x1="410.54" y1="287.94" x2="422.54" y2="287.94" stroke="#8c564b" stroke-width="3"/>
+<line x1="416.54" y1="281.94" x2="416.54" y2="293.94" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=400000, R=137.777715</title>
+<polygon points="782.90,71.48 788.90,77.48 782.90,83.48 776.90,77.48" fill="#e377c2"/>
+<title>n=9, C=225000000000, R=1979644.648398</title>
+<circle cx="633.04" cy="79.49" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=1000000000, R=1806563.466896</title>
+<circle cx="281.14" cy="288.62" r="5" fill="#1f77b4"/>
+<title>n=3, C=3000, R=133.621020</title>
+<rect x="519.79" y="206.35" width="10" height="10" fill="#ff7f0e" transform="rotate(0 524.79 211.35)"/>
+<title>n=4, C=20000000, R=4489.491914</title>
+<polygon points="384.35,263.77 378.35,274.77 390.35,274.77" fill="#2ca02c"/>
+<title>n=5, C=125000, R=314.889931</title>
+<rect x="575.54" y="68.83" width="10" height="10" fill="#d62728" transform="rotate(45 580.54 73.83)"/>
+<title>n=6, C=150000000, R=2337074.050685</title>
+<polygon points="387.49,274.99 381.49,263.99 393.49,263.99" fill="#9467bd"/>
+<title>n=7, C=140000, R=326.317247</title>
+<line x1="620.86" y1="80.21" x2="632.86" y2="80.21" stroke="#8c564b" stroke-width="3"/>
+<line x1="626.86" y1="74.21" x2="626.86" y2="86.21" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=800000000, R=1748728.833206</title>
+<polygon points="751.38,72.46 757.38,78.46 751.38,84.46 745.38,78.46" fill="#e377c2"/>
+<title>n=9, C=72000000000, R=1893249.787851</title>
+<circle cx="601.51" cy="119.85" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=320000000, R=288156.423235</title>
+<circle cx="344.86" cy="260.93" r="5" fill="#1f77b4"/>
+<title>n=3, C=30000, R=470.771885</title>
+<rect x="245.75" y="566.95" width="10" height="10" fill="#ff7f0e" transform="rotate(0 250.75 571.95)"/>
+<title>n=4, C=1000, R=0.000338</title>
+<polygon points="530.96,153.37 524.96,164.37 536.96,164.37" fill="#2ca02c"/>
+<title>n=5, C=25000000, R=47741.382041</title>
+<rect x="461.12" y="184.89" width="10" height="10" fill="#d62728" transform="rotate(45 466.12 189.89)"/>
+<title>n=6, C=2400000, R=11916.826540</title>
+<polygon points="686.88,115.16 680.88,104.16 692.88,104.16" fill="#9467bd"/>
+<title>n=7, C=7000000000, R=468674.548369</title>
+<line x1="601.68" y1="70.13" x2="613.68" y2="70.13" stroke="#8c564b" stroke-width="3"/>
+<line x1="607.68" y1="64.13" x2="607.68" y2="76.13" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=400000000, R=2765550.838357</title>
+<polygon points="662.31,139.09 668.31,145.09 662.31,151.09 656.31,145.09" fill="#e377c2"/>
+<title>n=9, C=2880000000, R=91405.275818</title>
+<circle cx="607.68" cy="148.01" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=400000000, R=80064.109258</title>
+<circle cx="255.79" cy="563.79" r="5" fill="#1f77b4"/>
+<title>n=3, C=1200, R=0.000490</title>
+<rect x="258.75" y="315.80" width="10" height="10" fill="#ff7f0e" transform="rotate(0 263.75 320.80)"/>
+<title>n=4, C=1600, R=30.910317</title>
+<polygon points="530.96,88.92 524.96,99.92 536.96,99.92" fill="#2ca02c"/>
+<title>n=5, C=25000000, R=895437.173802</title>
+<rect x="594.72" y="138.44" width="10" height="10" fill="#d62728" transform="rotate(45 599.72 143.44)"/>
+<title>n=6, C=300000000, R=98534.270303</title>
+<polygon points="514.92,241.34 508.92,230.34 520.92,230.34" fill="#9467bd"/>
+<title>n=7, C=14000000, R=1507.300413</title>
+<line x1="493.43" y1="269.01" x2="505.43" y2="269.01" stroke="#8c564b" stroke-width="3"/>
+<line x1="499.43" y1="263.01" x2="499.43" y2="275.01" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=8000000, R=326.017464</title>
+<polygon points="604.76,123.50 610.76,129.50 604.76,135.50 598.76,129.50" fill="#e377c2"/>
+<title>n=9, C=360000000, R=185742.114136</title>
+<circle cx="722.10" cy="119.14" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=25000000000, R=297613.528407</title>
+<circle cx="344.86" cy="373.48" r="5" fill="#1f77b4"/>
+<title>n=3, C=30000, R=2.815402</title>
+<rect x="494.43" y="173.80" width="10" height="10" fill="#ff7f0e" transform="rotate(0 499.43 178.80)"/>
+<title>n=4, C=8000000, R=19726.101323</title>
+<polygon points="231.57,557.08 225.57,568.08 237.57,568.08" fill="#2ca02c"/>
+<title>n=5, C=500, R=0.000506</title>
+<rect x="594.72" y="85.83" width="10" height="10" fill="#d62728" transform="rotate(45 599.72 90.83)"/>
+<title>n=6, C=300000000, R=1078842.418868</title>
+<polygon points="686.88,76.13 680.88,65.13 692.88,65.13" fill="#9467bd"/>
+<title>n=7, C=7000000000, R=2764895.845887</title>
+<line x1="557.15" y1="83.40" x2="569.15" y2="83.40" stroke="#8c564b" stroke-width="3"/>
+<line x1="563.15" y1="77.40" x2="563.15" y2="89.40" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=80000000, R=1512565.489267</title>
+<polygon points="604.76,64.89 610.76,70.89 604.76,76.89 598.76,70.89" fill="#e377c2"/>
+<title>n=9, C=360000000, R=2671638.729813</title>
+<circle cx="639.21" cy="135.00" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=1250000000, R=144683.961117</title>
+<circle cx="408.57" cy="238.30" r="5" fill="#1f77b4"/>
+<title>n=3, C=300000, R=1317.757206</title>
+<rect x="456.07" y="129.52" width="10" height="10" fill="#ff7f0e" transform="rotate(0 461.07 134.52)"/>
+<title>n=4, C=2000000, R=147881.360841</title>
+<polygon points="448.06,233.28 442.06,244.28 454.06,244.28" fill="#2ca02c"/>
+<title>n=5, C=1250000, R=1260.091419</title>
+<rect x="620.07" y="74.36" width="10" height="10" fill="#d62728" transform="rotate(45 625.07 79.36)"/>
+<title>n=6, C=750000000, R=1817313.803878</title>
+<polygon points="642.35,128.84 636.35,117.84 648.35,117.84" fill="#9467bd"/>
+<title>n=7, C=1400000000, R=251499.011300</title>
+<line x1="448.90" y1="239.81" x2="460.90" y2="239.81" stroke="#8c564b" stroke-width="3"/>
+<line x1="454.90" y1="233.81" x2="454.90" y2="245.81" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=1600000, R=1229.882532</title>
+<polygon points="566.40,144.13 572.40,150.13 566.40,156.13 560.40,150.13" fill="#e377c2"/>
+<title>n=9, C=90000000, R=72700.493195</title>
+<circle cx="652.22" cy="96.96" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=2000000000, R=815991.266560</title>
+<circle cx="370.21" cy="193.24" r="5" fill="#1f77b4"/>
+<title>n=3, C=75000, R=10230.531880</title>
+<rect x="392.36" y="260.05" width="10" height="10" fill="#ff7f0e" transform="rotate(0 397.36 265.05)"/>
+<title>n=4, C=200000, R=390.364156</title>
+<polygon points="613.86,70.35 607.86,81.35 619.86,81.35" fill="#2ca02c"/>
+<title>n=5, C=500000000, R=2083942.834892</title>
+<rect x="702.97" y="90.82" width="10" height="10" fill="#d62728" transform="rotate(45 707.97 95.82)"/>
+<title>n=6, C=15000000000, R=859507.450748</title>
+<polygon points="470.38,213.67 464.38,202.67 476.38,202.67" fill="#9467bd"/>
+<title>n=7, C=2800000, R=5306.943997</title>
+<line x1="576.33" y1="75.42" x2="588.33" y2="75.42" stroke="#8c564b" stroke-width="3"/>
+<line x1="582.33" y1="69.42" x2="582.33" y2="81.42" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=160000000, R=2174320.957693</title>
+<polygon points="636.29,176.50 642.29,182.50 636.29,188.50 630.29,182.50" fill="#e377c2"/>
+<title>n=9, C=1125000000, R=16677.006976</title>
+<circle cx="671.40" cy="160.50" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=4000000000, R=45355.201560</title>
+<circle cx="453.11" cy="136.46" r="5" fill="#1f77b4"/>
+<title>n=3, C=1500000, R=135352.740426</title>
+<rect x="538.97" y="160.04" width="10" height="10" fill="#ff7f0e" transform="rotate(0 543.97 165.04)"/>
+<title>n=4, C=40000000, R=36897.477611</title>
+<polygon points="384.35,230.97 378.35,241.97 390.35,241.97" fill="#2ca02c"/>
+<title>n=5, C=125000, R=1399.982585</title>
+<rect x="441.94" y="263.58" width="10" height="10" fill="#d62728" transform="rotate(45 446.94 268.58)"/>
+<title>n=6, C=1200000, R=332.320125</title>
+<polygon points="470.38,203.34 464.38,192.34 476.38,192.34" fill="#9467bd"/>
+<title>n=7, C=2800000, R=8488.081485</title>
+<line x1="570.15" y1="124.81" x2="582.15" y2="124.81" stroke="#8c564b" stroke-width="3"/>
+<line x1="576.15" y1="118.81" x2="576.15" y2="130.81" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=128000000, R=229984.228292</title>
+<polygon points="693.83,77.31 699.83,83.31 693.83,89.31 687.83,83.31" fill="#e377c2"/>
+<title>n=9, C=9000000000, R=1518452.433913</title>
+<circle cx="626.86" cy="179.57" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=800000000, R=19055.000795</title>
+<circle cx="153.71" cy="589.38" r="5" fill="#1f77b4"/>
+<title>n=3, C=30, R=0.000153</title>
+<rect x="175.86" y="451.94" width="10" height="10" fill="#ff7f0e" transform="rotate(0 180.86 456.94)"/>
+<title>n=4, C=80, R=0.063229</title>
+<polygon points="378.18,277.05 372.18,288.05 384.18,288.05" fill="#2ca02c"/>
+<title>n=5, C=100000, R=172.122978</title>
+<rect x="461.12" y="216.28" width="10" height="10" fill="#d62728" transform="rotate(45 466.12 221.28)"/>
+<title>n=6, C=2400000, R=2857.928668</title>
+<polygon points="578.63,163.64 572.63,152.64 584.63,152.64" fill="#9467bd"/>
+<title>n=7, C=140000000, R=51647.838516</title>
+<line x1="550.97" y1="169.21" x2="562.97" y2="169.21" stroke="#8c564b" stroke-width="3"/>
+<line x1="556.97" y1="163.21" x2="556.97" y2="175.21" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=64000000, R=30518.551341</title>
+<polygon points="706.84,88.54 712.84,94.54 706.84,100.54 700.84,94.54" fill="#e377c2"/>
+<title>n=9, C=14400000000, R=910962.969942</title>
+<circle cx="715.93" cy="70.29" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=20000000000, R=2745304.440567</title>
+<circle cx="236.61" cy="557.95" r="5" fill="#1f77b4"/>
+<title>n=3, C=600, R=0.000639</title>
+<rect x="411.54" y="213.60" width="10" height="10" fill="#ff7f0e" transform="rotate(0 416.54 218.60)"/>
+<title>n=4, C=400000, R=3228.102420</title>
+<polygon points="461.07,257.74 455.07,268.74 467.07,268.74" fill="#2ca02c"/>
+<title>n=5, C=2000000, R=414.206335</title>
+<rect x="550.19" y="138.07" width="10" height="10" fill="#d62728" transform="rotate(45 555.19 143.07)"/>
+<title>n=6, C=60000000, R=100213.328757</title>
+<polygon points="712.24,109.65 706.24,98.65 718.24,98.65" fill="#9467bd"/>
+<title>n=7, C=17500000000, R=602136.562284</title>
+<line x1="576.33" y1="159.47" x2="588.33" y2="159.47" stroke="#8c564b" stroke-width="3"/>
+<line x1="582.33" y1="153.47" x2="582.33" y2="165.47" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=160000000, R=47523.166890</title>
+<polygon points="706.84,65.06 712.84,71.06 706.84,77.06 700.84,71.06" fill="#e377c2"/>
+<title>n=9, C=14400000000, R=2650395.744998</title>
+<circle cx="677.57" cy="82.75" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=5000000000, R=1558055.720934</title>
+<circle cx="300.33" cy="271.11" r="5" fill="#1f77b4"/>
+<title>n=3, C=6000, R=296.315569</title>
+<rect x="558.15" y="178.44" width="10" height="10" fill="#ff7f0e" transform="rotate(0 563.15 183.44)"/>
+<title>n=4, C=80000000, R=15975.861403</title>
+<polygon points="620.03,85.15 614.03,96.15 626.03,96.15" fill="#2ca02c"/>
+<title>n=5, C=625000000, R=1063271.074613</title>
+<rect x="550.19" y="78.84" width="10" height="10" fill="#d62728" transform="rotate(45 555.19 83.84)"/>
+<title>n=6, C=60000000, R=1482483.742260</title>
+<polygon points="642.35,115.24 636.35,104.24 648.35,104.24" fill="#9467bd"/>
+<title>n=7, C=1400000000, R=466987.151145</title>
+<line x1="627.04" y1="80.43" x2="639.04" y2="80.43" stroke="#8c564b" stroke-width="3"/>
+<line x1="633.04" y1="74.43" x2="633.04" y2="86.43" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=1000000000, R=1730804.265288</title>
+<polygon points="560.23,165.50 566.23,171.50 560.23,177.50 554.23,171.50" fill="#e377c2"/>
+<title>n=9, C=72000000, R=27497.695056</title>
+<circle cx="658.39" cy="79.91" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=2500000000, R=1772148.309797</title>
+<circle cx="344.86" cy="258.65" r="5" fill="#1f77b4"/>
+<title>n=3, C=30000, R=522.207248</title>
+<rect x="367.00" y="278.11" width="10" height="10" fill="#ff7f0e" transform="rotate(0 372.00 283.11)"/>
+<title>n=4, C=80000, R=171.624888</title>
+<polygon points="530.96,152.04 524.96,163.04 536.96,163.04" fill="#2ca02c"/>
+<title>n=5, C=25000000, R=50735.002813</title>
+<rect x="531.00" y="218.52" width="10" height="10" fill="#d62728" transform="rotate(45 536.00 223.52)"/>
+<title>n=6, C=30000000, R=2581.126033</title>
+<polygon points="686.88,89.51 680.88,78.51 692.88,78.51" fill="#9467bd"/>
+<title>n=7, C=7000000000, R=1504445.224859</title>
+<line x1="487.26" y1="233.57" x2="499.26" y2="233.57" stroke="#8c564b" stroke-width="3"/>
+<line x1="493.26" y1="227.57" x2="493.26" y2="239.57" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=6400000, R=1633.707280</title>
+<polygon points="610.94,84.05 616.94,90.05 610.94,96.05 604.94,90.05" fill="#e377c2"/>
+<title>n=9, C=450000000, R=1117776.921601</title>
+<circle cx="652.22" cy="122.89" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=2000000000, R=250949.227402</title>
+<circle cx="217.43" cy="575.09" r="5" fill="#1f77b4"/>
+<title>n=3, C=300, R=0.000293</title>
+<rect x="303.29" y="288.67" width="10" height="10" fill="#ff7f0e" transform="rotate(0 308.29 293.67)"/>
+<title>n=4, C=8000, R=106.173745</title>
+<polygon points="613.86,69.59 607.86,80.59 619.86,80.59" fill="#2ca02c"/>
+<title>n=5, C=500000000, R=2156899.139119</title>
+<rect x="441.94" y="273.80" width="10" height="10" fill="#d62728" transform="rotate(45 446.94 278.80)"/>
+<title>n=6, C=1200000, R=208.809004</title>
+<polygon points="559.45,184.85 553.45,173.85 565.45,173.85" fill="#9467bd"/>
+<title>n=7, C=70000000, R=19687.079469</title>
+<line x1="748.29" y1="75.07" x2="760.29" y2="75.07" stroke="#8c564b" stroke-width="3"/>
+<line x1="754.29" y1="69.07" x2="754.29" y2="81.07" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=80000000000, R=2208702.690445</title>
+<polygon points="713.01,107.65 719.01,113.65 713.01,119.65 707.01,113.65" fill="#e377c2"/>
+<title>n=9, C=18000000000, R=382112.390565</title>
+<circle cx="613.86" cy="110.62" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=500000000, R=438390.945850</title>
+<circle cx="364.04" cy="275.58" r="5" fill="#1f77b4"/>
+<title>n=3, C=60000, R=241.740579</title>
+<rect x="456.07" y="209.24" width="10" height="10" fill="#ff7f0e" transform="rotate(0 461.07 214.24)"/>
+<title>n=4, C=2000000, R=3936.222859</title>
+<polygon points="333.64,223.10 327.64,234.10 339.64,234.10" fill="#2ca02c"/>
+<title>n=5, C=20000, R=2002.590305</title>
+<rect x="531.00" y="194.59" width="10" height="10" fill="#d62728" transform="rotate(45 536.00 199.59)"/>
+<title>n=6, C=30000000, R=7664.077342</title>
+<polygon points="508.74,259.02 502.74,248.02 514.74,248.02" fill="#9467bd"/>
+<title>n=7, C=11200000, R=674.621627</title>
+<line x1="537.97" y1="134.66" x2="549.97" y2="134.66" stroke="#8c564b" stroke-width="3"/>
+<line x1="543.97" y1="128.66" x2="543.97" y2="140.66" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=40000000, R=146887.801194</title>
+<polygon points="655.47,95.02 661.47,101.02 655.47,107.02 649.47,101.02" fill="#e377c2"/>
+<title>n=9, C=2250000000, R=678446.596547</title>
+<circle cx="652.22" cy="108.30" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=2000000000, R=487284.606342</title>
+<circle cx="408.57" cy="227.50" r="5" fill="#1f77b4"/>
+<title>n=3, C=300000, R=2153.857755</title>
+<rect x="475.25" y="117.06" width="10" height="10" fill="#ff7f0e" transform="rotate(0 480.25 122.06)"/>
+<title>n=4, C=4000000, R=260634.669351</title>
+<polygon points="467.24,245.00 461.24,256.00 473.24,256.00" fill="#2ca02c"/>
+<title>n=5, C=2500000, R=739.617355</title>
+<rect x="486.47" y="165.05" width="10" height="10" fill="#d62728" transform="rotate(45 491.47 170.05)"/>
+<title>n=6, C=6000000, R=29374.788854</title>
+<polygon points="648.52,77.86 642.52,66.86 654.52,66.86" fill="#9467bd"/>
+<title>n=7, C=1750000000, R=2556719.130893</title>
+<line x1="620.86" y1="116.82" x2="632.86" y2="116.82" stroke="#8c564b" stroke-width="3"/>
+<line x1="626.86" y1="110.82" x2="626.86" y2="122.82" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=800000000, R=330683.511620</title>
+<polygon points="585.58,68.59 591.58,74.59 585.58,80.59 579.58,74.59" fill="#e377c2"/>
+<title>n=9, C=180000000, R=2257553.578168</title>
+<circle cx="613.86" cy="155.43" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=500000000, R=57132.188376</title>
+<circle cx="281.14" cy="258.40" r="5" fill="#1f77b4"/>
+<title>n=3, C=3000, R=528.223703</title>
+<rect x="201.21" y="452.22" width="10" height="10" fill="#ff7f0e" transform="rotate(0 206.21 457.22)"/>
+<title>n=4, C=200, R=0.062424</title>
+<polygon points="511.78,128.58 505.78,139.58 517.78,139.58" fill="#2ca02c"/>
+<title>n=5, C=12500000, R=147443.851207</title>
+<rect x="677.62" y="114.34" width="10" height="10" fill="#d62728" transform="rotate(45 682.62 119.34)"/>
+<title>n=6, C=6000000000, R=294946.224475</title>
+<polygon points="642.35,98.08 636.35,87.08 648.35,87.08" fill="#9467bd"/>
+<title>n=7, C=1400000000, R=1018867.718448</title>
+<line x1="570.15" y1="219.40" x2="582.15" y2="219.40" stroke="#8c564b" stroke-width="3"/>
+<line x1="576.15" y1="213.40" x2="576.15" y2="225.40" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=128000000, R=3113.367510</title>
+<polygon points="502.69,137.35 508.69,143.35 502.69,149.35 496.69,143.35" fill="#e377c2"/>
+<title>n=9, C=9000000, R=98946.946269</title>
+<circle cx="607.68" cy="156.78" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=400000000, R=53715.638200</title>
+<circle cx="134.53" cy="389.83" r="5" fill="#1f77b4"/>
+<title>n=3, C=15, R=1.337919</title>
+<rect x="347.82" y="268.36" width="10" height="10" fill="#ff7f0e" transform="rotate(0 352.82 273.36)"/>
+<title>n=4, C=40000, R=267.483391</title>
+<polygon points="486.43,155.72 480.43,166.72 492.43,166.72" fill="#2ca02c"/>
+<title>n=5, C=5000000, R=42915.950456</title>
+<rect x="289.15" y="545.72" width="10" height="10" fill="#d62728" transform="rotate(45 294.15 550.72)"/>
+<title>n=6, C=4800, R=0.000888</title>
+<polygon points="597.81,185.18 591.81,174.18 603.81,174.18" fill="#9467bd"/>
+<title>n=7, C=280000000, R=19396.078887</title>
+<line x1="620.86" y1="142.01" x2="632.86" y2="142.01" stroke="#8c564b" stroke-width="3"/>
+<line x1="626.86" y1="136.01" x2="626.86" y2="148.01" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=800000000, R=105143.718285</title>
+<polygon points="668.48,102.57 674.48,108.57 668.48,114.57 662.48,108.57" fill="#e377c2"/>
+<title>n=9, C=3600000000, R=481335.672919</title>
+<circle cx="646.04" cy="118.00" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=1600000000, R=313442.883987</title>
+<circle cx="90.00" cy="620.00" r="5" fill="#1f77b4"/>
+<title>n=3, C=3, R=0.000038</title>
+<rect x="277.93" y="287.73" width="10" height="10" fill="#ff7f0e" transform="rotate(0 282.93 292.73)"/>
+<title>n=4, C=3200, R=110.809601</title>
+<polygon points="269.93,288.41 263.93,299.41 275.93,299.41" fill="#2ca02c"/>
+<title>n=5, C=2000, R=102.647402</title>
+<rect x="594.72" y="100.84" width="10" height="10" fill="#d62728" transform="rotate(45 599.72 105.84)"/>
+<title>n=6, C=300000000, R=545041.082982</title>
+<polygon points="597.81,119.72 591.81,108.72 603.81,108.72" fill="#9467bd"/>
+<title>n=7, C=280000000, R=380766.088724</title>
+<line x1="690.75" y1="80.35" x2="702.75" y2="80.35" stroke="#8c564b" stroke-width="3"/>
+<line x1="696.75" y1="74.35" x2="696.75" y2="86.35" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=10000000000, R=1737431.848755</title>
+<polygon points="649.30,139.52 655.30,145.52 649.30,151.52 643.30,145.52" fill="#e377c2"/>
+<title>n=9, C=1800000000, R=89646.852345</title>
+<circle cx="785.82" cy="70.00" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=250000000000, R=2781362.780851</title>
+<circle cx="261.96" cy="529.22" r="5" fill="#1f77b4"/>
+<title>n=3, C=1500, R=0.002361</title>
+<rect x="347.82" y="261.96" width="10" height="10" fill="#ff7f0e" transform="rotate(0 352.82 266.96)"/>
+<title>n=4, C=40000, R=357.840484</title>
+<polygon points="339.81,289.41 333.81,300.41 345.81,300.41" fill="#2ca02c"/>
+<title>n=5, C=25000, R=98.078426</title>
+<rect x="639.25" y="75.86" width="10" height="10" fill="#d62728" transform="rotate(45 644.25 80.86)"/>
+<title>n=6, C=1500000000, R=1697537.264044</title>
+<polygon points="476.56,198.21 470.56,187.21 482.56,187.21" fill="#9467bd"/>
+<title>n=7, C=3500000, R=10719.288176</title>
+<line x1="595.51" y1="170.23" x2="607.51" y2="170.23" stroke="#8c564b" stroke-width="3"/>
+<line x1="601.51" y1="164.23" x2="601.51" y2="176.23" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=320000000, R=29130.949365</title>
+<polygon points="502.69,211.01 508.69,217.01 502.69,223.01 496.69,217.01" fill="#e377c2"/>
+<title>n=9, C=9000000, R=3469.791860</title>
+<circle cx="702.92" cy="86.19" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=12500000000, R=1332378.468885</title>
+<circle cx="325.68" cy="277.83" r="5" fill="#1f77b4"/>
+<title>n=3, C=15000, R=218.254781</title>
+<rect x="456.07" y="253.81" width="10" height="10" fill="#ff7f0e" transform="rotate(0 461.07 258.81)"/>
+<title>n=4, C=2000000, R=518.394913</title>
+<polygon points="492.60,169.37 486.60,180.37 498.60,180.37" fill="#2ca02c"/>
+<title>n=5, C=6250000, R=23060.213401</title>
+<rect x="378.22" y="199.03" width="10" height="10" fill="#d62728" transform="rotate(45 383.22 204.03)"/>
+<title>n=6, C=120000, R=6261.658147</title>
+<polygon points="476.56,243.30 470.56,232.30 482.56,232.30" fill="#9467bd"/>
+<title>n=7, C=3500000, R=1378.734725</title>
+<line x1="640.04" y1="73.57" x2="652.04" y2="73.57" stroke="#8c564b" stroke-width="3"/>
+<line x1="646.04" y1="67.57" x2="646.04" y2="79.57" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=1600000000, R=2365181.159389</title>
+<polygon points="700.01,72.68 706.01,78.68 700.01,84.68 694.01,78.68" fill="#e377c2"/>
+<title>n=9, C=11250000000, R=1874795.814640</title>
+<circle cx="677.57" cy="129.98" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=5000000000, R=181762.725183</title>
+<circle cx="370.21" cy="238.03" r="5" fill="#1f77b4"/>
+<title>n=3, C=75000, R=1333.904133</title>
+<rect x="386.18" y="276.99" width="10" height="10" fill="#ff7f0e" transform="rotate(0 391.18 281.99)"/>
+<title>n=4, C=160000, R=180.582383</title>
+<polygon points="422.71,247.56 416.71,258.56 428.71,258.56" fill="#2ca02c"/>
+<title>n=5, C=500000, R=658.144230</title>
+<rect x="269.97" y="266.60" width="10" height="10" fill="#d62728" transform="rotate(45 274.97 271.60)"/>
+<title>n=6, C=2400, R=289.710116</title>
+<polygon points="540.27,100.16 534.27,89.16 546.27,89.16" fill="#9467bd"/>
+<title>n=7, C=35000000, R=926922.338097</title>
+<line x1="557.15" y1="188.18" x2="569.15" y2="188.18" stroke="#8c564b" stroke-width="3"/>
+<line x1="563.15" y1="182.18" x2="563.15" y2="194.18" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=80000000, R=12879.605052</title>
+<polygon points="668.48,102.87 674.48,108.87 668.48,114.87 662.48,108.87" fill="#e377c2"/>
+<title>n=9, C=3600000000, R=474750.745549</title>
+<circle cx="461.07" cy="276.24" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=2000000, R=234.632058</title>
+<circle cx="236.61" cy="584.97" r="5" fill="#1f77b4"/>
+<title>n=3, C=600, R=0.000187</title>
+<rect x="322.47" y="282.67" width="10" height="10" fill="#ff7f0e" transform="rotate(0 327.47 287.67)"/>
+<title>n=4, C=16000, R=139.518866</title>
+<polygon points="320.63,283.55 314.63,294.55 326.63,294.55" fill="#2ca02c"/>
+<title>n=5, C=12500, R=128.071705</title>
+<rect x="435.76" y="261.35" width="10" height="10" fill="#d62728" transform="rotate(45 440.76 266.35)"/>
+<title>n=6, C=960000, R=367.841340</title>
+<polygon points="623.17,77.43 617.17,66.43 629.17,66.43" fill="#9467bd"/>
+<title>n=7, C=700000000, R=2607093.069313</title>
+<line x1="537.97" y1="200.49" x2="549.97" y2="200.49" stroke="#8c564b" stroke-width="3"/>
+<line x1="543.97" y1="194.49" x2="543.97" y2="206.49" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=40000000, R=7358.279622</title>
+<polygon points="655.47,66.76 661.47,72.76 655.47,78.76 649.47,72.76" fill="#e377c2"/>
+<title>n=9, C=2250000000, R=2453728.626156</title>
+<circle cx="671.40" cy="124.13" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=4000000000, R=237182.984340</title>
+<circle cx="281.14" cy="542.97" r="5" fill="#1f77b4"/>
+<title>n=3, C=3000, R=0.001263</title>
+<rect x="475.25" y="197.24" width="10" height="10" fill="#ff7f0e" transform="rotate(0 480.25 202.24)"/>
+<title>n=4, C=4000000, R=6792.405892</title>
+<polygon points="569.32,69.89 563.32,80.89 575.32,80.89" fill="#2ca02c"/>
+<title>n=5, C=100000000, R=2128169.572896</title>
+<rect x="511.82" y="197.49" width="10" height="10" fill="#d62728" transform="rotate(45 516.82 202.49)"/>
+<title>n=6, C=15000000, R=6717.717673</title>
+<polygon points="565.63,159.95 559.63,148.95 571.63,148.95" fill="#9467bd"/>
+<title>n=7, C=87500000, R=61101.931152</title>
+<line x1="646.22" y1="135.02" x2="658.22" y2="135.02" stroke="#8c564b" stroke-width="3"/>
+<line x1="652.22" y1="129.02" x2="652.22" y2="141.02" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=2000000000, R=144539.593172</title>
+<polygon points="604.76,184.80 610.76,190.80 604.76,196.80 598.76,190.80" fill="#e377c2"/>
+<title>n=9, C=360000000, R=11430.386030</title>
+<circle cx="785.82" cy="73.06" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=250000000000, R=2419965.095182</title>
+<circle cx="217.43" cy="456.69" r="5" fill="#1f77b4"/>
+<title>n=3, C=300, R=0.063952</title>
+<rect x="328.64" y="271.54" width="10" height="10" fill="#ff7f0e" transform="rotate(0 333.64 276.54)"/>
+<title>n=4, C=20000, R=231.435355</title>
+<polygon points="505.61,212.97 499.61,223.97 511.61,223.97" fill="#2ca02c"/>
+<title>n=5, C=10000000, R=3173.632069</title>
+<rect x="594.72" y="74.17" width="10" height="10" fill="#d62728" transform="rotate(45 599.72 79.17)"/>
+<title>n=6, C=300000000, R=1832807.610075</title>
+<polygon points="706.06,103.59 700.06,92.59 712.06,92.59" fill="#9467bd"/>
+<title>n=7, C=14000000000, R=793088.224713</title>
+<line x1="468.08" y1="137.64" x2="480.08" y2="137.64" stroke="#8c564b" stroke-width="3"/>
+<line x1="474.08" y1="131.64" x2="474.08" y2="143.64" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=3200000, R=128268.400117</title>
+<polygon points="649.30,114.25 655.30,120.25 649.30,126.25 643.30,120.25" fill="#e377c2"/>
+<title>n=9, C=1800000000, R=283020.345734</title>
+<circle cx="613.86" cy="169.87" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=500000000, R=29620.633362</title>
+<circle cx="300.33" cy="278.99" r="5" fill="#1f77b4"/>
+<title>n=3, C=6000, R=207.002129</title>
+<rect x="220.39" y="561.92" width="10" height="10" fill="#ff7f0e" transform="rotate(0 225.39 566.92)"/>
+<title>n=4, C=400, R=0.000425</title>
+<polygon points="575.49,75.23 569.49,86.23 581.49,86.23" fill="#2ca02c"/>
+<title>n=5, C=125000000, R=1669297.044005</title>
+<rect x="722.15" y="73.15" width="10" height="10" fill="#d62728" transform="rotate(45 727.15 78.15)"/>
+<title>n=6, C=30000000000, R=1920372.917310</title>
+<polygon points="451.20,181.35 445.20,170.35 457.20,170.35" fill="#9467bd"/>
+<title>n=7, C=1400000, R=23085.374998</title>
+<line x1="748.29" y1="83.47" x2="760.29" y2="83.47" stroke="#8c564b" stroke-width="3"/>
+<line x1="754.29" y1="77.47" x2="754.29" y2="89.47" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=80000000000, R=1507230.224037</title>
+<polygon points="547.22,87.49 553.22,93.49 547.22,99.49 541.22,93.49" fill="#e377c2"/>
+<title>n=9, C=45000000, R=955572.805884</title>
+<circle cx="563.15" cy="120.05" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=80000000, R=285593.426660</title>
+<circle cx="128.36" cy="432.43" r="5" fill="#1f77b4"/>
+<title>n=3, C=12, R=0.192740</title>
+<rect x="367.00" y="269.25" width="10" height="10" fill="#ff7f0e" transform="rotate(0 372.00 274.25)"/>
+<title>n=4, C=80000, R=256.868515</title>
+<polygon points="467.24,149.37 461.24,160.37 473.24,160.37" fill="#2ca02c"/>
+<title>n=5, C=2500000, R=57269.030234</title>
+<rect x="702.97" y="83.11" width="10" height="10" fill="#d62728" transform="rotate(45 707.97 88.11)"/>
+<title>n=6, C=15000000000, R=1220713.984976</title>
+<polygon points="648.52,76.11 642.52,65.11 654.52,65.11" fill="#9467bd"/>
+<title>n=7, C=1750000000, R=2767651.927794</title>
+<line x1="792.83" y1="70.00" x2="804.83" y2="70.00" stroke="#8c564b" stroke-width="3"/>
+<line x1="798.83" y1="64.00" x2="798.83" y2="76.00" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=400000000000, R=2781882.319700</title>
+<polygon points="623.95,122.04 629.95,128.04 623.95,134.04 617.95,128.04" fill="#e377c2"/>
+<title>n=9, C=720000000, R=198544.309636</title>
+<circle cx="665.22" cy="144.58" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=3200000000, R=93545.671931</title>
+<circle cx="217.43" cy="565.86" r="5" fill="#1f77b4"/>
+<title>n=3, C=300, R=0.000446</title>
+<rect x="392.36" y="198.21" width="10" height="10" fill="#ff7f0e" transform="rotate(0 397.36 203.21)"/>
+<title>n=4, C=200000, R=6500.521168</title>
+<polygon points="193.20,572.58 187.20,583.58 199.20,583.58" fill="#2ca02c"/>
+<title>n=5, C=125, R=0.000250</title>
+<rect x="658.43" y="65.29" width="10" height="10" fill="#d62728" transform="rotate(45 663.43 70.29)"/>
+<title>n=6, C=3000000000, R=2745492.380226</title>
+<polygon points="686.88,115.08 680.88,104.08 692.88,104.08" fill="#9467bd"/>
+<title>n=7, C=7000000000, R=470308.065711</title>
+<line x1="493.43" y1="141.87" x2="505.43" y2="141.87" stroke="#8c564b" stroke-width="3"/>
+<line x1="499.43" y1="135.87" x2="499.43" y2="147.87" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=8000000, R=105823.682908</title>
+<polygon points="585.58,131.38 591.58,137.38 585.58,143.38 579.58,137.38" fill="#e377c2"/>
+<title>n=9, C=180000000, R=129827.222849</title>
+<circle cx="563.15" cy="86.15" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=80000000, R=1334321.386820</title>
+<circle cx="198.25" cy="579.85" r="5" fill="#1f77b4"/>
+<title>n=3, C=150, R=0.000236</title>
+<rect x="137.50" y="451.61" width="10" height="10" fill="#ff7f0e" transform="rotate(0 142.50 456.61)"/>
+<title>n=4, C=20, R=0.064164</title>
+<polygon points="378.18,307.29 372.18,318.29 384.18,318.29" fill="#2ca02c"/>
+<title>n=5, C=100000, R=43.495630</title>
+<rect x="613.90" y="80.40" width="10" height="10" fill="#d62728" transform="rotate(45 618.90 85.40)"/>
+<title>n=6, C=600000000, R=1380709.940580</title>
+<polygon points="387.49,272.66 381.49,261.66 393.49,261.66" fill="#9467bd"/>
+<title>n=7, C=140000, R=362.778735</title>
+<line x1="703.76" y1="73.21" x2="715.76" y2="73.21" stroke="#8c564b" stroke-width="3"/>
+<line x1="709.76" y1="67.21" x2="709.76" y2="79.21" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=16000000000, R=2404168.760342</title>
+<polygon points="655.47,139.96 661.47,145.96 655.47,151.96 649.47,145.96" fill="#e377c2"/>
+<title>n=9, C=2250000000, R=87872.127237</title>
+<circle cx="741.29" cy="93.34" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=50000000000, R=962268.480197</title>
+<circle cx="325.68" cy="254.15" r="5" fill="#1f77b4"/>
+<title>n=3, C=15000, R=640.676582</title>
+<rect x="284.11" y="523.71" width="10" height="10" fill="#ff7f0e" transform="rotate(0 289.11 528.71)"/>
+<title>n=4, C=4000, R=0.002416</title>
+<polygon points="320.63,315.28 314.63,326.28 326.63,326.28" fill="#2ca02c"/>
+<title>n=5, C=12500, R=30.236937</title>
+<rect x="550.19" y="215.51" width="10" height="10" fill="#d62728" transform="rotate(45 555.19 220.51)"/>
+<title>n=6, C=60000000, R=2959.316340</title>
+<polygon points="603.99,128.75 597.99,117.75 609.99,117.75" fill="#9467bd"/>
+<title>n=7, C=350000000, R=252564.300263</title>
+<line x1="748.29" y1="97.58" x2="760.29" y2="97.58" stroke="#8c564b" stroke-width="3"/>
+<line x1="754.29" y1="91.58" x2="754.29" y2="103.58" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=80000000000, R=793457.510635</title>
+<polygon points="757.55,85.40 763.55,91.40 757.55,97.40 751.55,91.40" fill="#e377c2"/>
+<title>n=9, C=90000000000, R=1050805.906001</title>
+<circle cx="741.29" cy="72.83" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=50000000000, R=2446359.840673</title>
+<circle cx="408.57" cy="190.78" r="5" fill="#1f77b4"/>
+<title>n=3, C=300000, R=11439.777729</title>
+<rect x="430.72" y="258.30" width="10" height="10" fill="#ff7f0e" transform="rotate(0 435.72 263.30)"/>
+<title>n=4, C=800000, R=422.602068</title>
+<polygon points="550.14,125.20 544.14,136.20 556.14,136.20" fill="#2ca02c"/>
+<title>n=5, C=50000000, R=171990.750298</title>
+<rect x="333.69" y="451.83" width="10" height="10" fill="#d62728" transform="rotate(45 338.69 456.83)"/>
+<title>n=6, C=24000, R=0.063526</title>
+<polygon points="661.53,101.72 655.53,90.72 667.53,90.72" fill="#9467bd"/>
+<title>n=7, C=2800000000, R=863482.266435</title>
+<line x1="595.51" y1="187.86" x2="607.51" y2="187.86" stroke="#8c564b" stroke-width="3"/>
+<line x1="601.51" y1="181.86" x2="601.51" y2="193.86" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=320000000, R=13064.080844</title>
+<polygon points="719.19,98.73 725.19,104.73 719.19,110.73 713.19,104.73" fill="#e377c2"/>
+<title>n=9, C=22500000000, R=573181.970919</title>
+<circle cx="613.86" cy="104.96" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=500000000, R=567160.322659</title>
+<circle cx="255.79" cy="426.28" r="5" fill="#1f77b4"/>
+<title>n=3, C=1200, R=0.254951</title>
+<rect x="367.00" y="262.08" width="10" height="10" fill="#ff7f0e" transform="rotate(0 372.00 267.08)"/>
+<title>n=4, C=80000, R=355.890335</title>
+<polygon points="741.29,85.38 735.29,96.38 747.29,96.38" fill="#2ca02c"/>
+<title>n=5, C=50000000000, R=1052047.538881</title>
+<rect x="486.47" y="221.52" width="10" height="10" fill="#d62728" transform="rotate(45 491.47 226.52)"/>
+<title>n=6, C=6000000, R=2251.227167</title>
+<polygon points="476.56,258.14 470.56,247.14 482.56,247.14" fill="#9467bd"/>
+<title>n=7, C=3500000, R=701.938723</title>
+<line x1="690.75" y1="116.98" x2="702.75" y2="116.98" stroke="#8c564b" stroke-width="3"/>
+<line x1="696.75" y1="110.98" x2="696.75" y2="122.98" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=10000000000, R=328269.130374</title>
+<polygon points="566.40,134.54 572.40,140.54 566.40,146.54 560.40,140.54" fill="#e377c2"/>
+<title>n=9, C=90000000, R=112444.444019</title>
+<circle cx="696.75" cy="75.55" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=10000000000, R=2161371.298870</title>
+<circle cx="300.33" cy="408.47" r="5" fill="#1f77b4"/>
+<title>n=3, C=6000, R=0.573250</title>
+<rect x="519.79" y="139.71" width="10" height="10" fill="#ff7f0e" transform="rotate(0 524.79 144.71)"/>
+<title>n=4, C=20000000, R=93011.037486</title>
+<polygon points="683.74,111.88 677.74,122.88 689.74,122.88" fill="#2ca02c"/>
+<title>n=5, C=6250000000, R=315207.540547</title>
+<rect x="403.57" y="270.04" width="10" height="10" fill="#d62728" transform="rotate(45 408.57 275.04)"/>
+<title>n=6, C=300000, R=247.717361</title>
+<polygon points="438.20,252.08 432.20,241.08 444.20,241.08" fill="#9467bd"/>
+<title>n=7, C=875000, R=925.019403</title>
+<line x1="512.61" y1="227.54" x2="524.61" y2="227.54" stroke="#8c564b" stroke-width="3"/>
+<line x1="518.61" y1="221.54" x2="518.61" y2="233.54" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=16000000, R=2149.270066</title>
+<polygon points="623.95,66.25 629.95,72.25 623.95,78.25 617.95,72.25" fill="#e377c2"/>
+<title>n=9, C=720000000, R=2511559.896988</title>
+<circle cx="735.11" cy="92.99" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=40000000000, R=977710.975349</title>
+<circle cx="389.39" cy="237.44" r="5" fill="#1f77b4"/>
+<title>n=3, C=150000, R=1370.342131</title>
+<rect x="456.07" y="269.21" width="10" height="10" fill="#ff7f0e" transform="rotate(0 461.07 274.21)"/>
+<title>n=4, C=2000000, R=257.254293</title>
+<polygon points="492.60,196.90 486.60,207.90 498.60,207.90" fill="#2ca02c"/>
+<title>n=5, C=6250000, R=6591.343917</title>
+<rect x="607.73" y="184.13" width="10" height="10" fill="#d62728" transform="rotate(45 612.73 189.13)"/>
+<title>n=6, C=480000000, R=12331.019755</title>
+<polygon points="686.88,101.65 680.88,90.65 692.88,90.65" fill="#9467bd"/>
+<title>n=7, C=7000000000, R=866376.306976</title>
+<line x1="640.04" y1="74.89" x2="652.04" y2="74.89" stroke="#8c564b" stroke-width="3"/>
+<line x1="646.04" y1="68.89" x2="646.04" y2="80.89" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=1600000000, R=2227465.993474</title>
+<polygon points="591.76,179.56 597.76,185.56 591.76,191.56 585.76,185.56" fill="#e377c2"/>
+<title>n=9, C=225000000, R=14504.871616</title>
+<circle cx="735.11" cy="81.22" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=40000000000, R=1669765.732802</title>
+<circle cx="325.68" cy="268.63" r="5" fill="#1f77b4"/>
+<title>n=3, C=15000, R=331.635158</title>
+<rect x="367.00" y="355.16" width="10" height="10" fill="#ff7f0e" transform="rotate(0 372.00 360.16)"/>
+<title>n=4, C=80000, R=5.159540</title>
+<polygon points="652.22,81.55 646.22,92.55 658.22,92.55" fill="#2ca02c"/>
+<title>n=5, C=2000000000, R=1251942.915976</title>
+<rect x="544.01" y="178.64" width="10" height="10" fill="#d62728" transform="rotate(45 549.01 183.64)"/>
+<title>n=6, C=48000000, R=15832.734988</title>
+<polygon points="514.92,168.68 508.92,157.68 520.92,157.68" fill="#9467bd"/>
+<title>n=7, C=14000000, R=41069.397269</title>
+<line x1="748.29" y1="70.09" x2="760.29" y2="70.09" stroke="#8c564b" stroke-width="3"/>
+<line x1="754.29" y1="64.09" x2="754.29" y2="76.09" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=80000000000, R=2770110.464750</title>
+<polygon points="713.01,64.64 719.01,70.64 713.01,76.64 707.01,70.64" fill="#e377c2"/>
+<title>n=9, C=18000000000, R=2702321.837086</title>
+<circle cx="715.93" cy="79.77" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=20000000000, R=1783637.689943</title>
+<circle cx="153.71" cy="611.47" r="5" fill="#1f77b4"/>
+<title>n=3, C=30, R=0.000056</title>
+<rect x="284.11" y="384.81" width="10" height="10" fill="#ff7f0e" transform="rotate(0 289.11 389.81)"/>
+<title>n=4, C=4000, R=1.339080</title>
+<polygon points="441.89,216.43 435.89,227.43 447.89,227.43" fill="#2ca02c"/>
+<title>n=5, C=1000000, R=2711.522514</title>
+<rect x="359.04" y="348.86" width="10" height="10" fill="#d62728" transform="rotate(45 364.04 353.86)"/>
+<title>n=6, C=60000, R=6.872457</title>
+<polygon points="406.67,236.94 400.67,225.94 412.67,225.94" fill="#9467bd"/>
+<title>n=7, C=280000, R=1841.275419</title>
+<line x1="767.47" y1="75.05" x2="779.47" y2="75.05" stroke="#8c564b" stroke-width="3"/>
+<line x1="773.47" y1="69.05" x2="773.47" y2="81.05" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=160000000000, R=2211337.807876</title>
+<polygon points="751.38,80.45 757.38,86.45 751.38,92.45 745.38,86.45" fill="#e377c2"/>
+<title>n=9, C=72000000000, R=1316536.242493</title>
+<circle cx="696.75" cy="100.55" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=10000000000, R=693227.461887</title>
+<circle cx="236.61" cy="539.66" r="5" fill="#1f77b4"/>
+<title>n=3, C=600, R=0.001468</title>
+<rect x="430.72" y="170.22" width="10" height="10" fill="#ff7f0e" transform="rotate(0 435.72 175.22)"/>
+<title>n=4, C=800000, R=23216.817009</title>
+<polygon points="314.46,415.37 308.46,426.37 320.46,426.37" fill="#2ca02c"/>
+<title>n=5, C=10000, R=0.318698</title>
+<rect x="422.76" y="217.06" width="10" height="10" fill="#d62728" transform="rotate(45 427.76 222.06)"/>
+<title>n=6, C=600000, R=2757.366203</title>
+<polygon points="559.45,226.18 553.45,215.18 565.45,215.18" fill="#9467bd"/>
+<title>n=7, C=70000000, R=3003.703649</title>
+<line x1="487.26" y1="190.50" x2="499.26" y2="190.50" stroke="#8c564b" stroke-width="3"/>
+<line x1="493.26" y1="184.50" x2="493.26" y2="196.50" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=6400000, R=11586.327571</title>
+<polygon points="604.76,73.87 610.76,79.87 604.76,85.87 598.76,79.87" fill="#e377c2"/>
+<title>n=9, C=360000000, R=1775864.896422</title>
+<circle cx="709.76" cy="128.87" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=16000000000, R=191156.679117</title>
+<circle cx="281.14" cy="383.48" r="5" fill="#1f77b4"/>
+<title>n=3, C=3000, R=1.785860</title>
+<rect x="347.82" y="223.18" width="10" height="10" fill="#ff7f0e" transform="rotate(0 352.82 228.18)"/>
+<title>n=4, C=40000, R=2087.458043</title>
+<polygon points="467.24,256.49 461.24,267.49 473.24,267.49" fill="#2ca02c"/>
+<title>n=5, C=2500000, R=438.469376</title>
+<rect x="448.11" y="212.00" width="10" height="10" fill="#d62728" transform="rotate(45 453.11 217.00)"/>
+<title>n=6, C=1500000, R=3472.185174</title>
+<polygon points="775.95,79.37 769.95,68.37 781.95,68.37" fill="#9467bd"/>
+<title>n=7, C=175000000000, R=2386553.176893</title>
+<line x1="742.12" y1="70.38" x2="754.12" y2="70.38" stroke="#8c564b" stroke-width="3"/>
+<line x1="748.12" y1="64.38" x2="748.12" y2="76.38" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=64000000000, R=2734424.190953</title>
+<polygon points="674.65,114.31 680.65,120.31 674.65,126.31 668.65,120.31" fill="#e377c2"/>
+<title>n=9, C=4500000000, R=282127.833718</title>
+<circle cx="658.39" cy="167.08" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=2500000000, R=33629.474902</title>
+<circle cx="344.86" cy="227.54" r="5" fill="#1f77b4"/>
+<title>n=3, C=30000, R=2149.606097</title>
+<rect x="303.29" y="451.62" width="10" height="10" fill="#ff7f0e" transform="rotate(0 308.29 456.62)"/>
+<title>n=4, C=8000, R=0.064152</title>
+<polygon points="422.71,230.48 416.71,241.48 428.71,241.48" fill="#2ca02c"/>
+<title>n=5, C=500000, R=1431.167922</title>
+<rect x="766.68" y="73.62" width="10" height="10" fill="#d62728" transform="rotate(45 771.68 78.62)"/>
+<title>n=6, C=150000000000, R=1879258.679357</title>
+<polygon points="648.52,108.02 642.52,97.02 654.52,97.02" fill="#9467bd"/>
+<title>n=7, C=1750000000, R=648407.194943</title>
+<line x1="531.79" y1="118.30" x2="543.79" y2="118.30" stroke="#8c564b" stroke-width="3"/>
+<line x1="537.79" y1="112.30" x2="537.79" y2="124.30" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=32000000, R=309129.917754</title>
+<polygon points="687.66,94.53 693.66,100.53 687.66,106.53 681.66,100.53" fill="#e377c2"/>
+<title>n=9, C=7200000000, R=693871.724266</title>
+<circle cx="715.93" cy="126.21" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=20000000000, R=215808.905892</title>
+<circle cx="433.93" cy="172.24" r="5" fill="#1f77b4"/>
+<title>n=3, C=750000, R=26591.638622</title>
+<rect x="456.07" y="244.62" width="10" height="10" fill="#ff7f0e" transform="rotate(0 461.07 249.62)"/>
+<title>n=4, C=2000000, R=787.270062</title>
+<polygon points="613.86,85.61 607.86,96.61 619.86,96.61" fill="#2ca02c"/>
+<title>n=5, C=500000000, R=1041110.435927</title>
+<rect x="550.19" y="207.34" width="10" height="10" fill="#d62728" transform="rotate(45 555.19 212.34)"/>
+<title>n=6, C=60000000, R=4291.295565</title>
+<polygon points="553.28,180.93 547.28,169.93 559.28,169.93" fill="#9467bd"/>
+<title>n=7, C=56000000, R=23530.195257</title>
+<line x1="709.93" y1="78.74" x2="721.93" y2="78.74" stroke="#8c564b" stroke-width="3"/>
+<line x1="715.93" y1="72.74" x2="715.93" y2="84.74" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=20000000000, R=1869439.000367</title>
+<polygon points="674.65,114.40 680.65,120.40 674.65,126.40 668.65,120.40" fill="#e377c2"/>
+<title>n=9, C=4500000000, R=281088.568445</title>
+<circle cx="492.60" cy="193.22" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=6250000, R=10240.462781</title>
+<circle cx="261.96" cy="456.63" r="5" fill="#1f77b4"/>
+<title>n=3, C=1500, R=0.064123</title>
+<rect x="475.25" y="161.29" width="10" height="10" fill="#ff7f0e" transform="rotate(0 480.25 166.29)"/>
+<title>n=4, C=4000000, R=34847.099977</title>
+<polygon points="530.96,229.55 524.96,240.55 536.96,240.55" fill="#2ca02c"/>
+<title>n=5, C=25000000, R=1493.190560</title>
+<rect x="524.83" y="178.52" width="10" height="10" fill="#d62728" transform="rotate(45 529.83 183.52)"/>
+<title>n=6, C=24000000, R=15916.568124</title>
+<polygon points="706.06,81.20 700.06,70.20 712.06,70.20" fill="#9467bd"/>
+<title>n=7, C=14000000000, R=2195990.428995</title>
+<line x1="620.86" y1="172.67" x2="632.86" y2="172.67" stroke="#8c564b" stroke-width="3"/>
+<line x1="626.86" y1="166.67" x2="626.86" y2="178.67" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=800000000, R=26071.488503</title>
+<polygon points="726.02,99.77 732.02,105.77 726.02,111.77 720.02,105.77" fill="#e377c2"/>
+<title>n=9, C=28800000000, R=546708.110598</title>
+<circle cx="741.29" cy="82.62" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=50000000000, R=1566967.888880</title>
+<circle cx="344.86" cy="299.12" r="5" fill="#1f77b4"/>
+<title>n=3, C=30000, R=82.845967</title>
+<rect x="538.97" y="116.84" width="10" height="10" fill="#ff7f0e" transform="rotate(0 543.97 121.84)"/>
+<title>n=4, C=40000000, R=263161.926885</title>
+<polygon points="530.96,218.55 524.96,229.55 536.96,229.55" fill="#2ca02c"/>
+<title>n=5, C=25000000, R=2462.982642</title>
+<rect x="550.19" y="169.92" width="10" height="10" fill="#d62728" transform="rotate(45 555.19 174.92)"/>
+<title>n=6, C=60000000, R=23540.315448</title>
+<polygon points="731.42,84.51 725.42,73.51 737.42,73.51" fill="#9467bd"/>
+<title>n=7, C=35000000000, R=1889061.973496</title>
+<line x1="512.61" y1="190.95" x2="524.61" y2="190.95" stroke="#8c564b" stroke-width="3"/>
+<line x1="518.61" y1="184.95" x2="518.61" y2="196.95" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=16000000, R=11355.002747</title>
+<polygon points="477.33,268.49 483.33,274.49 477.33,280.49 471.33,274.49" fill="#e377c2"/>
+<title>n=9, C=3600000, R=254.001286</title>
+<circle cx="626.86" cy="99.59" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=800000000, R=724244.844030</title>
+<circle cx="408.57" cy="211.90" r="5" fill="#1f77b4"/>
+<title>n=3, C=300000, R=4377.620426</title>
+<rect x="558.15" y="193.78" width="10" height="10" fill="#ff7f0e" transform="rotate(0 563.15 198.78)"/>
+<title>n=4, C=80000000, R=7951.266170</title>
+<polygon points="212.38,551.68 206.38,562.68 218.38,562.68" fill="#2ca02c"/>
+<title>n=5, C=250, R=0.000647</title>
+<rect x="480.30" y="133.24" width="10" height="10" fill="#d62728" transform="rotate(45 485.30 138.24)"/>
+<title>n=6, C=4800000, R=124850.224091</title>
+<polygon points="489.56,234.56 483.56,223.56 495.56,223.56" fill="#9467bd"/>
+<title>n=7, C=5600000, R=2051.716259</title>
+<line x1="640.04" y1="84.56" x2="652.04" y2="84.56" stroke="#8c564b" stroke-width="3"/>
+<line x1="646.04" y1="78.56" x2="646.04" y2="90.56" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=1600000000, R=1434736.997124</title>
+<polygon points="655.47,143.29 661.47,149.29 655.47,155.29 649.47,149.29" fill="#e377c2"/>
+<title>n=9, C=2250000000, R=75517.510134</title>
+<circle cx="652.22" cy="70.33" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=2000000000, R=2740992.458176</title>
+<circle cx="453.11" cy="179.97" r="5" fill="#1f77b4"/>
+<title>n=3, C=1500000, R=18704.294251</title>
+<rect x="284.11" y="532.98" width="10" height="10" fill="#ff7f0e" transform="rotate(0 289.11 537.98)"/>
+<title>n=4, C=4000, R=0.001585</title>
+<polygon points="333.64,307.02 327.64,318.02 339.64,318.02" fill="#2ca02c"/>
+<title>n=5, C=20000, R=44.027950</title>
+<rect x="359.04" y="229.20" width="10" height="10" fill="#d62728" transform="rotate(45 364.04 234.20)"/>
+<title>n=6, C=60000, R=1587.710682</title>
+<polygon points="425.85,286.05 419.85,275.05 431.85,275.05" fill="#9467bd"/>
+<title>n=7, C=560000, R=197.284622</title>
+<line x1="703.76" y1="124.76" x2="715.76" y2="124.76" stroke="#8c564b" stroke-width="3"/>
+<line x1="709.76" y1="118.76" x2="709.76" y2="130.76" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=16000000000, R=230445.321044</title>
+<polygon points="566.40,159.01 572.40,165.01 566.40,171.01 560.40,165.01" fill="#e377c2"/>
+<title>n=9, C=90000000, R=36945.087991</title>
+<circle cx="715.93" cy="125.07" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=20000000000, R=227264.539852</title>
+<circle cx="192.08" cy="606.57" r="5" fill="#1f77b4"/>
+<title>n=3, C=120, R=0.000070</title>
+<rect x="220.39" y="452.09" width="10" height="10" fill="#ff7f0e" transform="rotate(0 225.39 457.09)"/>
+<title>n=4, C=400, R=0.062776</title>
+<polygon points="524.79,103.81 518.79,114.81 530.79,114.81" fill="#2ca02c"/>
+<title>n=5, C=20000000, R=454893.425883</title>
+<rect x="448.11" y="257.90" width="10" height="10" fill="#d62728" transform="rotate(45 453.11 262.90)"/>
+<title>n=6, C=1500000, R=430.356065</title>
+<polygon points="636.17,90.99 630.17,79.99 642.17,79.99" fill="#9467bd"/>
+<title>n=7, C=1120000000, R=1407112.816705</title>
+<line x1="640.04" y1="75.03" x2="652.04" y2="75.03" stroke="#8c564b" stroke-width="3"/>
+<line x1="646.04" y1="69.03" x2="646.04" y2="81.03" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=1600000000, R=2213050.512848</title>
+<polygon points="630.12,111.78 636.12,117.78 630.12,123.78 624.12,117.78" fill="#e377c2"/>
+<title>n=9, C=900000000, R=316547.488442</title>
+<circle cx="805.00" cy="71.24" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=500000000000, R=2629162.743409</title>
+<circle cx="255.79" cy="456.57" r="5" fill="#1f77b4"/>
+<title>n=3, C=1200, R=0.064297</title>
+<rect x="449.90" y="156.48" width="10" height="10" fill="#ff7f0e" transform="rotate(0 454.90 161.48)"/>
+<title>n=4, C=1600000, R=43369.752772</title>
+<polygon points="486.43,218.98 480.43,229.98 492.43,229.98" fill="#2ca02c"/>
+<title>n=5, C=5000000, R=2414.698528</title>
+<rect x="613.90" y="66.23" width="10" height="10" fill="#d62728" transform="rotate(45 618.90 71.23)"/>
+<title>n=6, C=600000000, R=2630601.966746</title>
+<polygon points="667.70,140.56 661.70,129.56 673.70,129.56" fill="#9467bd"/>
+<title>n=7, C=3500000000, R=147611.600459</title>
+<line x1="524.96" y1="201.51" x2="536.96" y2="201.51" stroke="#8c564b" stroke-width="3"/>
+<line x1="530.96" y1="195.51" x2="530.96" y2="207.51" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=25000000, R=7023.172779</title>
+<polygon points="700.01,108.60 706.01,114.60 700.01,120.60 694.01,114.60" fill="#e377c2"/>
+<title>n=9, C=11250000000, R=365953.568238</title>
+<circle cx="805.00" cy="70.00" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=500000000000, R=2781922.942422</title>
+<circle cx="300.33" cy="364.31" r="5" fill="#1f77b4"/>
+<title>n=3, C=6000, R=4.271523</title>
+<rect x="392.36" y="187.61" width="10" height="10" fill="#ff7f0e" transform="rotate(0 397.36 192.61)"/>
+<title>n=4, C=200000, R=10525.990183</title>
+<polygon points="594.67,141.04 588.67,152.04 600.67,152.04" fill="#2ca02c"/>
+<title>n=5, C=250000000, R=83643.869970</title>
+<rect x="550.19" y="125.53" width="10" height="10" fill="#d62728" transform="rotate(45 555.19 130.53)"/>
+<title>n=6, C=60000000, R=177295.830173</title>
+<polygon points="686.88,137.46 680.88,126.46 692.88,126.46" fill="#9467bd"/>
+<title>n=7, C=7000000000, R=169910.819576</title>
+<line x1="448.90" y1="250.78" x2="460.90" y2="250.78" stroke="#8c564b" stroke-width="3"/>
+<line x1="454.90" y1="244.78" x2="454.90" y2="256.78" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=1600000, R=746.760093</title>
+<polygon points="732.19,81.68 738.19,87.68 732.19,93.68 726.19,87.68" fill="#e377c2"/>
+<title>n=9, C=36000000000, R=1244804.926159</title>
+<circle cx="690.58" cy="133.91" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=8000000000, R=152038.728732</title>
+<circle cx="389.39" cy="193.60" r="5" fill="#1f77b4"/>
+<title>n=3, C=150000, R=10065.458207</title>
+<rect x="328.64" y="377.72" width="10" height="10" fill="#ff7f0e" transform="rotate(0 333.64 382.72)"/>
+<title>n=4, C=20000, R=1.849034</title>
+<polygon points="339.81,293.05 333.81,304.05 345.81,304.05" fill="#2ca02c"/>
+<title>n=5, C=25000, R=83.121903</title>
+<rect x="722.15" y="97.57" width="10" height="10" fill="#d62728" transform="rotate(45 727.15 102.57)"/>
+<title>n=6, C=30000000000, R=632392.691693</title>
+<polygon points="597.81,76.51 591.81,65.51 603.81,65.51" fill="#9467bd"/>
+<title>n=7, C=280000000, R=2717736.053788</title>
+<line x1="557.15" y1="139.56" x2="569.15" y2="139.56" stroke="#8c564b" stroke-width="3"/>
+<line x1="563.15" y1="133.56" x2="563.15" y2="145.56" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=80000000, R=117551.949534</title>
+<polygon points="579.41,140.12 585.41,146.12 579.41,152.12 573.41,146.12" fill="#e377c2"/>
+<title>n=9, C=144000000, R=87219.810926</title>
+<circle cx="658.39" cy="71.59" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=2500000000, R=2587800.388370</title>
+<circle cx="217.43" cy="297.93" r="5" fill="#1f77b4"/>
+<title>n=3, C=300, R=87.473180</title>
+<rect x="456.07" y="246.21" width="10" height="10" fill="#ff7f0e" transform="rotate(0 461.07 251.21)"/>
+<title>n=4, C=2000000, R=732.308943</title>
+<polygon points="505.61,166.50 499.61,177.50 511.61,177.50" fill="#2ca02c"/>
+<title>n=5, C=10000000, R=26282.434606</title>
+<rect x="677.62" y="116.35" width="10" height="10" fill="#d62728" transform="rotate(45 682.62 121.35)"/>
+<title>n=6, C=6000000000, R=269171.850467</title>
+<polygon points="591.64,154.19 585.64,143.19 597.64,143.19" fill="#9467bd"/>
+<title>n=7, C=224000000, R=79383.604003</title>
+<line x1="455.07" y1="147.62" x2="467.07" y2="147.62" stroke="#8c564b" stroke-width="3"/>
+<line x1="461.07" y1="141.62" x2="461.07" y2="153.62" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=2000000, R=81481.795861</title>
+<polygon points="693.83,83.84 699.83,89.84 693.83,95.84 687.83,89.84" fill="#e377c2"/>
+<title>n=9, C=9000000000, R=1128347.798437</title>
+<circle cx="760.47" cy="97.27" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=100000000000, R=804727.197251</title>
+<circle cx="364.04" cy="281.34" r="5" fill="#1f77b4"/>
+<title>n=3, C=60000, R=186.039770</title>
+<rect x="430.72" y="214.18" width="10" height="10" fill="#ff7f0e" transform="rotate(0 435.72 219.18)"/>
+<title>n=4, C=800000, R=3144.313457</title>
+<polygon points="314.46,534.93 308.46,545.93 320.46,545.93" fill="#2ca02c"/>
+<title>n=5, C=10000, R=0.001386</title>
+<rect x="550.19" y="147.41" width="10" height="10" fill="#d62728" transform="rotate(45 555.19 152.41)"/>
+<title>n=6, C=60000000, R=65521.324803</title>
+<polygon points="438.20,278.10 432.20,267.10 444.20,267.10" fill="#9467bd"/>
+<title>n=7, C=875000, R=283.199041</title>
+<line x1="665.40" y1="95.23" x2="677.40" y2="95.23" stroke="#8c564b" stroke-width="3"/>
+<line x1="671.40" y1="89.23" x2="671.40" y2="101.23" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=4000000000, R=882867.362184</title>
+<polygon points="566.40,192.82 572.40,198.82 566.40,204.82 560.40,198.82" fill="#e377c2"/>
+<title>n=9, C=90000000, R=7937.119020</title>
+<circle cx="677.57" cy="112.12" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=5000000000, R=409486.770415</title>
+<circle cx="153.71" cy="512.23" r="5" fill="#1f77b4"/>
+<title>n=3, C=30, R=0.005112</title>
+<rect x="112.14" y="574.03" width="10" height="10" fill="#ff7f0e" transform="rotate(0 117.14 579.03)"/>
+<title>n=4, C=8, R=0.000245</title>
+<polygon points="486.43,273.04 480.43,284.04 492.43,284.04" fill="#2ca02c"/>
+<title>n=5, C=5000000, R=206.581993</title>
+<rect x="607.73" y="127.29" width="10" height="10" fill="#d62728" transform="rotate(45 612.73 132.29)"/>
+<title>n=6, C=480000000, R=163604.142685</title>
+<polygon points="795.13,78.51 789.13,67.51 801.13,67.51" fill="#9467bd"/>
+<title>n=7, C=350000000000, R=2482231.533540</title>
+<line x1="684.58" y1="127.16" x2="696.58" y2="127.16" stroke="#8c564b" stroke-width="3"/>
+<line x1="690.58" y1="121.16" x2="690.58" y2="133.16" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=8000000000, R=206614.209256</title>
+<polygon points="547.22,88.88 553.22,94.88 547.22,100.88 541.22,94.88" fill="#e377c2"/>
+<title>n=9, C=45000000, R=897253.549985</title>
+<circle cx="633.04" cy="150.57" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=1000000000, R=71265.189717</title>
+<circle cx="198.25" cy="456.72" r="5" fill="#1f77b4"/>
+<title>n=3, C=150, R=0.063851</title>
+<rect x="373.18" y="297.34" width="10" height="10" fill="#ff7f0e" transform="rotate(0 378.18 302.34)"/>
+<title>n=4, C=100000, R=71.574976</title>
+<polygon points="397.36,266.76 391.36,277.76 403.36,277.76" fill="#2ca02c"/>
+<title>n=5, C=200000, R=274.845677</title>
+<rect x="448.11" y="184.18" width="10" height="10" fill="#d62728" transform="rotate(45 453.11 189.18)"/>
+<title>n=6, C=1500000, R=12307.968291</title>
+<polygon points="712.24,84.87 706.24,73.87 718.24,73.87" fill="#9467bd"/>
+<title>n=7, C=17500000000, R=1858679.768100</title>
+<line x1="748.29" y1="89.98" x2="760.29" y2="89.98" stroke="#8c564b" stroke-width="3"/>
+<line x1="754.29" y1="83.98" x2="754.29" y2="95.98" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=80000000000, R=1120932.684899</title>
+<polygon points="700.01,108.38 706.01,114.38 700.01,120.38 694.01,114.38" fill="#e377c2"/>
+<title>n=9, C=11250000000, R=369584.348699</title>
+<circle cx="779.65" cy="70.80" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=200000000000, R=2682785.345922</title>
+<circle cx="261.96" cy="337.96" r="5" fill="#1f77b4"/>
+<title>n=3, C=1500, R=14.161951</title>
+<rect x="322.47" y="374.86" width="10" height="10" fill="#ff7f0e" transform="rotate(0 327.47 379.86)"/>
+<title>n=4, C=16000, R=2.105657</title>
+<polygon points="550.14,138.23 544.14,149.23 556.14,149.23" fill="#2ca02c"/>
+<title>n=5, C=50000000, R=95045.962150</title>
+<rect x="333.69" y="225.37" width="10" height="10" fill="#d62728" transform="rotate(45 338.69 230.37)"/>
+<title>n=6, C=24000, R=1889.939488</title>
+<polygon points="636.17,137.23 630.17,126.23 642.17,126.23" fill="#9467bd"/>
+<title>n=7, C=1120000000, R=171757.950023</title>
+<line x1="576.33" y1="106.91" x2="588.33" y2="106.91" stroke="#8c564b" stroke-width="3"/>
+<line x1="582.33" y1="100.91" x2="582.33" y2="112.91" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=160000000, R=519160.484077</title>
+<polygon points="630.12,74.28 636.12,80.28 630.12,86.28 624.12,80.28" fill="#e377c2"/>
+<title>n=9, C=900000000, R=1742645.674119</title>
+<circle cx="690.58" cy="113.65" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=8000000000, R=382002.418528</title>
+<circle cx="128.36" cy="609.59" r="5" fill="#1f77b4"/>
+<title>n=3, C=12, R=0.000061</title>
+<rect x="258.75" y="302.95" width="10" height="10" fill="#ff7f0e" transform="rotate(0 263.75 307.95)"/>
+<title>n=4, C=1600, R=55.444744</title>
+<polygon points="511.78,212.49 505.78,223.49 517.78,223.49" fill="#2ca02c"/>
+<title>n=5, C=12500000, R=3243.646518</title>
+<rect x="594.72" y="153.96" width="10" height="10" fill="#d62728" transform="rotate(45 599.72 158.96)"/>
+<title>n=6, C=300000000, R=48640.849244</title>
+<polygon points="769.78,76.55 763.78,65.55 775.78,65.55" fill="#9467bd"/>
+<title>n=7, C=140000000000, R=2713652.349854</title>
+<line x1="525.62" y1="174.03" x2="537.62" y2="174.03" stroke="#8c564b" stroke-width="3"/>
+<line x1="531.62" y1="168.03" x2="531.62" y2="180.03" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=25600000, R=24513.377307</title>
+<polygon points="585.58,107.68 591.58,113.68 585.58,119.68 579.58,113.68" fill="#e377c2"/>
+<title>n=9, C=180000000, R=381453.187930</title>
+<circle cx="543.97" cy="236.05" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=40000000, R=1459.792306</title>
+<circle cx="261.96" cy="567.02" r="5" fill="#1f77b4"/>
+<title>n=3, C=1500, R=0.000423</title>
+<rect x="411.54" y="242.80" width="10" height="10" fill="#ff7f0e" transform="rotate(0 416.54 247.80)"/>
+<title>n=4, C=400000, R=855.294075</title>
+<polygon points="594.67,129.81 588.67,140.81 600.67,140.81" fill="#2ca02c"/>
+<title>n=5, C=250000000, R=139396.822274</title>
+<rect x="435.76" y="273.57" width="10" height="10" fill="#d62728" transform="rotate(45 440.76 278.57)"/>
+<title>n=6, C=960000, R=210.982417</title>
+<polygon points="763.60,78.05 757.60,67.05 769.60,67.05" fill="#9467bd"/>
+<title>n=7, C=112000000000, R=2533813.429201</title>
+<line x1="633.87" y1="129.15" x2="645.87" y2="129.15" stroke="#8c564b" stroke-width="3"/>
+<line x1="639.87" y1="123.15" x2="639.87" y2="135.15" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=1280000000, R=188758.324571</title>
+<polygon points="528.04,100.46 534.04,106.46 528.04,112.46 522.04,106.46" fill="#e377c2"/>
+<title>n=9, C=22500000, R=529808.835557</title>
+<circle cx="626.86" cy="136.84" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=800000000, R=133035.155408</title>
+<circle cx="325.68" cy="277.83" r="5" fill="#1f77b4"/>
+<title>n=3, C=15000, R=218.224178</title>
+<rect x="430.72" y="148.50" width="10" height="10" fill="#ff7f0e" transform="rotate(0 435.72 153.50)"/>
+<title>n=4, C=800000, R=62362.460078</title>
+<polygon points="530.96,172.15 524.96,183.15 536.96,183.15" fill="#2ca02c"/>
+<title>n=5, C=25000000, R=20326.360651</title>
+<rect x="531.00" y="135.94" width="10" height="10" fill="#d62728" transform="rotate(45 536.00 140.94)"/>
+<title>n=6, C=30000000, R=110394.096229</title>
+<polygon points="495.74,268.89 489.74,257.89 501.74,257.89" fill="#9467bd"/>
+<title>n=7, C=7000000, R=430.488002</title>
+<line x1="607.86" y1="110.98" x2="619.86" y2="110.98" stroke="#8c564b" stroke-width="3"/>
+<line x1="613.86" y1="104.98" x2="613.86" y2="116.98" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=500000000, R=431338.634811</title>
+<polygon points="738.37,64.01 744.37,70.01 738.37,76.01 732.37,70.01" fill="#e377c2"/>
+<title>n=9, C=45000000000, R=2780740.766624</title>
+<circle cx="671.40" cy="108.16" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=4000000000, R=490366.193272</title>
+<circle cx="408.57" cy="167.08" r="5" fill="#1f77b4"/>
+<title>n=3, C=300000, R=33623.056610</title>
+<rect x="373.18" y="271.92" width="10" height="10" fill="#ff7f0e" transform="rotate(0 378.18 276.92)"/>
+<title>n=4, C=100000, R=227.494474</title>
+<polygon points="467.24,179.16 461.24,190.16 473.24,190.16" fill="#2ca02c"/>
+<title>n=5, C=2500000, R=14771.831502</title>
+<rect x="461.12" y="279.33" width="10" height="10" fill="#d62728" transform="rotate(45 466.12 284.33)"/>
+<title>n=6, C=2400000, R=162.359475</title>
+<polygon points="540.27,163.16 534.27,152.16 546.27,152.16" fill="#9467bd"/>
+<title>n=7, C=35000000, R=52787.211303</title>
+<line x1="620.86" y1="90.48" x2="632.86" y2="90.48" stroke="#8c564b" stroke-width="3"/>
+<line x1="626.86" y1="84.48" x2="626.86" y2="96.48" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=800000000, R=1096113.317670</title>
+<polygon points="706.84,95.97 712.84,101.97 706.84,107.97 700.84,101.97" fill="#e377c2"/>
+<title>n=9, C=14400000000, R=649776.286204</title>
+<circle cx="741.29" cy="78.33" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=50000000000, R=1904844.111087</title>
+<circle cx="236.61" cy="282.28" r="5" fill="#1f77b4"/>
+<title>n=3, C=600, R=178.225307</title>
+<rect x="386.18" y="281.39" width="10" height="10" fill="#ff7f0e" transform="rotate(0 391.18 286.39)"/>
+<title>n=4, C=160000, R=147.821800</title>
+<polygon points="556.31,124.28 550.31,135.28 562.31,135.28" fill="#2ca02c"/>
+<title>n=5, C=62500000, R=179305.697715</title>
+<rect x="613.90" y="146.08" width="10" height="10" fill="#d62728" transform="rotate(45 618.90 151.08)"/>
+<title>n=6, C=600000000, R=69606.627628</title>
+<polygon points="489.56,280.71 483.56,269.71 495.56,269.71" fill="#9467bd"/>
+<title>n=7, C=5600000, R=251.509950</title>
+<line x1="665.40" y1="133.54" x2="677.40" y2="133.54" stroke="#8c564b" stroke-width="3"/>
+<line x1="671.40" y1="127.54" x2="671.40" y2="139.54" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=4000000000, R=154619.658151</title>
+<polygon points="738.37,65.93 744.37,71.93 738.37,77.93 732.37,71.93" fill="#e377c2"/>
+<title>n=9, C=45000000000, R=2548448.744658</title>
+<circle cx="607.68" cy="70.30" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=400000000, R=2744318.707051</title>
+<circle cx="319.51" cy="356.15" r="5" fill="#1f77b4"/>
+<title>n=3, C=12000, R=6.191578</title>
+<rect x="532.79" y="127.81" width="10" height="10" fill="#ff7f0e" transform="rotate(0 537.79 132.81)"/>
+<title>n=4, C=32000000, R=159827.967126</title>
+<polygon points="422.71,319.89 416.71,330.89 428.71,330.89" fill="#2ca02c"/>
+<title>n=5, C=500000, R=24.523346</title>
+<rect x="633.08" y="79.00" width="10" height="10" fill="#d62728" transform="rotate(45 638.08 84.00)"/>
+<title>n=6, C=1200000000, R=1471287.885565</title>
+<polygon points="603.99,76.12 597.99,65.12 609.99,65.12" fill="#9467bd"/>
+<title>n=7, C=350000000, R=2766907.165191</title>
+<line x1="703.76" y1="75.75" x2="715.76" y2="75.75" stroke="#8c564b" stroke-width="3"/>
+<line x1="709.76" y1="69.75" x2="709.76" y2="81.75" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=16000000000, R=2141599.141014</title>
+<polygon points="604.76,64.68 610.76,70.68 604.76,76.68 598.76,70.68" fill="#e377c2"/>
+<title>n=9, C=360000000, R=2696993.527114</title>
+<circle cx="652.22" cy="155.00" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=2000000000, R=58258.113602</title>
+<circle cx="255.79" cy="456.57" r="5" fill="#1f77b4"/>
+<title>n=3, C=1200, R=0.064302</title>
+<rect x="449.90" y="166.73" width="10" height="10" fill="#ff7f0e" transform="rotate(0 454.90 171.73)"/>
+<title>n=4, C=1600000, R=27213.946822</title>
+<polygon points="594.67,169.89 588.67,180.89 600.67,180.89" fill="#2ca02c"/>
+<title>n=5, C=250000000, R=22518.635576</title>
+<rect x="658.43" y="74.87" width="10" height="10" fill="#d62728" transform="rotate(45 663.43 79.87)"/>
+<title>n=6, C=3000000000, R=1775359.749513</title>
+<polygon points="661.53,101.70 655.53,90.70 667.53,90.70" fill="#9467bd"/>
+<title>n=7, C=2800000000, R=864220.097455</title>
+<line x1="404.36" y1="266.97" x2="416.36" y2="266.97" stroke="#8c564b" stroke-width="3"/>
+<line x1="410.36" y1="260.97" x2="410.36" y2="272.97" stroke="#8c564b" stroke-width="3"/>
+<title>n=8, C=320000, R=357.704555</title>
+<polygon points="700.01,82.11 706.01,88.11 700.01,94.11 694.01,88.11" fill="#e377c2"/>
+<title>n=9, C=11250000000, R=1220712.231257</title>
+<circle cx="550.14" cy="113.91" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<title>n=10, C=50000000, R=377480.987175</title>
+<text x="850" y="95" font-family="Arial" font-size="15" font-weight="bold">Task chain length</text>
+<circle cx="862.00" cy="120.00" r="5" fill="#1f77b4"/>
+<text x="882" y="125.00" font-family="Arial" font-size="14">n=3</text>
+<rect x="857.00" y="143.00" width="10" height="10" fill="#ff7f0e" transform="rotate(0 862.00 148.00)"/>
+<text x="882" y="153.00" font-family="Arial" font-size="14">n=4</text>
+<polygon points="862.00,170.00 856.00,181.00 868.00,181.00" fill="#2ca02c"/>
+<text x="882" y="181.00" font-family="Arial" font-size="14">n=5</text>
+<rect x="857.00" y="199.00" width="10" height="10" fill="#d62728" transform="rotate(45 862.00 204.00)"/>
+<text x="882" y="209.00" font-family="Arial" font-size="14">n=6</text>
+<polygon points="862.00,238.00 856.00,227.00 868.00,227.00" fill="#9467bd"/>
+<text x="882" y="237.00" font-family="Arial" font-size="14">n=7</text>
+<line x1="856.00" y1="260.00" x2="868.00" y2="260.00" stroke="#8c564b" stroke-width="3"/>
+<line x1="862.00" y1="254.00" x2="862.00" y2="266.00" stroke="#8c564b" stroke-width="3"/>
+<text x="882" y="265.00" font-family="Arial" font-size="14">n=8</text>
+<polygon points="862.00,282.00 868.00,288.00 862.00,294.00 856.00,288.00" fill="#e377c2"/>
+<text x="882" y="293.00" font-family="Arial" font-size="14">n=9</text>
+<circle cx="862.00" cy="316.00" r="5" fill="none" stroke="#7f7f7f" stroke-width="2"/>
+<text x="882" y="321.00" font-family="Arial" font-size="14">n=10</text>
+</svg>
