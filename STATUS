@@ -1,0 +1,48 @@
+Artifact Status
+===============
+
+The authors apply for the following artifact badges:
+
+
+Available
+---------
+
+The authors believe that the artifact deserves the Available badge because the
+repository provides the source code, documentation, installation instructions,
+requirements, license, and example commands needed to inspect and use the
+artifact. The repository contains the C implementation of the zeroLET analysis,
+the serial runtime evaluation, the Linux parallel runtime evaluation, and the
+extremes evaluation. The included documentation explains how to build the code
+and how to reproduce the main reported outputs.
+
+
+Reviewed
+--------
+
+The authors believe that the artifact deserves the Reviewed badge because the
+provided code and documentation are complete enough to build and run the
+evaluation programs. The `INSTALL` file includes a basic installation test:
+
+    ./evaluation_zero_let_c 3 3 1
+
+This command produces CSV and SVG files under `data_c`, confirming that the code
+compiles, runs the zeroLET evaluation, and generates the expected experimental
+outputs. The artifact does not depend on proprietary software, private datasets,
+special peripherals, Docker, or a virtual machine.
+
+
+Reproducible
+------------
+
+The authors believe that the artifact deserves the Reproducible badge because
+the repository provides the author-created research objects, methods, code, and
+documented analysis conditions needed for an independent party to regenerate the
+main computational results. The commands for the main paper results are:
+
+- Table IV: `./extremes_zero_let_c 2 12 3`
+- Figure 8: `./evaluation_zero_let_linux_parallel 3 10 100`
+
+The `REQUIREMENTS` file documents the tested software and hardware environment,
+including operating system, kernel, CPU, memory, compiler, and optional Python
+plotting dependencies. These details support independent reproduction under
+conditions comparable to the authors' tested setup.
