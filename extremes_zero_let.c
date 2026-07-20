@@ -54,12 +54,8 @@ int main(int argc, char **argv)
         periodup = atoll(argv[2]);
         num_chains_extreme = atoi(argv[3]);
     }
-    if (argc >= 5) {
-        random_seed = atoll(argv[4]);
-    }
-
-    if (perioddown > periodup || num_chains_extreme <= 0) {
-        fprintf(stderr, "Usage: %s [perioddown periodup num_chains_extreme [random_seed]]\n", argv[0]);
+    if (argc > 4 || perioddown > periodup || num_chains_extreme <= 0) {
+        fprintf(stderr, "Usage: %s [perioddown periodup num_chains_extreme]\n", argv[0]);
         return 1;
     }
 

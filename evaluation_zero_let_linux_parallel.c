@@ -248,7 +248,7 @@ int main(int argc, char **argv)
 {
     int num_limit = 3;
     int num_chains = 6;
-    int num_repeats = 1;
+    int num_repeats = 100;
     long long period_choices[] = {1, 2, 5, 10, 20, 50, 100, 200, 500, 1000};
     int n_choices = (int)(sizeof(period_choices) / sizeof(period_choices[0]));
     long long random_seed = (long long)time(NULL);
@@ -269,24 +269,14 @@ int main(int argc, char **argv)
     if (argc >= 4) {
         num_repeats = atoi(argv[3]);
     }
-    if (argc >= 5) {
-        random_seed = atoll(argv[4]);
-    }
-    if (argc >= 6) {
-        g_c_limit = atoll(argv[5]);
-    }
-    if (argc >= 7) {
-        g_offset_space_limit = atoll(argv[6]);
-    }
-
-    if (argc > 7 ||
+    if (argc > 4 ||
         num_limit <= 0 ||
         num_chains < num_limit ||
         num_repeats <= 0 ||
         g_c_limit <= 0 ||
         g_offset_space_limit <= 0) {
-        fprintf(stderr, "Usage: %s [num_limit num_chains num_repeats [random_seed [c_limit offset_space_limit]]]\n", argv[0]);
-        fprintf(stderr, "Example: %s 3 6 1 12345 10000000000 1000000\n", argv[0]);
+        fprintf(stderr, "Usage: %s [num_limit num_chains num_repeats]\n", argv[0]);
+        fprintf(stderr, "Example: %s 3 6 1\n", argv[0]);
         return 1;
     }
 
