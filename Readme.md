@@ -93,8 +93,8 @@ configuration to obtain the results shown in **Figure 8**:
 
 The thresholds in `evaluation_zero_let.c` (lines 21–26) limit the computational
 workload of the Linux parallel evaluator to suit the host machine's resources.
-You may reduce these thresholds and recompile for a quicker exploration of
-qualitative trends, although the results may differ from Figure 8.
+You may reduce these thresholds and recompile to obtain similar qualitative
+trends more quickly, although the numerical results may differ from Figure 8.
 
 ### Acknowledgments
 
