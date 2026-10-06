@@ -117,7 +117,7 @@ To reproduce the **Figure 8** results reported in the paper, use
 ./evaluation_zero_let_linux_parallel 3 10 100
 ```
 
-### Figure 8: Reference Environment and Computational Limits
+### Figure 8: Experiment Environment
 
 We ran the experiment for approximately one day on a machine with the following
 configuration to obtain the results shown in **Figure 8**:
@@ -126,30 +126,16 @@ configuration to obtain the results shown in **Figure 8**:
 - **Kernel**: Linux 6.8.0-124-generic x86_64.
 - **Architecture**: x86_64.
 - **CPU**: 2 × Intel(R) Xeon(R) Gold 6226R CPU @ 2.90 GHz.
-- **CPU cores/threads**: 32 physical cores, 64 hardware threads in total.
+- **CPU cores/threads**: 32 physical cores, 64 hardware threads.
 - **Memory**: 503 GiB RAM.
 - **Disk**: 916 GB filesystem, with 147 GB available during testing.
 - **GCC**: `gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0`.
-- **Python**: Python 3.10.12 (used for the optional plotting helper).
+- **Python**: Python 3.10.12.
 
-This duration is a reference measurement, not a guaranteed execution time on
-other machines.
-
-The threshold definitions in `evaluation_zero_let.c` (lines 21–26) are used by
-the Linux parallel runtime evaluator to constrain the computational complexity
-and offset search space of sampled task chains, keeping the workload within the
-resources of the reference machine. The active thresholds are
-`ZEROLET_C_LIMIT = 1000000000000LL` and
-`ZEROLET_OFFSET_SPACE_LIMIT = 50000000LL`; the smaller values in that block are
-commented-out alternatives.
-
-For a quicker exploratory run, you may reduce these thresholds and recompile
-the parallel evaluator. Such runs can be used to examine qualitative trends,
-but lower thresholds change the set of admissible task chains, so similar trends
-are not guaranteed and numerical results may differ from Figure 8. Use the
-reference thresholds and the parameters above when attempting to reproduce the
-reported results.
-
+The thresholds in `evaluation_zero_let.c` (lines 21–26) limit the computational
+workload of the Linux parallel evaluator to suit the host machine's resources.
+You may reduce these thresholds and recompile for a quicker exploration of
+qualitative trends, although the results may differ from Figure 8.
 
 ## Optional Plotting
 
