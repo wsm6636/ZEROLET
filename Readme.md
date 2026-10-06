@@ -73,13 +73,10 @@ As a reference, we utilize a machine running Ubuntu 24.04.2 LTS (2025-09-05) x86
 
 Keeping `perioddown = 2, periodup = 12, num_chains = 3` in `evaluation_zero_let.py` to obtain the same result from the paper. You can get different results by changing the bound of periods and number of tasks.
 
-### Figure 8: Reference Environment and Computational Limits
+### Figure 8: Experiment Environment
 
-The **Figure 8** experiment was run with the C implementation available in the
-[`emsoft2026` version](https://github.com/wsm6636/ZEROLET/tree/emsoft2026).
-This branch contains the earlier Python implementation; the configuration below
-documents the reference C experiment and does not replace this branch's Python
-requirements or the separate environment example above.
+The following information refers to the
+[C version (`emsoft2026`)](https://github.com/wsm6636/ZEROLET/tree/emsoft2026).
 
 We ran the experiment for approximately one day on a machine with the following
 configuration to obtain the results shown in **Figure 8**:
@@ -88,30 +85,16 @@ configuration to obtain the results shown in **Figure 8**:
 - **Kernel**: Linux 6.8.0-124-generic x86_64.
 - **Architecture**: x86_64.
 - **CPU**: 2 × Intel(R) Xeon(R) Gold 6226R CPU @ 2.90 GHz.
-- **CPU cores/threads**: 32 physical cores, 64 hardware threads in total.
+- **CPU cores/threads**: 32 physical cores, 64 hardware threads.
 - **Memory**: 503 GiB RAM.
 - **Disk**: 916 GB filesystem, with 147 GB available during testing.
 - **GCC**: `gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0`.
-- **Python**: Python 3.10.12 (used for the C version's optional plotting helper).
+- **Python**: Python 3.10.12.
 
-This duration is a reference measurement, not a guaranteed execution time on
-other machines.
-
-In the C version, the threshold definitions in `evaluation_zero_let.c`
-(lines 21–26) are used by the Linux parallel runtime evaluator to constrain the
-computational complexity and offset search space of sampled task chains, keeping
-the workload within the resources of the reference machine. The active
-thresholds are `ZEROLET_C_LIMIT = 1000000000000LL` and
-`ZEROLET_OFFSET_SPACE_LIMIT = 50000000LL`; the smaller values in that block are
-commented-out alternatives. This Python branch instead applies the condition
-`C <= 1e9 and space_size <= 1e5` in `evaluation_zero_let.py`.
-
-For a quicker exploratory run of the C version, you may reduce its thresholds
-and recompile the parallel evaluator. Such runs can be used to examine
-qualitative trends, but lower thresholds change the set of admissible task
-chains, so similar trends are not guaranteed and numerical results may differ
-from Figure 8. To attempt to reproduce Figure 8, use the C version with the
-reference thresholds and the reproduction parameters documented in its README.
+The thresholds in `evaluation_zero_let.c` (lines 21–26) limit the computational
+workload of the Linux parallel evaluator to suit the host machine's resources.
+You may reduce these thresholds and recompile for a quicker exploration of
+qualitative trends, although the results may differ from Figure 8.
 
 ### Acknowledgments
 
